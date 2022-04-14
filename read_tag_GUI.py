@@ -1,10 +1,16 @@
 from tkinter import *
-from test_connection_db import read_card_uid
+from test_connection_db import read_card_uid, add_visit
 
 
-def read_user():
-    user_info = read_card_uid()
-    entrytext.set(user_info[2])
+# def read_user():
+#     user_info = read_card_uid()
+#     entrytext.set(user_info[2])
+
+ZAID = 987654
+ABDELLAH = 123456
+
+def new_visit():
+    add_visit(read_card_uid(), ABDELLAH)
 
 
 # -------------------------------------------------------------
@@ -44,27 +50,27 @@ entries_frame.place(relwidth=0.4, relx=0.6, relheight=1, rely=0)
 # -------------------------------------------------------------
 
 # # ==================== Labels ==================================
-folder_name_label = Label(labels_frame, text='Enter a name for the output folder :',
-                          fg='Black', font=('Helvetica', 15))
-folder_name_label.place(relx=0.1, rely=0.4)
-
-default_folder_name = Label(labels_frame, text='(Nb: The default folder name is set to: Output)',
-                            font=('Helvetica', 11), fg='red')
-default_folder_name.place(relx=0.1, rely=0.55)
-
-status_label = Label(holder_frame, font=('Helvetica', 15))
-status_label.place(relx=0.42, rely=0.85)
+# folder_name_label = Label(labels_frame, text='Enter a name for the output folder :',
+#                           fg='Black', font=('Helvetica', 15))
+# folder_name_label.place(relx=0.1, rely=0.4)
+#
+# default_folder_name = Label(labels_frame, text='(Nb: The default folder name is set to: Output)',
+#                             font=('Helvetica', 11), fg='red')
+# default_folder_name.place(relx=0.1, rely=0.55)
+#
+# status_label = Label(holder_frame, font=('Helvetica', 15))
+# status_label.place(relx=0.42, rely=0.85)
 #
 # # ==================== Entries ==================================
 entrytext = StringVar()
 
-username = Entry(entries_frame, font=('Helvetica', 13), textvariable=entrytext)
-username.place(relx=0, relwidth=0.5, rely=0.43, relheight=0.15)
+# username = Entry(entries_frame, font=('Helvetica', 13), textvariable=entrytext)
+# username.place(relx=0, relwidth=0.5, rely=0.43, relheight=0.15)
 #
 # # ==================== Buttons ==================================
-read_BTN = Button(holder_frame, text='read', font=('Helvetica', 13),
-                  command=lambda: read_user())
-read_BTN.place(relx=0.35, relwidth=0.3, rely=0.5)
+visite_BTN = Button(holder_frame, text='New Visit', font=('Helvetica', 13),
+                  command=lambda: new_visit())
+visite_BTN.place(relx=0.35, relwidth=0.3, rely=0.5)
 
 # -------------------------------------------------------------
 #                        MAIN LOOP
