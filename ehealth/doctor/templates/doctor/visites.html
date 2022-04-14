@@ -15,7 +15,7 @@
             <tr class="d-flex w-100 justify-content-between">
                 <th>Numero</th>
                 <th>Date</th>
-                <th>Nom du Docteur</th>
+                <th>{% if doctor %}Nom du Patient {%else%}Nom du docteur {%endif%}</th>
                 <th>View</th>
             </tr>
         </thead>
@@ -25,10 +25,11 @@
 
                     <td>{{row.id}}</td>
                     <td>{{row.date_created}}</td>
-                    <td>{{row.patient_id.nom}}</td>
+                    <td>{% if doctor %}{{row.patient_id.person_id.nom}}{% else %} {{row.doctor_id.person_id.nom}}{%endif%}</td>
+                    <td>{% if doctor %}{{row.patient_id.person_id.nom}}{% else %} {{row.doctor_id.person_id.nom}}{%endif%}</td>
                     <td class="d-flex align-items-center">
                         <a href="{% if doctor %}{% url 'doctor:get_visite_details' row.id %}{% else %} {% url 'patient:get_visite_details' row.id %} {% endif %}" >
-                            <h6>go</h6>
+                          
                             <i class="fa-solid fa-arrow-up-right-from-square fa-lg"></i>
                         </a>
                     </td>
