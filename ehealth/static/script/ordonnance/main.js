@@ -8,16 +8,23 @@ btns = [add_med_btn, add_trait_btn]
 
 let i = 1;
 
-const remove_row = (id) =>{
+
+// FUNCTIONS
+
+const change_role = () => {
+    document.querySelector(".drop-down-content").classList.toggle("show-drop-down")
+}
+
+const remove_row = (id) => {
     let row_id = `#row-${id.split('-')[1]}`
     let row = document.querySelector(row_id)
     row.remove()
 }
 
-const new_row = (type, num) =>{
+const new_row = (type, num) => {
     i++;
     let row = document.createElement('div');
-    if(type == 1){
+    if (type == 1) {
         row.innerHTML = `<div class="row" id=row-${++num}>
         <div class="col-4">
             <label for="exampleInputEmail1">Nom Medicament</label>
@@ -39,8 +46,8 @@ const new_row = (type, num) =>{
             </div>
         </div>
     </div>`
-    
-    }else if(type == 2){
+
+    } else if (type == 2) {
         row.innerHTML = `<div class="row" id="row-${++num}">
         <div class="col-4">
             <label for="exampleInputEmail1">Nom Traitement</label>
@@ -62,23 +69,35 @@ const new_row = (type, num) =>{
     return row
 }
 
+
+
+
+// EVENT LISTINERS
 btns.forEach(btn => {
 
     try {
-        btn.addEventListener('click', (btn)=>{
+        btn.addEventListener('click', (btn) => {
             let id = btn['target']['id']
-            if(id == 'add_btn_med'){
+            if (id == 'add_btn_med') {
                 med_form.appendChild(new_row(1, i))
-            }else if(id == 'add_btn_trait'){
+            } else if (id == 'add_btn_trait') {
                 trait_form.appendChild(new_row(2, i))
             }
         })
     } catch (error) {
-        
+
     }
-        
+
 });
 
 
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.role')) {
+        try {
+            document.querySelector(".drop-down-content").classList.remove("show-drop-down")
+        } catch (error) {
 
-
+        }
+    }
+}
