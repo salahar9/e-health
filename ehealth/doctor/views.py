@@ -95,3 +95,5 @@ def get_visite_details(request,visite):
 				"visite":visite,
 				"doctor":True
 		})
+
+

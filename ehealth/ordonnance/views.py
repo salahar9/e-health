@@ -53,3 +53,10 @@ def create_ordonnance(request):
 	data={"Done":"ordo created"}
 	return  JsonResponse(data)
 
+
+def add_medicaments(request):
+	return render(request, "add_medicaments.html")
+
+
+def add_traitement(request):
+	return render(request, "add_traitement.html")

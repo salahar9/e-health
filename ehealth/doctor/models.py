@@ -11,5 +11,5 @@ class Doctor(models.Model):
 	activated=models.BooleanField(default=0)
 class Visite(models.Model):
 	date_created=models.DateField(auto_now_add=True)
-	patient_id=models.OneToOneField(Patient,on_delete=models.CASCADE)
-	medcin_id=models.OneToOneField(Doctor,on_delete=models.CASCADE)
+	patient_id=models.ForeignKey(Patient,on_delete=models.CASCADE)
+	medcin_id=models.ForeignKey(Doctor,on_delete=models.CASCADE)

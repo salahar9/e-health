@@ -63,3 +63,38 @@ ul{
     background-color: #f5f7fa;
     border-top-left-radius: 2%;
 }
+
+.doctor-profile{
+    width: 50%;
+    float: right ;
+}
+
+.ordanance-form-section{
+    padding-right: 3rem;
+}
+.ordanance-form-title{
+    padding-bottom: 1.5rem;
+}
+
+.form-group{
+    padding-bottom: 1rem;
+}
+
+#add_btn_med,
+#add_btn_trait{
+    background: #00B0D6;
+    border-color: #00B0D6;
+}
+
+form .row{
+    margin-bottom: 1rem;
+}
+
+.remove-item{
+    transform: translateY(40%);
+    color: red;
+}
+
+.remove-item :hover{
+    cursor: pointer;
+}

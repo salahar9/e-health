@@ -1,0 +1,43 @@
+{% extends 'ehealth/base.html' %}
+{% load static %}
+
+{% block content %}
+            <div class="container ">
+                <div class="ordanance-form-section">
+                    <h2 class="ordanance-form-title">Medicaments</h2>
+                    <form class="ps-3" action="" >
+                        <div class="all_med" id="med-form">
+                            <div class="row" id="row-1">
+                                <div class="col-4">
+                                    <label>Nom Medicament</label>
+                                    <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter medicament">
+                                </div>
+                                <div class="col-2">
+                                    <label>Quantite par jour</label>
+                                    <input type="number" class="form-control" value="1">
+                            
+                                </div>
+                                <div class="col-5">
+                                    <label >Description d'utilisation</label>
+                                    <textarea class="form-control"  rows="1"></textarea>
+                                
+                                </div>
+                                <div class="col-1 d-flex flex-column justify-content-center">
+                                    <div class="remove-item" id="remove_btn-1" onclick="remove_row(this.id)">
+                                        <i class="fa-solid fa-trash-can fa-xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary mt-2" id="add_btn_med">Add More</button>
+                        <br>
+                        <center>
+                            <button type="submit" class="btn btn-primary" >Submit</button>
+                        </center> 
+                </form>
+                
+                      
+                </div>
+            </div>
+
+{% endblock %}

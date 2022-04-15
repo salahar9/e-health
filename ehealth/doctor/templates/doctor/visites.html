@@ -29,6 +29,7 @@
                     <td class="d-flex align-items-center">
                         <a href="{% if doctor %}{% url 'doctor:get_visite_details' row.id %}{% else %} {% url 'patient:get_visite_details' row.id %} {% endif %}" >
                             <i class="fa-solid fa-arrow-up-right-from-square fa-lg"></i>
+                            go
                         </a>
                     </td>
 

@@ -8,6 +8,6 @@ urlpatterns=[
 	path("register",views.register,name="register"),
 	path("create_visite",views.create_visite),
 	path("get_doctor_visite",views.get_doc_visites_history,name="visites"),
-	path("get_visite_details/<int:visite>/",views.get_visite_details,name='get_visite_details')
+	path("get_visite_details/<int:visite>/",views.get_visite_details,name='get_visite_details'),
 
 ]
