@@ -1,0 +1,247 @@
+{%extends "ehealth/base.html" %}
+{%load static%}
+{%block content%}
+
+            <div class="insights">
+                <div class="card profile">
+                    <div class="left">
+                        <div class="big-profile-photo">
+                            <img src="./images/profile-1.jpg" alt="">
+                        </div>
+                        <div class="middle">
+
+                            <h2>{{patient.person_id.nom}} {{patient.person_id.prenom}}</h2>
+                            <h3 class="text-muted">{{patient.person_id.user.email}}</h3>
+
+                            <h3>Appointments</h3>
+                            <div class="appoitements">
+                                <div class="past">
+                                    <h2>5</h2>
+                                    <h3 class="text-muted">Past</h3>
+                                </div>
+                                <div class="future">
+                                    <h2>2</h2>
+                                    <h3 class="text-muted">Upcoming</h3>
+                                </div>
+                            </div>
+                            <div id="send-msg-btn">
+                                <h3>Send Message</h3>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="rigth">
+                        <a href="" class="primary" id="edit">
+                            <span class="material-icons-sharp">
+                                edit
+                            </span>
+                        </a>
+                        <div class="info">
+                            <div class="info-elem">
+                                <h3 class="text-muted">Gender</h3>
+                                <h3 class="user-info">{% if patient.person_id.sexe == 'M' %} Male{% elif patient.person_id.sexe == 'F' %} Female{%endif%}</h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">Birthdar</h3>
+                                <h3 class="user-info">{{patient.person_id.datedenaissance}}</h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">Phone Number</h3>
+                                <h3 class="user-info">{{patient.person_id.phone}}</h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">CIN</h3>
+                                <h3 class="user-info">{{patient.person_id.user.username}}</h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">Adress</h3>
+                                <h3 class="user-info">{{patient.person_id.adresse}}</h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">City</h3>
+                                <h3 class="user-info">{{patient.person_id.ville}}</h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">Registration Date</h3>
+                                <h3 class="user-info">1 Jan 2022</h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted ">Member Status</h3>
+                                <h3 class="user-info">Active Member</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--------------- END OF CARD 1 ------------>
+                <div class="">
+                    <div class="div">
+                        <div class="section-1">
+                            <h2>Recent Consultations</h2>
+                            <div class="rows">
+                                {% if visites|length == 0 %}No records
+                                {%else%}
+                                {%for v in visites%}
+                                <div class="row">
+                                    <div class="profile-photo">
+                                        <img src="./images/profile-2.jpg" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <p><b>{{v.medcin_id.person.nom}} {{v.medcin_id.person.prenom}}</b> <br> {{v.date_created}}</p>
+                                    </div>
+                                </div>
+                                {%endfor%}
+                                
+                          </div>
+                        <a href="{% url 'patient:others_visite' patient.id %}" class="show-all-btn">Show All</a>
+
+                        {%endif%}
+                    </div>
+
+                </div>
+                <div class="">
+                    <div class="div">
+                        <div class="section-1">
+                            <h2>Recent Consultations</h2>
+                            <div class="rows">
+                                {% if visites|length == 0 %}No records
+                                {%else%}
+                                {%for v in visites%}
+                                <div class="row">
+                                    <div class="profile-photo">
+                                        <img src="./images/profile-2.jpg" alt="">
+                                    </div>
+                                    <div class="description">
+                                        <p><b>{{v.medcin_id.person.nom}} {{v.medcin_id.person.prenom}}</b> <br> {{v.date_created}}</p>
+                                    </div>
+                                </div>
+                                {%endfor%}
+                                
+                          </div>
+                        <a href="{% url 'patient:others_visite' patient.id %}" class="show-all-btn">Show All</a>
+
+                        {%endif%}
+                    </div>
+
+                </div>
+
+                <!--------------- END OF CARD 2 ------------>
+            </div>
+
+                <!--------------- END OF CARD 2 ------------>
+            </div>
+            <!--------------- END OF INSIGHTS ------------>
+
+            <div class="bottom">
+                <h2>Used Drugs</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Drug Name</th>
+                            <th>dosage</th>
+                            <th>presentation</th>
+                            <th>Pack</th>
+                            <th>Form</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {%if ords|length == 0%} No records
+                        {%else%}
+                        {%for ord in ords %}
+                        <tr>
+                            <td>{{ord.id_medicament.nom}}</td>
+                            <td>{{ord.id_medicament.dosage1}}</td>
+                            <td>{{ord.id_medicament.dosage1}}</td>
+                          
+                            <td>{{ord.id_medicament.forme}}</td>
+                            <td>{{ord.id_medicament.prix_br}}</td>
+                        </tr>
+                        {%endfor%}
+                        {%endif%}
+                        
+
+                    </tbody>
+                </table>
+            <a href="{% url 'patient:others_visite' patient.id %}" class="show-all-btn">Show All</a>
+            </div>
+        </main>
+        <!--------------- END OF MAIN ------------>
+       {%endblock%}
+       {%block content2%}
+            <div class="section-3">
+                <h2>Recent Prescriptions</h2>
+
+                <div class="rows">
+                          {% if zipped|length == 0 %}
+                    <div class="row">
+                    No records </div>
+                         {%else%}
+                         {% for ord,num in zipped %}
+                  
+                    <div class="row">
+                        <div class="profile-photo">
+                            <img src="{{ord.id_visite.medcin_id.person.img.url}}" alt="">
+                        </div>
+                        <div class="description">
+                            <p><b>{{ord.id_visite.medcin_id.person_id.nom}} {{ord.id_visite.medcin_id.person.prenom}}</b> <br>{{num}} On going</p>
+                        </div>
+                    </div>
+                    {%endfor%}
+                    {%endif  %}
+
+                    
+                </div>
+            </div>
+            <a href="{% url 'patient:others_presc' patient.id %}" class="show-all-btn">Show All</a>
+
+            <!--------------- END OF SECTION-1 ------------>
+
+            <div class="section-4">
+                <h2>Insurances</h2>
+
+
+                <div class="item">
+                    <div class="primary">
+                        <span class="material-icons-sharp">looks_one</span>
+                    </div>
+                    <div class="description">
+                        <p><b>$15,000</b> <br> 28 Jan 2022 &#8226 9 AM <br></p>
+                    </div>
+                    <div>
+                        <span class="material-icons-sharp primary">open_in_new</span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="success">
+                        <span class="material-icons-sharp">looks_two</span>
+                    </div>
+                    <div class="description">
+                        <p><b>$15,000</b> <br> 28 Jan 2022 &#8226 9 AM <br></p>
+                    </div>
+                    <div>
+                        <span class="material-icons-sharp primary">open_in_new</span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="danger">
+                        <span class="material-icons-sharp">looks_3</span>
+                    </div>
+                    <div class="description">
+                        <p><b>$15,000</b> <br> 28 Jan 2022 &#8226 9 AM <br></p>
+                    </div>
+                    <div>
+                        <span class="material-icons-sharp primary">open_in_new</span>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="show-all-btn">Show All</a>
+
+        </div>
+    </div>
+
+{%endblock %}
