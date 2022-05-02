@@ -1,2 +1,11 @@
 .idea/
 __pycache__/
+doctor/migrations/*
+landing/migrations/*
+med/migrations/*
+mutuelle/migrations/*
+ordonnance/migrations/*
+patient/migrations/*
+pharmacie/migrations/*
+meds.db
+db.sqlite3
