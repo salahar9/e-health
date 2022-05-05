@@ -9,6 +9,8 @@ import logging
 from django.views.decorators.http import require_POST
 from  django.http import HttpResponse, JsonResponse
 from django.contrib import messages
+from .decorators import check_login
+
 def re_redirect(request,loginp):
 
 			if loginp==1:
@@ -40,6 +42,7 @@ def re_redirect(request,loginp):
 
 				messages.add_message(request, messages.ERROR, 'Something is Wrong')
 				return  redirect("patient:visites")
+@check_login
 def login_user(request):
 	
 
@@ -78,10 +81,11 @@ def login_user(request):
 
 
 # NEW LANGING PAGE
+@check_login
 def index(request):
-	return render(request, "landing/index.html")
+	return render(request, "landing/login.html")
 
-
+@check_login
 def register_user(request):
 	if request.method=="POST" :
 			username = request.POST['username']

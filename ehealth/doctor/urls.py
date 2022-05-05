@@ -11,6 +11,8 @@ urlpatterns=[
 	path("get_visite_details/<int:visite>/",views.get_visite_details,name='get_visite_details'),
 	path("dashboard",views.dashboard,name="dashboard"),
 	path("patients",views.get_patient,name="patients"),
-	path("fill",views.fill)
+	path("fill",views.fill),
+	path('add_note/<int:visite>',views.add_note,name="add_note"),
+	path('accept_app/<int:app>',views.accept_app,name="accept_app"),
 
 ]

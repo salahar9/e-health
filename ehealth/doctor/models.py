@@ -14,6 +14,8 @@ class Visite(models.Model):
 	date_created=models.DateTimeField(auto_now_add=True)
 	patient_id=models.ForeignKey(Patient,on_delete=models.CASCADE,related_name="visites")
 	medcin_id=models.ForeignKey(Doctor,on_delete=models.CASCADE,related_name="visites")
+	class Meta:
+		ordering=["-date_created"]
 class Appointement(models.Model):
 	class time(models.TextChoices):
 		Matin = "09h - 12h"
@@ -28,3 +30,11 @@ class Appointement(models.Model):
 	date=models.DateField()
 	heure=models.CharField(max_length=255,choices=time.choices)
 	status=models.CharField(max_length=1,choices=status_choices.choices)
+	class Meta:
+		ordering=["-date"]
+class Note(models.Model):
+	id_visite=models.ForeignKey('Visite', on_delete=models.CASCADE)
+	date_created=models.DateTimeField(auto_now_add=True)
+	note=models.CharField(max_length=255)
+	class Meta:
+		ordering=["-date_created"]

@@ -1,5 +1,4 @@
 {% extends "ehealth/base.html" %}
-{% load index %}
 {% block content %}
 <h1>Insurances</h1>
 
@@ -84,6 +83,10 @@
                             <span class="material-icons-sharp"> open_in_new</span>
                         </a>
                     </td>
+                {%empty%}
+                <tr>
+                <td>No records</td>
+            </tr>
                 {% endfor %}
 
 

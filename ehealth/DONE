@@ -1,0 +1,23 @@
+DONE:
+-patient:
+*patient dashboard: 100%
+*patient profile  and pages: needs one link and one page
+*patient visites_details DONE
+*get_doc: done
+*get_visites: done
+* mutuelle: done
+-landing:
+* can't go back to logins: patient DONE pharmacist
+* fix new register:NO
+* fix new login: done
+* can't go to other roles' pages: patient DONE pharmacist
+
+- pharmacist:
+-dashboard: done
+
+- doctor:
+visites:DONE
+patient:DONE
+visites_details:DONE
+dashboard
+

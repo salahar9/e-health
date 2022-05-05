@@ -108,7 +108,7 @@
                             <img src="{{ord.id_visite.patient_id.person_id.img.url}}" alt="">
                         </div>
                         <div class="description">
-                            <p><b>{{ord.id_visite.patient_id.person_id.nom}} {{ord.id_visite.patient_id.person_id.prenom}}</b><br> {{ord.date_purchase|date:"D d M Y"}} &#8226  {{ord.date_purchase|time:"H:i"}}</p>
+                            <p><b><a href="{% url 'patient:profile' ord.id_visite.patient_id.pk %}">{{ord.id_visite.patient_id.person_id.nom}}</a> {{ord.id_visite.patient_id.person_id.prenom}}</b><br> {{ord.date_purchase|date:"D d M Y"}} &#8226  {{ord.date_purchase|time:"H:i"}}</p>
                         </div>
                     </div>
                     {% empty %}
@@ -131,7 +131,7 @@
                         <img src="{{ord.id_visite.patient_id.person_id.img.url}}" alt="">
                     </div>
                     <div class="description">
-                        <p><b>{{ord.id_visite.patient_id.person_id.nom}} {{ord.id_visite.patient_id.person_id.prenom}}</b> <br> {{ord.count}} <br> {{ord.date_purchase|date:"D d M Y"}} &#8226  {{ord.date_purchase|time:"H:i"}} <br></p>
+                        <p><b><a href="{% url 'patient:profile' ord.id_visite.patient_id.pk %}">{{ord.id_visite.patient_id.person_id.nom}} {{ord.id_visite.patient_id.person_id.prenom}}</a></b> <br> {{ord.count}} <br> {{ord.date_purchase|date:"D d M Y"}} &#8226  {{ord.date_purchase|time:"H:i"}} <br></p>
                     </div>
                     <div class="primary">
                         <h3>{{ord.prix}}</h3>

@@ -5,7 +5,7 @@
                     <div class="middle">
 
                         <h3>{% if doctor %}Total Patients{% elif patient %} Consultations {% elif pharmacist %} Total Clients{% endif %}</h3>
-                        <h1>{% if doctor %}{{dist_pat}}{% elif patient %} {{visites|length}} {% elif pharmacist %} Total Clients{% endif %}</h1>
+                        <h1>{% if doctor %}{{num_doc}}{% elif patient %} {{count_visites}} {% elif pharmacist %} Total Clients{% endif %}</h1>
 
                     </div>
                     <small class="text-muted">
@@ -18,30 +18,31 @@
                     <span class="material-icons-sharp">event</span>
                     <div class="middle">
                         <h3>{% if doctor %}Appointments{% elif patient %} Appointments {% elif pharmacist %} Total Sales{% endif %}</h3>
-                        <h1>{% if doctor %}{{num_appt}} {% elif patient %} {{count_visites}} {% elif pharmacist %}  {% endif %}</h1>
+                        <h1>{% if doctor %}{{num_appointement}} {% elif patient %} {{num_appointement}}  {% endif %}</h1>
                     </div>
                     <small class="text-muted">
                         {% if doctor %}Last Week{% elif patient %} All Time {% elif pharmacist %} Last Week{% endif %}
                     </small>
                 </div>
                 <!--------------- END OF CARD 2 ------------>
-
+                {% if patient %}    
                 <div class="card">
                     <span class="material-icons-sharp">phone_in_talk</span>
                     <div class="middle">
-                        <h3>{% if doctor %}Phone Calls{% elif patient %} Insurances {% elif pharmacist %} Total Expenses{% endif %}</h3>
-                        <h1>{% if patient %} {{insurances.total}} {%endif%}</h1>
+                        <h3> Insurances </h3>
+                        <h1>{{insurances.total}} </h1>
                     </div>
                     <small class="text-muted">
                         Last Week
                     </small>
                 </div>
+                {%endif%}
                 <!--------------- END OF CARD 3 ------------>
                 <div class="card">
                     <span class="material-icons-sharp">medication</span>
                     <div class="middle">
                         <h3>{% if doctor %}Consultations{% elif patient %} Prescriptions {% elif pharmacist %} Total Income{% endif %}</h3>
-                        <h1>{% if doctor %}{{visites|length}} {% elif patient %} {{ordon_num}}{%endif%}</h1>
+                        <h1>{% if doctor %}{{num_visite}} {% elif patient %} {{ordon_num}}{%endif%}</h1>
                     </div>
                     <small class="text-muted">
                         {% if doctor %}Last Week{% elif patient %} All Time {% elif pharmacist %} Last Week{% endif %}

@@ -13,11 +13,12 @@ class AllMutuelle(models.Model):
         (MUTUELLE_STATUS_COMPLETE, 'Complete'),
     ]
 
-    patient_id = models.ForeignKey(
-        Patient, on_delete=models.CASCADE, null=False, default=0)
+
     visite_id = models.ForeignKey(
-        Visite, on_delete=models.CASCADE, null=False, default=0)
+        Visite, on_delete=models.CASCADE, null=False)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     mutuelle_status = models.CharField(
         max_length=1, choices=MUTUELLE_STATUS_CHOICES, default=MUTUELLE_STATUS_PENDING)
     total = models.DecimalField(max_digits=7, decimal_places=2)
+    class Meta:
+        ordering=["-created_at"]

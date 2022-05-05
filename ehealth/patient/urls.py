@@ -1,5 +1,6 @@
 from django.urls import include, path
 from . import views
+from mutuelle import views as mviews
 app_name="patient"
 urlpatterns=[
 
@@ -10,6 +11,9 @@ urlpatterns=[
 	path("doctors",views.get_doc,name="doctors"),
 	path("profile/<int:pk>",views.profile,name="profile"),
 	path("visites/<int:pk>",views.get_other_visites_history,name="others_visite"),
+	path("mutuelle/<int:pk>",mviews.get_other_mut,name="others_mut"),
+	path("mutuelle/",mviews.all_mutuelles,name="mutuelle"),
+
 	path("presc/<int:pk>",views.get_other_presc,name="others_presc"),
 	path("book/<int:doc>",views.book_appointement,name="book"),
 	path("search",views.search_doc,name="search")

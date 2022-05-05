@@ -1,18 +1,19 @@
 {%extends "ehealth/base.html" %}
 {%load static%}
+{%load index%}
 {%block content%}
 
             <div class="insights">
                 <div class="card profile">
                     <div class="left">
                         <div class="big-profile-photo">
-                            <img src="{{patient.person_id.img.url}}" alt="">
+                            <img src="{{pat.person_id.img.url}}" alt="">
                         </div>
 
                         <div class="middle">
 
-                            <h2>{{patient.person_id.nom}} {{patient.person_id.prenom}}</h2>
-                            <h3 class="text-muted">{{patient.person_id.user.email}}</h3>
+                            <h2>{{pat.person_id.nom}} {{pat.person_id.prenom}}</h2>
+                            <h3 class="text-muted">{{pat.person_id.user.email}}</h3>
 
                             <h3>Appointments</h3>
                             <div class="appoitements">
@@ -41,27 +42,27 @@
                         <div class="info">
                             <div class="info-elem">
                                 <h3 class="text-muted">Gender</h3>
-                                <h3 class="user-info">{% if patient.person_id.sexe == 'M' %} Male{% elif patient.person_id.sexe == 'F' %} Female{%endif%}</h3>
+                                <h3 class="user-info">{% if pat.person_id.sexe == 'M' %} Male{% elif pat.person_id.sexe == 'F' %} Female{%endif%}</h3>
                             </div>
                             <div class="info-elem">
                                 <h3 class="text-muted">Birthdar</h3>
-                                <h3 class="user-info">{{patient.person_id.datedenaissance}}</h3>
+                                <h3 class="user-info">{{pat.person_id.datedenaissance}}</h3>
                             </div>
                             <div class="info-elem">
                                 <h3 class="text-muted">Phone Number</h3>
-                                <h3 class="user-info">{{patient.person_id.phone}}</h3>
+                                <h3 class="user-info">{{pat.person_id.phone}}</h3>
                             </div>
                             <div class="info-elem">
                                 <h3 class="text-muted">CIN</h3>
-                                <h3 class="user-info">{{patient.person_id.user.username}}</h3>
+                                <h3 class="user-info">{{pat.person_id.user.username}}</h3>
                             </div>
                             <div class="info-elem">
                                 <h3 class="text-muted">Adress</h3>
-                                <h3 class="user-info">{{patient.person_id.adresse}}</h3>
+                                <h3 class="user-info">{{pat.person_id.adresse}}</h3>
                             </div>
                             <div class="info-elem">
                                 <h3 class="text-muted">City</h3>
-                                <h3 class="user-info">{{patient.person_id.ville}}</h3>
+                                <h3 class="user-info">{{pat.person_id.ville}}</h3>
                             </div>
                             <div class="info-elem">
                                 <h3 class="text-muted">Registration Date</h3>
@@ -96,7 +97,7 @@
                                 {%endfor%}
                                 
                           </div>
-                        <a href="{% url 'patient:others_visite' patient.id %}" class="show-all-btn">Show All</a>
+                        <a href="{% url 'patient:others_visite' pat.pk %}" class="show-all-btn">Show All</a>
 
                  
                     </div>
@@ -121,20 +122,23 @@
                                 {%endfor%}
                                 
                           </div>
-                        <a href="{% url 'patient:others_visite' patient.id %}" class="show-all-btn">Show All</a>
+                        <a href="{% url 'patient:others_visite' pat.pk %}" class="show-all-btn">Show All</a>
 
                         {%endif%}
                     </div>
-
                 </div>
+            </div>
+               
 
                 <!--------------- END OF CARD 2 ------------>
-            </div>
+      
 
                 <!--------------- END OF CARD 2 ------------>
-            </div>
+            
             <!--------------- END OF INSIGHTS ------------>
 </div>
+</div>
+
             <div class="bottom">
                     <h2>Used Drugs</h2>
                 <div class="card">
@@ -169,7 +173,7 @@
 
                     </tbody>
                 </table>
-            <a href="{% url 'patient:others_visite' patient.id %}" class="show-all-btn">Show All</a>
+            <a href="{% url 'patient:others_presc' pat.pk %}" class="show-all-btn">Show All</a>
            </div>
             </div>
         </main>
@@ -199,51 +203,42 @@
                     
                 </div>
             </div>
-            <a href="{% url 'patient:others_presc' patient.id %}" class="show-all-btn">Show All</a>
+            <a href="{% url 'patient:others_presc' pat.pk %}" class="show-all-btn">Show All</a>
 
             <!--------------- END OF SECTION-1 ------------>
 
             <div class="section-4">
                 <h2>Insurances</h2>
 
-
+                {% for i in mutuelle %}
                 <div class="item">
+                    {% if  forloop.counter  == 1 %}
                     <div class="primary">
                         <span class="material-icons-sharp">looks_one</span>
                     </div>
-                    <div class="description">
+                     {% elif  forloop.counter  == 2 %}
+                      <div class="description">
                         <p><b>$15,000</b> <br> 28 Jan 2022 &#8226 9 AM <br></p>
+                    </div>
+                    {%else%}
+                    <div>
+                        <span class="material-icons-sharp primary">open_in_new</span>
+                    </div>
+                    {%endif%}
+                    <div class="description">
+                        <p><b>{{i.total}}</b> <br> {{i.created_at|date}} &#8226 {{i.created_at|time:"H:i"}} <br></p>
                     </div>
                     <div>
                         <span class="material-icons-sharp primary">open_in_new</span>
                     </div>
                 </div>
+                {%empty%}
+                No records 
+                {%endfor%}
 
-                <div class="item">
-                    <div class="success">
-                        <span class="material-icons-sharp">looks_two</span>
-                    </div>
-                    <div class="description">
-                        <p><b>$15,000</b> <br> 28 Jan 2022 &#8226 9 AM <br></p>
-                    </div>
-                    <div>
-                        <span class="material-icons-sharp primary">open_in_new</span>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="danger">
-                        <span class="material-icons-sharp">looks_3</span>
-                    </div>
-                    <div class="description">
-                        <p><b>$15,000</b> <br> 28 Jan 2022 &#8226 9 AM <br></p>
-                    </div>
-                    <div>
-                        <span class="material-icons-sharp primary">open_in_new</span>
-                    </div>
-                </div>
+               
             </div>
-            <a href="#" class="show-all-btn">Show All</a>
+            <a href="{% url 'patient:others_mut' pat.pk  %}" class="show-all-btn">Show All</a>
 
         </div>
     </div>

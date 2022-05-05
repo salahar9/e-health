@@ -62,46 +62,52 @@
 
                 </div>
                 <!--------------- END OF CARD 1 ------------>
+                {%if show_notes %}
                 <div class="">
                     <div class="div">
                         <div class="section-4">
                             <h2>Doctor's Notes</h2>
-
+                            
+                            {% for note in notes %}
                             <div class="item">
-                                <div class="primary">
-                                    <span class="material-icons-sharp">looks_one</span>
-                                </div>
+                                {% if  forloop.counter  == 1 %}
+                    <div class="primary">
+                        <span class="material-icons-sharp">looks_one</span>
+                    </div>
+                     {% elif  forloop.counter  == 2 %}
+                      <div class="success">
+                        <span class="material-icons-sharp">looks_two</span>
+                    </div>
+                    {%else%}
+                    <div class="danger">
+                        <span class="material-icons-sharp">looks_{{forloop.counter}}</span>
+                    </div>
+                    {%endif%}
                                 <div class="description">
-                                    <p><b> Lorem ipsum dolor sit amet consectetur adipisicing elit</b></p>
+                                    <p><b> {{note.note}}</b></p>
                                 </div>
-                            </div>
+                                </div>
+                    {%empty%} 
+                    <div class="item"> 
+                     <div class="primary">
+                    <div class="description">
+                                    <p><b> No records</b></p>
+                    </div>
+                    </div>
+                </div>
 
-                            <div class="item">
-                                <div class="success">
-                                    <span class="material-icons-sharp">looks_two</span>
-                                </div>
-                                <div class="description">
-                                    <p><b> Lorem ipsum dolor sit amet consectetur adipisicing elit</b></p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="danger">
-                                    <span class="material-icons-sharp">looks_3</span>
-                                </div>
-                                <div class="description">
-                                    <p><b> Lorem ipsum dolor sit amet consectetur adipisicing elit</b></p>
-                                </div>
-                            </div>
-                            <div class="item add-new" id="add-note">
+                   
+                          
+                    {%endfor%}    
+                    <div class="item add-new" id="add-note">
                                 <div>
                                     <span class="material-icons-sharp primary">add</span>
                                 </div>
                                 <h3>
                                     Create New
                                 </h3>
-                            </div>
-                        </div>
+                    </div>
+                     </div>
                     </div>
                     <div class="popup-holder hide">
                         <div class="card">
@@ -111,9 +117,10 @@
                                 </span>
                             </div>
                             <h2>New Note</h2>
-                            <form action="">
+                            <form action="{% url 'doctor:add_note' visite.pk %}" method="POST">
+                                {%csrf_token%}
                                 <div class="form-row">
-                                    <input type="text" placeholder="Enter a note">
+                                    <input type="text" name="note" placeholder="Enter a note">
                                 </div>
 
                                 <button type="submit" class="item add-new">
@@ -131,15 +138,19 @@
 
 
                 </div>
-
-                <!--------------- END OF CARD 2 ------------>
-            </div>
+               
+                {%endif%}
+ </div>
+     <!--------------- END OF CARD 2 ------------>
+            
             <!--------------- END OF INSIGHTS ------------>
 
             <div class="bottom">
                 <div class="table-title">
                     <h2>Traitements</h2>
+                    {% if modifiable %}
                    <a href="{% url 'ordonnance:add_traitements' visite.pk %}" class="submit-btn-holder details">
+                        
                         <div class="submit-btn">
                             <div class="item add-new">
                                 <div>
@@ -148,7 +159,9 @@
                                 <h3>Add</h3>
                             </div>
                         </div>
+                       
                     </a>
+                     {%endif%}
                 </div>
                 <div class="card">
                     <table id="table-trait">
@@ -179,7 +192,9 @@
                 </div>
                 <div class="table-title">
                     <h2>Drugs</h2>
-                    <a href="{% url 'ordonnance:add_medicaments' visite.pk %}"" class="submit-btn-holder details">
+
+                    {% if modifiable %}
+                    <a href="{% url 'ordonnance:add_medicaments' visite.pk %}" class="submit-btn-holder details">
                         <div class="submit-btn">
                             <div class="item add-new">
                                 <div>
@@ -189,6 +204,7 @@
                             </div>
                         </div>
                     </a>
+                    {%endif%}
                 </div>
                 <div class="card">
                     <table id="table-drug">
@@ -205,11 +221,11 @@
                         <tbody>
                            {% for med in meds %}
                             <tr>
-                                <td>{{meds.nom}}</td>
-                                <td>{{meds.dci1}}</td>
-                                <td>{{meds.dosage1}}</td>
-                                <td>{{meds.presentation}}</td>
-                                <td>{{meds.forme}}</td>
+                                <td>{{med.id_medicament.nom}}</td>
+                                <td>{{med.id_medicament.dci1}}</td>
+                                <td>{{med.id_medicament.dosage1}}</td>
+                                <td>{{med.id_medicament.presentation}}</td>
+                                <td>{{med.id_medicament.forme}}</td>
 
                             </tr>
                             {%empty%}

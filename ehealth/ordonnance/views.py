@@ -98,6 +98,7 @@ def add_traitement(request,visite):
 		desc=params.getlist("desc")
 		prices=params.getlist("price")
 		num=len(desc)
+		logging.warning(prices)
 		for i in range(num):
 			#med=Medicament.objects.get(pk=1)
 			#phar=Pharmacie.objects.get(pk=id_pharmacie)

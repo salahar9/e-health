@@ -9,7 +9,7 @@ class Patient(models.Model):
 	card_id=models.IntegerField(null=True,blank=True)
 	permission_privacy=models.BooleanField(default=False)
 	a_mutuelle=models.BooleanField(default=False)
-	immatriculation=models.IntegerField(null=True)
-	date_adhesion=models.DateField( null=True)
-	n_affiliation=models.IntegerField(null=True)
+	immatriculation=models.IntegerField(null=True,blank=True)
+	date_adhesion=models.DateField( null=True,blank=True)
+	n_affiliation=models.IntegerField(null=True,blank=True)
  

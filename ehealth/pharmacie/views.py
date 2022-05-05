@@ -7,27 +7,30 @@ from django.views.decorators.http import require_POST
 from  django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.db.models.aggregates import Count,Sum
+from django.contrib.auth.decorators import login_required
+from .decorators import check_pharmacist
+
 import logging
 # Create your views here.
+@login_required
+@check_pharmacist
 def dashboard(request):
 	filt=datetime.date.today()-datetime.timedelta(days=7)
 	ordonnances=Ordonnance.objects.filter(
+		le_type="Medicaments",id_pharmacie=request.user.person.pharmacie.pk,
+		).order_by("-date_purchase").select_related("id_visite__patient_id")
+	ordonnances_stats=Ordonnance.objects.filter(
 		le_type="Medicaments",id_pharmacie=request.user.person.pharmacie.pk,date_purchase__gte=filt
-		).annotate(
-		count=Count("id_medicament"),prix=Sum("id_medicament__prix_br")
-		).order_by("-date_purchase").select_related("id_visite__patient_id")[:3]
-	
-	logging.warning(ordonnances[0].prix)
-	pat_num=Ordonnance.objects.filter(
-		le_type="Medicaments",id_pharmacie=request.user.person.pharmacie.pk,id_visite__date_created__gte=filt
 		).aggregate(
-		count=Count("id_visite__patient_id" ,distinct=True),
-		tot=Sum("id_medicament__prix_br")
+		count=Count("id_visite__patient_id",distinct=True),prix=Sum("price",distinct=True)
 		)
 	
+	#logging.warning(ordonnances[0].prix)
 	
-	return render(request,"pharmacist/dashboard.html",{"dashboard":True,"title":"Dashboard","pat_num":pat_num["count"],"income":pat_num["tot"],"ordonnances":ordonnances})
-
+	
+	return render(request,"pharmacist/dashboard.html",{"dashboard":True,"title":"Dashboard","pat_num":ordonnances_stats["count"],"income":ordonnances_stats["prix"],"ordonnances":ordonnances})
+@login_required
+@check_pharmacist
 def register(request):
 	if request.method=="POST":
 			try:

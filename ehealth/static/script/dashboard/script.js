@@ -4,9 +4,6 @@ const closeBtn = document.querySelector("#close-btn")
 const themeToggler = document.querySelector("#theme-toggler")
 
 
-
-
-
 // show sidebar
 menuBtn.addEventListener('click', () => {
     sideMenu.style.display = 'block';
@@ -33,4 +30,24 @@ const dropMenu = (btn) => {
 
     
 }
-// show forms
+
+const decision=document.getElementsByClassName("decision")
+for ( i = 0; i < decision.length; i++) {
+    decision[i].addEventListener('click', ()=>
+{
+    parent=event.currentTarget.parentElement
+    dec=event.currentTarget.getAttribute("decision")
+    console.log(event.currentTarget)
+    if (dec==1){
+        parent.getElementsByTagName("input")[1].setAttribute("value",1)
+    }
+    else{
+        parent.getElementsByTagName("input")[1].setAttribute("value",0)
+    }
+    fetch(parent.action, {method:'post', body: new FormData(parent)});
+    parent.innerHTML="DOne"
+
+}
+
+    )
+}

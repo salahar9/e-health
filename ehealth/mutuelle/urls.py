@@ -5,5 +5,4 @@ app_name = 'mutuelle'
 
 urlpatterns = [
 
-	path("all_mutuelles/", views.all_mutuelles, name='all_mutuelles'),
 ]

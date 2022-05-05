@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 /* ------------ ROOT VARIABLES ------------- */
@@ -58,6 +59,7 @@ html {
 
 form,
 form input,
+form select,
 form textarea,
 form button {
     font-family: poppins, sans-serif;
@@ -136,6 +138,7 @@ h5 {
 small {
     font-size: 0.75rem;
 }
+
 .text-muted {
     color: var(--color-info-dark);
 }
@@ -170,6 +173,7 @@ b {
     border-radius: 50%;
     overflow: hidden;
 }
+
 aside {
     height: 100vh;
 }
@@ -179,6 +183,7 @@ aside .top {
     justify-content: space-between;
     align-items: center;
     margin-top: 1.4rem;
+    position: fixed;
 }
 
 aside .logo {
@@ -200,7 +205,324 @@ aside .close {
 }
 
 .hide {
-    display: none;
+    display: none !important;
+    z-index: -5;
+}
+
+/* ====================================================
+======================Login========================
+======================================================= */
+
+.landing form input::placeholder {
+    color: var(--color-info-dark);
+}
+
+.landing {
+    display: grid;
+    grid-template-columns: 44% auto;
+    min-height: 100vh;
+    background-color: var(--color-background);
+}
+
+.landing .left {
+    margin-top: 1rem;
+    position: relative;
+}
+
+.landing .left aside {
+    height: unset;
+}
+
+.landing .left aside .logo {
+    justify-content: center;
+    align-items: center;
+}
+
+.landing .left aside .logo img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.landing .left aside .logo h2 {
+    font-size: 3rem;
+}
+
+.landing .left main {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-inline: 6rem;
+    width: 100%;
+}
+
+
+.landing .left main .card {
+    position: relative;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing .left main .card .top {
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.landing .left main>span {
+    margin: 0 auto;
+    margin-bottom: 0;
+    font-size: 4rem;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.landing .left main form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing .left main form .row {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-light);
+    width: 90%;
+}
+
+.landing .left main form .row input {
+    text-align: center;
+}
+
+.landing .left main form .row select.login-as {
+    text-align: center;
+    cursor: pointer;
+}
+
+.landing .left main form .row input::placeholder {
+    transition: all 300ms ease;
+}
+
+.landing .left main form .row input:focus::placeholder {
+    color: transparent;
+}
+
+.landing .left main form .row.login-as {
+    position: relative;
+    cursor: pointer;
+}
+
+
+.landing .left main form .row.login-as h3.text-muted {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+}
+
+.landing .left main form .row.login-as>span {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    top: 40%;
+    color: var(--color-info-dark);
+    transition: all 300ms ease;
+}
+
+.flip_180 {
+    transform: rotate(180deg) !important;
+}
+
+.landing .left main form .drop-down-content {
+    display: block;
+    opacity: 100%;
+    position: unset;
+    width: 100%;
+    text-align: center;
+    transition: unset;
+}
+
+
+.landing .left main form .drop-down-content li {
+    color: var(--color-dark);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.landing .left main form .drop-down-content li:hover {
+    background-color: var(--color-hover);
+}
+
+
+.landing .left main form .drop-down-content a {
+    text-decoration: none;
+}
+
+
+.landing .left main form .next-section-btn,
+.landing .left main form button#login-btn {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    width: unset;
+    margin-top: 3rem;
+    padding: 0.5rem 7rem;
+    border: 0.2rem dashed var(--color-primary);
+    border-radius: var(--card-border-radius);
+    color: white;
+    transition: all 300ms ease;
+}
+
+.landing .left main form .next-section-btn:hover,
+.landing .left main form button#login-btn:hover {
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+.landing .left main form button#login-btn h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.landing .left main h3.text-muted {
+    margin-top: 2rem;
+}
+
+.landing .left main a {
+    text-decoration: underline;
+}
+
+.landing .left main .card .bottom {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing .left main .card .bottom h3 {
+    font-size: 1rem;
+}
+
+.landing .left main form .calendar.card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+}
+
+.landing .right {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%),
+        url( '../../images/landing/Background.png' );
+}
+
+
+.landing .right .welcome {
+    position: absolute;
+    bottom: 15rem;
+    color: var(--color-white);
+    padding-left: 3rem;
+}
+
+.landing .right .welcome h1 {
+    font-size: 4rem;
+}
+
+.landing .right .welcome h2 {
+    display: block;
+    padding-right: 30%;
+    text-align: justify;
+    font-weight: 400;
+    text-shadow: var(--box-shadow);
+}
+
+/* ====================================================
+====================== REGISTER ======================== 
+======================================================= */
+
+.landing.register {
+    grid-template-columns: 56% auto;
+}
+
+.landing.register .left .title {
+    position: relative;
+    width: 100%;
+}
+
+.landing.register .left .title h1 {
+    text-align: center;
+}
+
+.landing.register .left .title>span {
+    position: absolute;
+    top: 5%;
+    right: 0;
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+.landing.register .left main form .section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.landing.register .left main form .section:last-child .buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.landing.register .left main form .section:last-child .buttons-container>div {
+    background-color: var(--color-danger);
+    border: 0.2rem dashed var(--color-danger);
+}
+
+.landing.register .left main form .section:last-child .buttons-container>div:hover {
+    background-color: transparent;
+    color: var(--color-danger);
+}
+
+.landing .left main form .row.login-as {
+    position: relative;
+}
+
+.landing .left main form .row.login-as>div>span {
+
+    margin: 0;
+    font-size: 2rem;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    top: 40%;
+    color: var(--color-info-dark);
+    transition: all 300ms ease;
+}
+
+.landing .left main form .drop-down-content {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
 }
 
 
@@ -212,8 +534,9 @@ aside .sidebar {
     display: flex;
     flex-direction: column;
     height: 86vh;
-    position: relative;
-    top: 3rem;
+    position: fixed;
+    top: 6.5rem;
+    width: 15rem;
 }
 
 aside h3 {
@@ -237,9 +560,8 @@ aside .sidebar a span {
 }
 
 aside .sidebar a:last-child {
-    position: absolute;
+    position: fixed;
     bottom: 1rem;
-    width: 100%;
 }
 
 aside .sidebar a.active {
@@ -675,6 +997,9 @@ main form#search-doc .submit-btn {
     display: flex;
     justify-content: end;
     gap: 2rem;
+    position: fixed;
+    right: 2.8rem;
+    z-index: 90;
 }
 
 .rigth .top button {
@@ -764,7 +1089,7 @@ main form#search-doc .submit-btn {
 ======================================================= */
 .rigth .section-1,
 .rigth .section-3 {
-    margin-top: 1rem;
+    margin-top: 4rem;
 }
 
 .rigth .section-1 h2,
@@ -868,14 +1193,14 @@ main form#search-doc .submit-btn {
     cursor: pointer;
 }
 
- .section-4 .add-new>div {
-     display: flex;
- }
+.section-4 .add-new>div {
+    display: flex;
+}
 
 
- .section-4 .add-new h3 {
-     margin: 0;
- }
+.section-4 .add-new h3 {
+    margin: 0;
+}
 
 
 .show-all-btn {
@@ -925,16 +1250,6 @@ main form#search-doc .submit-btn {
 .booking-dashboard .booking-form .form-row input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
     -webkit-appearance: none;
-}
-
-/* .booking-dashboard .booking-form form div.form-row:nth-child(3) {
-    margin-bottom: 0;
-} */
-
-.booking-dashboard .booking-form .submit-btn-holder {
-    position: absolute;
-    right: 2rem;
-    bottom: 2rem;
 }
 
 .booking-dashboard .booking-form .submit-btn-holder .submit-btn:hover {
@@ -1151,6 +1466,18 @@ main form#search-doc .submit-btn {
 }
 
 /* ====================================================
+==================== INSURANCES ====================
+======================================================= */
+
+h3.create-insurance-instructions {
+    font-size: 1rem;
+    text-align: justify;
+    line-height: 2rem;
+    font-weight: 400;
+}
+
+
+/* ====================================================
 ==================== MEDIA QUERIES ====================
 ======================================================= */
 
@@ -1176,15 +1503,19 @@ main form#search-doc .submit-btn {
         width: 94%;
         grid-template-columns: 7rem auto 20rem;
     }
+
     aside .logo h2 {
         display: none;
     }
+
     aside .sidebar h3 {
         display: none;
     }
+
     aside .sidebar a {
         width: 5.6rem;
     }
+
     aside .sidebar a:last-child {
         position: relative;
         margin-top: 1.8rem;
@@ -1212,18 +1543,31 @@ main form#search-doc .submit-btn {
         left: 50%;
         transform: translate(-50%, 20%);
         padding-bottom: 3rem;
-        }
+    }
 
-        .drop-down-content {
+    .drop-down-content {
         right: 1rem;
     }
-main .booking-dashboard .calendar.card {
-    width: 80%;
-}
+
+    main .booking-dashboard .calendar.card {
+        width: 80%;
+    }
+
     main .results-container {
         position: absolute;
     }
 
+    .landing {
+        grid-template-columns: 60% auto;
+    }
+
+    .landing .right .welcome {
+        bottom: 25rem;
+    }
+
+    .landing .left main .bottom {
+        all: unset;
+    }
 
 }
 
@@ -1231,10 +1575,54 @@ main .booking-dashboard .calendar.card {
 /* ========== MOBILE PHONES ========== */
 
 @media screen and (max-width:768px) {
+    body.briclole {
+        height: unset;
+    }
+
+    .landing {
+        all: unset;
+    }
+
+    .landing .left aside {
+        all: unset;
+    }
+
+    .landing .left main {
+        position: relative;
+        top: unset;
+        left: unset;
+        margin-top: 2rem;
+        transform: unset;
+        height: 100%;
+        padding-inline: 2rem;
+    }
+
+    .landing.register .left {
+        margin-bottom: 2rem;
+    }
+
+    .landing.register .left main form .section .buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .landing.register .left main form .section .buttons-container>button,
+    .landing.register .left main form .section .buttons-container>div {
+        width: 100% !important;
+        padding-inline: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .landing .right {
+        display: none;
+    }
+
     .container {
         width: 100%;
         grid-template-columns: 1fr;
     }
+
     aside {
         position: fixed;
         left: -100%;
@@ -1253,31 +1641,48 @@ main .booking-dashboard .calendar.card {
             left: 0;
         }
     }
+
     aside .logo {
         margin-left: 1rem;
     }
+
     aside .logo h2 {
         display: inline;
     }
+
+    aside .top {
+        position: unset;
+    }
+
+    aside .sidebar {
+        position: relative;
+        top: 3rem;
+    }
+
     aside .sidebar h3 {
         display: inline;
     }
+
     aside .sidebar a {
         width: 100%;
         height: 3.4rem;
     }
+
     aside .sidebar a:last-child {
         position: absolute;
         bottom: 5rem;
     }
+
     aside .close {
         display: inline-block;
         cursor: pointer;
     }
+
     main {
         margin-top: 8rem;
         /* padding: 0 1rem; */
     }
+
     main .bottom {
         position: relative;
         margin-top: 3rem;
@@ -1285,10 +1690,12 @@ main .booking-dashboard .calendar.card {
         transform: translateX(-50%);
 
     }
+
     main .bottom table {
         width: 100%;
         margin: 0;
     }
+
     main .bottom table#insurances tbody tr>td:nth-child(3),
     main .bottom table#insurances thead tr>th:nth-child(3) {
         display: none;
@@ -1303,10 +1710,12 @@ main .booking-dashboard .calendar.card {
     main .bottom table#insurances thead tr>th:last-child {
         display: block;
     }
+
     .rigth {
         width: 94%;
         margin: 0 auto 4rem;
     }
+
     .rigth .top {
         position: fixed;
         top: 0;
@@ -1320,17 +1729,21 @@ main .booking-dashboard .calendar.card {
         z-index: 2;
         box-shadow: 0 1rem 1rem var(--color-light);
     }
+
     .rigth .top .theme-toggler {
         width: 4.4rem;
         position: absolute;
         left: 4rem;
     }
-.rigth .top .profile {
+
+    .rigth .top .profile {
         align-items: center;
     }
+
     .rigth .top .profile .info p {
         display: none;
     }
+
     .rigth .top button {
         display: inline-block;
         background: transparent;
@@ -1339,29 +1752,34 @@ main .booking-dashboard .calendar.card {
         position: absolute;
         left: 1rem
     }
+
     .rigth .top button span {
         font-size: 2rem;
     }
+
     .drop-down-content {
-    top: 4rem
+        top: 4rem
     }
-     main .doctor-card.card {
+
+    main .doctor-card.card {
         display: flex;
         flex-direction: column;
     }
 
-    main .results-container{
+    main .results-container {
         position: relative;
     }
 
-    main .doctor-card.card .doc-payment{
+    main .doctor-card.card .doc-payment {
         margin-top: -2rem;
     }
+
     .booking-dashboard {
         position: relative;
         display: flex;
         flex-direction: column;
-        }
+    }
+
     main .booking-dashboard .calendar.card {
         width: 100%;
     }
@@ -1370,4 +1788,14 @@ main .booking-dashboard .calendar.card {
         position: relative;
         margin-top: 3rem;
     }
-    }
+}
+
+
+/* SALAH ADDED DASHBOARD CSS */
+.form-requests{
+    overflow-x: visible;
+    display: flex;
+}
+.form-requests span{
+    cursor: pointer;
+}

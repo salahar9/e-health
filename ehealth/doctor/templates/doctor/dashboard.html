@@ -21,9 +21,7 @@
                     </thead>
 
                     <tbody>
-                        {% if visites|length == 0 %}
-                        <td>No records</td>
-                        {% else %}
+                       
                         {% for visite in  visites %}
                         <tr>
                             <td><a href="{% url 'patient:profile' visite.patient_id.pk %}">{{visite.patient_id.person_id.nom}} {{visite.patient_id.person_id.prenom}}</a></td>
@@ -42,10 +40,16 @@
                             <td class="danger">
                             <span class="material-icons-sharp">highlight_off</span>
                                 </td>
-                            {%endif%}
+                               {%endif%}
+                               </tr>
+                        {% empty %}
+                        <tr>
+                                <td>No records</td>
                         </tr>
+                         
+                        
                         {% endfor %}
-                        {% endif %}
+                       
                         
                     </tbody>
                 </table>
@@ -100,14 +104,19 @@
                     <div class="description">
                         <p><b>{{appointement.patient_id.person_id.nom}} {{appointement.patient_id.person_id.prenom}}</b> <br> {{appointement.date}} &#8226 9{{apointement.time}}<br></p>
                     </div>
-                    
-                    <div class="danger">
+                    <form method="POST" action="{% url 'doctor:accept_app' appointement.pk %}" class="form-requests">
+                       {% csrf_token %}
+                       <input type="text" name="decision"hidden>
+                       
+                    <div class="danger decision" decision=0>
                         <span class="material-icons-sharp">highlight_off</span>
                     </div>
-                    <div class="success">
+                    <div class="success decision"  decision=1>
                         <span class="material-icons-sharp">check_circle_outline</span>
                     </div>
-                </div>
+                     </div>
+                    </form>
+                    
                 {%empty%}No records
                 {%endfor%}
 
