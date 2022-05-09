@@ -3,6 +3,25 @@ let month_list = calendar.querySelector('.month-list')
 let month_picker = calendar.querySelector('#month-picker')
 const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
+/* moved from login.js */
+
+let calendar_childs = document.querySelectorAll(".landing .left main form .calendar.card *")
+window.addEventListener("click", e => {
+    let calendar = document.querySelector(".landing .left main form .calendar.card")
+    
+    let calendar_inpt = document.querySelector(".landing.register #login-as-input #birthdate_placeholder")
+
+    let calendar_icon = document.querySelector(".landing.register #login-as-input span")
+
+    console.log(calendar_icon);
+
+    if (e.target === calendar_inpt || e.target === calendar || Array.from(calendar_childs).includes(e.target) || e.target === calendar_icon) {
+    } else {        
+        calendar.classList.add('hide')
+    }
+   
+})
+
 
 remove_selected = () => {
     let all_days = document.querySelectorAll(".calendar-day-hover")
@@ -21,9 +40,20 @@ get_selected_date = (day, month, year) => {
         day = `0${day}`
     }
     let selected_date = `${year}-${month}-${day}`
+    try {
+        document.querySelector("#appointement-date").value = selected_date
+    } catch (error) { }
+    
+    try {
+        document.querySelector("input#birthdate").value = selected_date
+    } catch (error) {}
 
-    console.log(selected_date);
-    document.querySelector("#appointement-date").value = selected_date
+    try {
+        let selected_date = `${day}-${month}-${year}`
+        document.querySelector(".landing.register #login-as-input #birthdate_placeholder").style.color = "#363949"
+        document.querySelector(".landing.register #login-as-input #birthdate_placeholder").innerHTML = selected_date
+    } catch (error) {}
+
 }
 
 listned_to_date_select = (month, year) => {
@@ -33,11 +63,9 @@ listned_to_date_select = (month, year) => {
             remove_selected()
             day.classList.add('selected-day')
             let selected_day = day.innerHTML.split("<h3>")[1].split("<span></span>")[0].trim()
-            console.log(selected_day);
             get_selected_date(selected_day, month, year)
         })
     });
-
 }
 
 

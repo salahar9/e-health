@@ -1,0 +1,74 @@
+{% extends 'ehealth/base.html'  %}
+{% load static %}
+{% block content  %}
+                <h1>Create Insurance</h1>
+
+                <div class="card">
+                    <h3 class="create-insurance-instructions">
+                        Insurances are based on a previous doctor consultation. <br><br>To create a new insurance you
+                        must first of all select an existing consultation. Search for an existing consultation using the
+                        search section to find the specefic doctor consultation. <br><br>If no consultation was found
+                        you have to visit a doctor to be able to create an insurance
+                    </h3>
+                </div>
+
+                <!--------------- END OF INSIGHTS ------------>
+
+                <div class="bottom consultations">
+                    <h2>Consultatinos</h2>
+                    <div class="card">
+                        <table id="insurances">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span class="material-icons-sharp checkbox">
+                                            check_box_outline_blank
+                                        </span>
+                                    </th>
+                                    <th>ID</th>
+                                    <th>Created on</th>
+                                    <th>Created at</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for visite in visites %}
+                                <tr visite_id="1">
+                                    <td>
+                                        <span class="material-icons-sharp checkbox">check_box_outline_blank</span>
+                                    </td>
+                                    <td> {{visite.pk}}</td>
+                                    <td>{{visite.date_created|date:'d M y'}}</td>
+                                    <td>{{visite.date_created|time:'H:i'}}</td>
+                                    <td>{{p}}</td>
+                                    <td class="warning">
+                                        <span class="material-icons-sharp"> watch_later</span>
+                                    </td>
+                                    <td class="primary">
+                                        <a class="see-detils-btn" href="">
+                                            <span class="material-icons-sharp"> open_in_new</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                    <tr visite_id="1">
+                                       Nothing
+                                     </tr>
+                                {%endfor%}
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                    <form id="create_insurance" action="">
+                        <input type="text" id="selected_visites" name="selected_visites" hidden required>
+                        <button id="login-btn" type="submit">
+                            <h2>Create</h2>
+                        </button>
+                    </form>
+                </div>
+            </main>
+            <script type="text/javascript" src="{% static 'script/mutuelle/script.js' %}"></script>
+{%endblock%}

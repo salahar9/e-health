@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 /* ------------ ROOT VARIABLES ------------- */
@@ -206,7 +205,11 @@ aside .close {
 
 .hide {
     display: none !important;
-    z-index: -5;
+
+}
+
+.landing .left main form ul.hide {
+    visibility: hidden;
 }
 
 /* ====================================================
@@ -275,6 +278,15 @@ aside .close {
     flex-direction: column;
     width: 100%;
     align-items: center;
+}
+
+.landing .left main .top>span {
+    margin: 0 auto;
+    margin-bottom: 0;
+    font-size: 4rem;
+    font-weight: 500;
+    color: var(--color-primary);
+
 }
 
 .landing .left main>span {
@@ -369,7 +381,7 @@ aside .close {
     text-decoration: none;
 }
 
-
+main form#create_insurance button,
 .landing .left main form .next-section-btn,
 .landing .left main form button#login-btn {
     cursor: pointer;
@@ -383,12 +395,18 @@ aside .close {
     transition: all 300ms ease;
 }
 
+main form#create_insurance button {
+    float: right;
+}
+
+main form#create_insurance button:hover,
 .landing .left main form .next-section-btn:hover,
 .landing .left main form button#login-btn:hover {
     background-color: transparent;
     color: var(--color-primary);
 }
 
+main form#create_insurance button h2,
 .landing .left main form button#login-btn h2 {
     margin: 0;
     padding: 0;
@@ -419,7 +437,7 @@ aside .close {
 
 .landing .left main form .calendar.card {
     position: absolute;
-    top: 0;
+    top: 22rem;
     left: 0;
     width: 100%;
     z-index: 50;
@@ -430,7 +448,7 @@ aside .close {
     z-index: 1;
     height: 100vh;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%),
-        url( '../../images/landing/Background.png' );
+        url(../images/Background.png);
 }
 
 
@@ -518,11 +536,17 @@ aside .close {
     transition: all 300ms ease;
 }
 
+.landing.register .left main form .drop-down-content,
 .landing .left main form .drop-down-content {
     position: absolute;
-    top: 64px;
+    top: 19.5rem;
     left: 0;
     width: 100%;
+}
+
+.landing.register .left main form .drop-down-content {
+    top: 64px !important;
+
 }
 
 
@@ -985,19 +1009,26 @@ main form#search-doc .submit-btn {
     float: left;
 }
 
+main table#insurances thead th:first-child>span,
+main table#insurances tbody td:first-child>span {
+    cursor: pointer;
+}
+
+
 /* ====================================================
 ====================== RIGTH ==========================
 ======================================================= */
 
 .rigth {
     margin-top: 1.4rem;
+    position: fixed;
+    right: 2rem;
 }
 
 .rigth .top {
     display: flex;
     justify-content: end;
     gap: 2rem;
-    position: fixed;
     right: 2.8rem;
     z-index: 90;
 }
@@ -1082,22 +1113,22 @@ main form#search-doc .submit-btn {
 }
 
 
-
-
 /* ====================================================
 ====================== SECTION-1 ======================
 ======================================================= */
-.rigth .section-1,
-.rigth .section-3 {
-    margin-top: 4rem;
+.section-1,
+.section-1 {
+    margin-top: 1rem;
 }
 
-.rigth .section-1 h2,
+
+
+.section-1 h2,
 .rigth .section-3 h2 {
     margin-bottom: 0.8rem;
 }
 
-.rigth .section-1 .rows,
+.section-1 .rows,
 .rigth .section-3 .rows {
     background: var(--color-white);
     padding: var(--card-padding);
@@ -1106,12 +1137,12 @@ main form#search-doc .submit-btn {
     transition: all 300ms ease;
 }
 
-.rigth .section-1 .rows:hover,
+.section-1 .rows:hover,
 .rigth .section-3 .rows:hover {
     box-shadow: none;
 }
 
-.rigth .section-1 .rows .row,
+.rows .row,
 .rigth .section-3 .rows .row,
 .rigth .section-2 .item {
     display: grid;
@@ -1478,6 +1509,77 @@ h3.create-insurance-instructions {
 
 
 /* ====================================================
+==================== POP UP ====================
+======================================================= */
+
+.popup-holder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000050;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 300ms ease;
+    z-index: 100;
+}
+
+.popup-holder .card {
+    width: 30%;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    animation: animate 300ms ease;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0%);
+        }
+
+    100% {
+        transform: scale(100%);
+    }
+}
+
+.popup-holder .card .close-btn {
+    display: flex;
+}
+
+.popup-holder .card .close-btn span {
+    margin-left: auto;
+    transition: all 300ms ease;
+}
+
+.popup-holder .card .close-btn span:hover {
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+
+.popup-holder .card form .form-row {
+    margin: 2rem 0
+}
+
+.popup-holder .card form .form-row input {
+    width: 100%;
+}
+
+.popup-holder .card .visit_confirmation {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 2rem;
+}
+
+.popup-holder .card .visit_confirmation .cancel>div,
+.popup-holder .card .visit_confirmation .accept>div {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+}
+
+/* ====================================================
 ==================== MEDIA QUERIES ====================
 ======================================================= */
 
@@ -1557,8 +1659,26 @@ h3.create-insurance-instructions {
         position: absolute;
     }
 
+    .landing.register,
     .landing {
-        grid-template-columns: 60% auto;
+        grid-template-columns: 40% auto;
+    }
+
+    .landing.register .left aside {
+        margin-bottom: 55rem;
+    }
+
+    .landing.register .left main form .section .buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .landing.register .left main form .section .buttons-container>button,
+    .landing.register .left main form .section .buttons-container>div {
+        width: 100% !important;
+        padding-inline: 0;
+        display: flex;
+        justify-content: center;
     }
 
     .landing .right .welcome {
@@ -1567,6 +1687,10 @@ h3.create-insurance-instructions {
 
     .landing .left main .bottom {
         all: unset;
+    }
+
+    .rigth {
+        position: unset;
     }
 
 }
@@ -1601,18 +1725,6 @@ h3.create-insurance-instructions {
         margin-bottom: 2rem;
     }
 
-    .landing.register .left main form .section .buttons-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .landing.register .left main form .section .buttons-container>button,
-    .landing.register .left main form .section .buttons-container>div {
-        width: 100% !important;
-        padding-inline: 0;
-        display: flex;
-        justify-content: center;
-    }
 
     .landing .right {
         display: none;
@@ -1788,8 +1900,17 @@ h3.create-insurance-instructions {
         position: relative;
         margin-top: 3rem;
     }
-}
 
+    main form#create_insurance {
+        display: flex;
+        justify-content: center;
+    }
+
+    main form#create_insurance button {
+        float: unset;
+    }
+
+}
 
 /* SALAH ADDED DASHBOARD CSS */
 .form-requests{

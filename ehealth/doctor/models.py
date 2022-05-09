@@ -6,6 +6,7 @@ from landing.models import Person
 class Doctor(models.Model):
 	person_id=models.OneToOneField(Person,on_delete=models.CASCADE)
 	ville = models.CharField(max_length=250)
+	adresse= models.CharField(max_length=250)
 	INP=models.IntegerField(primary_key=True)
 	speciality=models.CharField(max_length=255)
 	created=models.DateField(auto_now_add=True)

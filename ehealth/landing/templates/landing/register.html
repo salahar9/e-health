@@ -1,4 +1,6 @@
 {%load static%}
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,8 +42,9 @@
                                     edit
                                 </span>
                             </div>
-                            <form action="" method="">
-                                <div class="section hide">
+                            <form action="{% url 'landing:register' %}" method="POST">
+
+                                <div class="section ">
                                     <div class="row">
                                         <input type="text" placeholder="Enter CIN" name="username" required >
                                     </div>
@@ -65,7 +68,7 @@
                                     <label id="error_label" class="hide"></label>
                                 </div>
 
-                                <div class="section">
+                                <div class="section hide">
                                     <div class="row">
                                         <input type="text" placeholder="First Name" name="first_name" required>
                                     </div>
@@ -97,37 +100,38 @@
                                         <div id="login-as-input" onclick="toggle_login_as_menu(this, 'birthdate')">
                                             <input id="birthdate" type="date" name="date" hidden required>
                                             <h3 id="birthdate_placeholder" class="text-muted">Birthdate</h3>
-                                            <span class="material-icons-sharp">calendar_today</span>
+                                            <span class="material-icons-sharp"
+                                               >calendar_today</span>
                                         </div>
-                                        <div class="calendar card hide">
-                                            <div class="calendar-header">
-                                                <h1 class="month-picker" id="month-picker">February</h1>
-                                                <div class="year-picker">
-                                                    <span class="year-change" id="prev-year">
-                                                        <pre><</pre>
-                                                    </span>
-                                                    <h1 id="year">2021</h1>
-                                                    <span class="year-change" id="next-year">
-                                                        <pre>></pre>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="calendar-body">
-                                                <div class="calendar-week-day">
-                                                    <h3>Sun</h3>
-                                                    <h3>Mon</h3>
-                                                    <h3>Tue</h3>
-                                                    <h3>Wed</h3>
-                                                    <h3>Thu</h3>
-                                                    <h3>Fri</h3>
-                                                    <h3>Sat</h3>
-                                                </div>
-                                                <div class="calendar-days"></div>
-                                            </div>
-
-                                            <div class="month-list"></div>
-
                                         </div>
+                                    <div class="calendar card hide">
+                                        <div class="calendar-header">
+                                            <h1 class="month-picker" id="month-picker">February</h1>
+                                            <div class="year-picker">
+                                                <span class="year-change" id="prev-year">
+                                                    <pre><</pre>
+                                                </span>
+                                                <h1 id="year">2021</h1>
+                                                <span class="year-change" id="next-year">
+                                                    <pre>></pre>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="calendar-body">
+                                            <div class="calendar-week-day">
+                                                <h3>Sun</h3>
+                                                <h3>Mon</h3>
+                                                <h3>Tue</h3>
+                                                <h3>Wed</h3>
+                                                <h3>Thu</h3>
+                                                <h3>Fri</h3>
+                                                <h3>Sat</h3>
+                                            </div>
+                                            <div class="calendar-days"></div>
+                                        </div>
+
+                                        <div class="month-list"></div>
+
                                     </div>
 
 
@@ -145,7 +149,7 @@
                                         <input type="street" placeholder="Adresse" name="adresse" required>
                                     </div>
 
-
+                                       {%csrf_token%}
                                     <div class="buttons-container">
                                         <div class="next-section-btn" type="submit" onclick="next_section('back')">
                                             <h2>Back</h2>
@@ -175,9 +179,7 @@
             </div>
 
         </div>
-
-        <script src="{% static 'script/landing/login.js' %}"></script>
+ <script src="{% static 'script/landing/login.js' %}"></script>
         <script src="{% static 'script/calendar/calendar.js' %}"></script>
-        <script src="{% static 'script/calendar/register.js' %}"></script>
     </body>
 </html>

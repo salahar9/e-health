@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "easy_thumbnails",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +44,11 @@ INSTALLED_APPS = [
     'ordonnance',
     'landing',
     'med',
-    "mutuelle"
+    "mutuelle",
+    "channels",
+    "notifications",
+    
+
 
 
 
@@ -148,3 +153,21 @@ MEDIA_URL="/media/"
 
 #LOGIN SETTINGS
 LOGIN_URL="/login"
+
+#ASGI setting
+ASGI_APPLICATION = "ehealth.asgi.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.pubsub.RedisPubSubChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+    },
+}
+
+#thumbnails
+THUMBNAIL_ALIASES = {
+    '': {
+        'avatar': {'size': (500, 500), 'crop': True},
+    },
+}

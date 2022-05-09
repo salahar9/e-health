@@ -4,6 +4,7 @@ from .models import AllMutuelle
 from django.db.models import Q    
 from patient.decorators import check_patient
 from django.contrib.auth.decorators import login_required
+from doctor.models import Visite
 
 @check_patient
 @login_required
@@ -17,3 +18,7 @@ def get_other_mut(request,pk):
     total = query_set.aggregate(total=Count("id",distinct=True),pending=Count('id',filter=Q(mutuelle_status__exact="P"),distinct=True),complete=Count('id',filter=Q(mutuelle_status__exact="C"),distinct=True))
 
     return render(request, 'mutuelle/all_mutuelles.html', { 'all_mutuelles': True, 'mutuelles': query_set, 'total_mutuelles': total['total'], 'pending': total['pending'], 'complete': total['complete']})
+def add_mutuelle(request):
+    pat=request.user.person.patient
+    visites=Visite.objects.filter(patient_id=pat)
+    return render(request,'mutuelle/add_mutuelle.html',{"visites":visites})

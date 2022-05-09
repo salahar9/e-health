@@ -1,4 +1,5 @@
 {% extends "ehealth/base.html" %}
+{%load static%}
 {% block content %} 
         
         <!-- END OF ASIDE -->
@@ -76,7 +77,7 @@
                     {% for pat in last_3 %}
                     <div class="row">
                         <div class="profile-photo">
-                            <img src="{{pat.person_id.img.url}}" alt="">
+                            <img src="{{pat.person_id.img.avatar.url}}" alt="">
                         </div>
                         <div class="description">
                             <p><b>{{pat.person_id.nom}} {{pat.person_id.prenom}}</b> <br>{{pat.visites.last.date_created}}</p>
@@ -99,7 +100,7 @@
                 {%for appointement in appointements %}
                 <div class="item">
                     <div class="profile-photo">
-                        <img src="{{appointement.patient_id.person_id.img.url}}" alt="">
+                        <img src="{{appointement.patient_id.person_id.img.avatar.url}}" alt="">
                     </div>
                     <div class="description">
                         <p><b>{{appointement.patient_id.person_id.nom}} {{appointement.patient_id.person_id.prenom}}</b> <br> {{appointement.date}} &#8226 9{{apointement.time}}<br></p>
@@ -126,5 +127,7 @@
             
 
         </div>
- 
+    <div id="websocket"></div>
+    {{user.person.doctor.pk|json_script:"doc_id" }}
+    <script type="text/javascript" src="{% static 'script/websockets/script.js' %}"></script>
   {% endblock %} 

@@ -22,13 +22,14 @@ def register(request):
 		params=request.POST
 		INP=params["INP"]
 		ville=params["ville"]
+		adresse=params["adresse"]
 		speciality=params["speciality"]
 		if INP=="" or ville=="" or ville=="":
 			return render(request,"patient/edit.html",{"profile_settings":True})
 
 		obj=Doctor.objects.update_or_create(
 			person_id=request.user.person,
-			defaults={"ville":ville,"INP":INP,"speciality":speciality})
+			defaults={"ville":ville,"INP":INP,"speciality":speciality,"adresse":adresse})
 		
 		
 		return  redirect("doctor:visites")
@@ -140,7 +141,7 @@ def dashboard(request):
 	visites = Visite.objects.filter(medcin_id=doctor).values('patient_id')
 	pat=Patient.objects.filter(pk__in=visites).distinct()[:3]
 	appointements=Appointement.objects.filter(medcin_id=request.user.person.doctor,status="2")[0:3]
-	appointements_list=Appointement.objects.filter(medcin_id=request.user.person.doctor)
+	appointements_list=Appointement.objects.filter(medcin_id=request.user.person.doctor)[:6]
 	return render(request,"doctor/dashboard.html",{"appointements":appointements,"dashboard":True,"title":"Dashoard","last_3":pat,"visites":appointements_list,"num_doc":pat_stat["tot"],"num_visite":pat_stat["visites_sum"],"num_appointement":pat_stat["appoint_count"]})
 @check_activated
 @login_required

@@ -1,4 +1,5 @@
 from django.db import models
+from easy_thumbnails.fields import ThumbnailerImageField
 
 from django.conf import settings
 class Person(models.Model):
@@ -17,5 +18,5 @@ class Person(models.Model):
 	
 	phone=models.CharField(null=True,unique=True,max_length=10)
 
-	img=models.ImageField(upload_to="profile_pics", max_length=100,null=True,default="profile_pics/default.png")
+	img=ThumbnailerImageField(upload_to="profile_pics", max_length=100,null=True,default="profile_pics/default.png")
 	

@@ -19,5 +19,8 @@ DONE:
 visites:DONE
 patient:DONE
 visites_details:DONE
-dashboard
+dashboard:DOne
+
+-notifications:
+
 

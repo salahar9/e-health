@@ -118,6 +118,7 @@
                 </div>
 
                {%endfor%}
+               <a href="{% url 'patient:add_mutuelle' %}" >
                 <div class="item add-new">
                     <div>
                         <span class="material-icons-sharp primary">add</span>
@@ -125,7 +126,7 @@
                     <h3>
                         Create New
                     </h3>
-                </div>
+                </div></a>
 
 
 
@@ -135,5 +136,5 @@
             <a href="{% url 'patient:mutuelle' %}" class="show-all-btn">Show All</a>
 
         </div>
- 
+ <script type="text/javascript" src="create_insurance.js"></script>
   {% endblock %} 

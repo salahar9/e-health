@@ -1,16 +1,27 @@
 // Login As
-const login_as = document.querySelector(".landing .left main form .row.login-as h3.text-muted")
-toggle_login_as_menu = (btn) => {
-    btn.querySelector("span").classList.toggle("flip_180")
-    document.querySelector("#login-as-menu").classList.toggle("hide")
+toggle_login_as_menu = (btn, type) => {
+    if (type === 'drop-down') {
+        btn.querySelector("span").classList.toggle("flip_180")
+        document.querySelector("#login-as-menu").classList.toggle("hide")
+    } else if (type === 'birthdate') {
+        let calendar = document.querySelector(".landing .left main form .calendar.card")
+        calendar.classList.toggle('hide')
+    }
 }
 
-set_login_as_value = (value, num) => {
-    document.querySelector("input#login").value = num
+set_login_as_value = (value,d) => {
+    document.querySelector(".landing .left main form .row.login-as h3.text-muted").innerHTML = value.innerHTML
+    document.querySelector(".landing .left main form .row.login-as h3.text-muted").style.color = "#363949"
     document.querySelector("#login-as-menu").classList.add("hide")
-    login_as.innerHTML = value.innerHTML
-    login_as.style.color = "#363949"
+    document.querySelector(".landing .left main form .row.login-as span").classList.toggle("flip_180")
+    try {
+        document.querySelector("input#login").value = d
+    } catch (error) {}
+    try {
+        document.querySelector("input#sex").value = value.innerHTML
+    } catch (error) {}
 }
+
 
 const validateEmail = (mail) => {
     let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');

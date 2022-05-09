@@ -12,7 +12,7 @@
                     <div class="card">
                         <div class="row">
                             <div class="profile-photo">
-                                <img src="{{user.person.img.url}}" alt="">
+                                <img src="{{user.person.img.large.url}}" alt="">
                             </div>
                             <div class="description">
                                 <h2>Abdoessordo</h2>
@@ -20,11 +20,12 @@
                             </div>
                         </div>
                         <form action="{% url 'landing:profile_register' %}" class="user-settings" id="form-profile" method="POST">
-
+                            <label id="change-pic-btn" for="change-pic" class="text-muted">Change Profile Picture</label>
+                            AAAAAAAAAAAAAAAAAAAAAA
                             {% csrf_token %}
                             <div class="form-row">
                                 <label for="">Name</label>
-                                <input id="input-1" name="name" class="primary" type="text"
+                                <input id="input-1" name="name" class="primary"  type="text"
                                     value="{{user.person.nom|capfirst}} {{user.person.prenom|capfirst}}" readonly>
                                 <button type="button" id="edit-1">
                                     <h4 class="text-muted">Edit</h4>
