@@ -36,19 +36,19 @@
 
                             <tbody>
                                 {% for visite in visites %}
-                                <tr visite_id="1">
+                                <tr visite_id="{{visite.pk}}">
                                     <td>
                                         <span class="material-icons-sharp checkbox">check_box_outline_blank</span>
                                     </td>
-                                    <td> {{visite.pk}}</td>
+                                    <td> {{forloop.counts}}</td>
                                     <td>{{visite.date_created|date:'d M y'}}</td>
                                     <td>{{visite.date_created|time:'H:i'}}</td>
-                                    <td>{{p}}</td>
+                                    <td>{{visite.tot}}</td>
                                     <td class="warning">
                                         <span class="material-icons-sharp"> watch_later</span>
                                     </td>
                                     <td class="primary">
-                                        <a class="see-detils-btn" href="">
+                                        <a class="see-detils-btn" href="{%comment%}{% url 'patient:mutuelle_detail' visite.pk %}"{%endcomment%}>
                                             <span class="material-icons-sharp"> open_in_new</span>
                                         </a>
                                     </td>

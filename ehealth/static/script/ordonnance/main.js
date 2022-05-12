@@ -77,7 +77,7 @@ const create_row = (type, row_num) => {
         select=document.createElement('select')
         input=document.createElement('input')
         label.textContent="Drug Name"
-  
+        input.autocomplete="off"
         input.className="input-ajax"
         input.placeholder="Enter Drug"
         input.id ="med-name-"+row_num
@@ -119,11 +119,11 @@ const create_row = (type, row_num) => {
 
             <div>
                 <label for="">Traitement Description</label>
-                    <textarea class="primary" rows="1" name="desc"placeholder="Enter Descpritption"></textarea>
+                    <textarea class="primary" rows="1" name="desc" placeholder="Enter Descpritption"></textarea>
             </div>
             <div>
                                 <label for="">Traitement Price</label>
-                                <input class="primary" type="number" placeholder="Enter Price"></input>
+                                <input class="primary" type="number" name="price" placeholder="Enter Price"></input>
                             </div>
 
             <div>
@@ -145,8 +145,7 @@ const delete_row = (id) => {
 
 
 const add_row = (event) => {
-    event = event || window.event; // for firefox
-    type=event.target.getAttribute("type_btn")
+    type=event.currentTarget.getAttribute("type_btn")
     let new_row = create_row(type, i)
     let form_holder = document.querySelector(`#form-${type}>.rows`);
     try{

@@ -98,11 +98,12 @@ def add_traitement(request,visite):
 		desc=params.getlist("desc")
 		prices=params.getlist("price")
 		num=len(desc)
-		logging.warning(prices)
+		logging.warning(f'aaaaaaa{prices}')
 		for i in range(num):
 			#med=Medicament.objects.get(pk=1)
 			#phar=Pharmacie.objects.get(pk=id_pharmacie)
 			if len(traitement[i])==0	:continue
+			logging.warning(f'{i},{len(prices)}')
 			p=Ordonnance(id_visite=visite,le_type="Traitement",
 				description_de_traitement=desc[i],a_mutuelle=a_mutuelle,nom_traitement=traitement[i],price=prices[i]
 				)

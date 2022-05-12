@@ -1,6 +1,6 @@
 from django.db import models
 from pharmacie.models import Pharmacie
-
+import logging
 from doctor.models import Visite
 from med.models import Meds
 # Create your models here.
@@ -15,7 +15,7 @@ class Ordonnance(models.Model):
 	description_de_traitement=models.CharField(max_length=255)
 	id_pharmacie=models.ForeignKey(Pharmacie,on_delete=models.CASCADE,null=True,blank=True)
 	quantite=models.IntegerField(null=True,blank=True)
-	price=models.IntegerField(null=True,blank=True)
+	price=models.FloatField(null=True,blank=True)
 	a_mutuelle=models.BooleanField(default=False)
 	nom_traitement=models.CharField(max_length=255,null=True,blank=True)
 	date_purchase=models.DateTimeField(null=True,blank=True)
@@ -24,7 +24,8 @@ class Ordonnance(models.Model):
 		ordering=["-date_created"]
 	def save(self,*args, **kwargs):
 		if self.le_type=="Medicaments":
-			self.price=self.quantite*self.id_medicament.prix_br
+			logging.warning(f"{self.quantite},{self.id_medicament.prix_br}")
+			self.price=float(self.quantite)*self.id_medicament.prix_br
 
 
 		super(Ordonnance, self).save(*args, **kwargs)

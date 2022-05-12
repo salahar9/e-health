@@ -8,7 +8,7 @@ const chatSocket = new WebSocket(
             + window.location.host
             + '/notif/'
             + id
-            + '/'
+            + ':8001/'
         );
 chatSocket.onmessage = function(e) {
        

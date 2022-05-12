@@ -110,7 +110,8 @@ def get_visite_details(request,visite):
 	meds=Ordonnance.objects.filter(id_visite=visite,le_type="Medicaments").select_related("id_medicament")
 	privacy=visite.patient_id.permission_privacy
 	modifiable=True
-	
+	notes=Note.objects.filter(id_visite=visite)
+
 	condition=int(request.user.person.doctor.INP)!=visite.medcin_id.INP
 	if condition:
 		modifiable=False
@@ -125,6 +126,7 @@ def get_visite_details(request,visite):
 				"profile":True,
 				"traitements":traitements,
 				"meds":meds,
+				"notes":notes,
 
 		})
 
@@ -168,7 +170,7 @@ def add_note(request,visite):
 	visite=get_object_or_404(Visite,pk=visite)
 	note=Note(id_visite=visite,note=note)
 	note.save()
-	return JsonResponse({"data":'Done'})
+	return redirect("doctor:get_visite_details",visite=visite.pk)
 def fill(request):
 	import sqlite3
 	db=sqlite3.connect("meds.db")
