@@ -35,9 +35,9 @@ ROOT_URLCONF = f'{config("PROJECT_NAME")}.urls'
 
 WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
 
-#ASGI_APPLICATION = f'{config("PROJECT_NAME")}.routing.application'
+ASGI_APPLICATION = f'{config("PROJECT_NAME")}.routing.application'
 
-ASGI_APPLICATION = f'{config("PROJECT_NAME")}.asgi.application'
+#ASGI_APPLICATION = f'{config("PROJECT_NAME")}.asgi.application'
 
 
 #ALLOWED_HOSTS = []
@@ -46,6 +46,7 @@ ASGI_APPLICATION = f'{config("PROJECT_NAME")}.asgi.application'
 # Application definition
 
 INSTALLED_APPS = [
+    "channels",
     "easy_thumbnails",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -60,7 +61,7 @@ INSTALLED_APPS = [
     'landing',
     'med',
     "mutuelle",
-    "channels",
+    
     "notifications",
     
 
