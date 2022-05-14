@@ -25,7 +25,7 @@ def register(request):
 		if params.get("immatriculation") != "":
 			change["immatriculation"]=params.get("immatriculation") 
 		if params.get("privacy") != "":
-			change["privacy"]=(True if params.get("privacy").strip()=="on" else False) 
+			change["permission_privacy"]=(True if params.get("privacy").strip()=="on" else False) 
 		if params.get("n_affiliation") != "":
 			change["n_affiliation"]=params.get("n_affiliation") 
 		if params.get("date_adhesion") != "":
