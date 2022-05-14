@@ -232,7 +232,7 @@
                         <small class="text-muted">
                             This option allows you to to become a doctor.
                         </small>
-                        <form action="{% url 'doctor:register' %}" {% if not user.person.doctor %} hide-from {%endif%}>
+                        <form  method="post" action="{% url 'doctor:register' %}" {% if not user.person.doctor %} hide-from {%endif%}>
                             <div class="form-row">
                                 <label for="">INP</label>
                                 <input id="input-16" name="INP" class="primary" type="text" value="{{user.person.doctor.INP}}" readonly>
@@ -340,7 +340,7 @@
                         <small class="text-muted">
                             This option allows you to to become a Pharmacist.
                         </small>
-                        <form action="{% url 'pharmacist:register' %}">
+                        <form method="post" action="{% url 'pharmacist:register' %}">
                             <div class="form-row">
                                 <label for="">INP</label>
                                 <input id="input-19" name="INP" class="primary" type="text" value="{{user.person.pharmacie.INP}}" readonly>
