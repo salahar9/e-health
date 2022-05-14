@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path,re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from patient import views
@@ -28,5 +28,6 @@ urlpatterns = [
     path('pharmacie/', include('pharmacie.urls')),
     path('ordonnance/', include('ordonnance.urls')),
     path('mutuelle/', include('mutuelle.urls')),
-    
+    re_path(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+                        {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
