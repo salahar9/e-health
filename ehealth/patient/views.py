@@ -19,21 +19,25 @@ from django.core.paginator import Paginator
 
 def register(request):
 	if request.method=="POST":
-		params=request.POST
 
-		immatriculation=(None if params.get("immatriculation")=="" else params.get("immatriculation"))
-		permission_privacy=(1 if  params.get("privacy",0).strip()=="on" else 0)
-		logging.warning(params.get("privacy",0))
-		affiliation=params["n_affiliation"]
-		date_adhesion=params["date_adhesion"]
-		if (date_adhesion in ["" , "None"] or immatriculation in ["" , "None"] or affiliation in ["" , "None"]) :
-			return render(request,"patient/edit.html",{"title":"Settings & Privacy","profile_settings":True})
+		params=request.POST
+		change={}
+		if params.get("immatriculation") != "":
+			change["immatriculation"]=params.get("immatriculation") 
+		if params.get("privacy") != "":
+			change["privacy"]=(True if params.get("privacy").strip()=="on" else False) 
+		if params.get("n_affiliation") != "":
+			change["n_affiliation"]=params.get("n_affiliation") 
+		if params.get("date_adhesion") != "":
+			change["date_adhesion"]=params.get("date_adhesion") 
+		
+		if (len(change)==0) :
+			return JsonResponse({"error":"no changes done"})
 		else:
-			a_mutuelle=1
+			
 		obj=Patient.objects.update_or_create(
 			person_id=request.user.person,
-			defaults={"a_mutuelle":a_mutuelle,"immatriculation":immatriculation,
-			"permission_privacy":permission_privacy,"date_adhesion":date_adhesion,"n_affiliation":affiliation})
+			defaults=change)
 		
 		messages.add_message(request, messages.ERROR,"Good job")
 		return  redirect("patient:register")
