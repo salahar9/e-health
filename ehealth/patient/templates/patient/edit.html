@@ -138,7 +138,7 @@
                                 <div class="form-row">
                                     <label for="">N&deg Affiliation</label>
                                     <input id="input-9" name="n_affiliation" class="primary" type="text"
-                                        value="{{user.person.patient.n_affiliation}}" readonly>
+                                        value="{{user.person.patient.n_affiliation|default_if_none:''}}" readonly>
                                     <button type="button" id="edit-9" onclick="switching(9)">
                                         <h4 class="text-muted">Edit</h4>
                                 </div></button>
@@ -146,7 +146,7 @@
                                 <div class="form-row">
                                     <label for="">N&deg Immatriculation</label>
                                     <input id="input-10" name="immatriculation" class="primary" type="text"
-                                        value="{{user.person.patient.immatriculation}}" readonly>
+                                        value="{{user.person.patient.immatriculation|default_if_none:''}}" readonly>
                                     <button type="button" id="edit-10" onclick="switching(10)">
                                         <h4 class="text-muted">Edit</h4>
                                     </button>

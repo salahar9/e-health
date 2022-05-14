@@ -92,13 +92,10 @@ const submit_btn_settings=document.getElementById("submit_btn_settings")
 submit_btn_settings.addEventListener("click", e => {
     form1=document.getElementById("form-profile")
     form2=document.getElementById("form-assur")
-    form3=document.getElementById("form-doc")
-    form4=document.getElementById("form-pharma")
+
     fetch(form1.action, {method:'post', body: new FormData(form1)});
     fetch(form2.action, {method:'post', body: new FormData(form2)});
-    fetch(form3.action, {method:'post', body: new FormData(form3)});
-    fetch(form4.action, {method:'post', body: new FormData(form4)});
-    
+   
 
 
 
@@ -120,7 +117,8 @@ change_pic.addEventListener("change", e => {
 
 
 })
-
+if (document.querySelector("#add-note") != null){
 document.querySelector("#add-note").addEventListener("click", () => {
         document.querySelector(".popup-holder").classList.remove("hide")
     })
+}
