@@ -173,6 +173,7 @@
 
 {% block content2 %}
             <!--------------- END OF TOP ------------>
+            {% if user.person.pharmacist.INP is not None %}
             <div id="become-doctor" class="section-1">
                     <h2>Become a Doctor</h2>
                     <div class="rows privacy-settings">
@@ -234,7 +235,7 @@
                         </small>
                         <form  method="post" action="{% url 'doctor:register' %}" {% if not user.person.doctor %} hide-from {%endif%}>
                             <div class="form-row">
-                                
+
                                 <label for="">INP</label>
                                 <input id="input-16" name="INP" class="primary" type="text" value="{{user.person.doctor.INP}}" readonly>
                                 <button type="button" id="edit-16" onclick="switching(16)">
@@ -282,7 +283,8 @@
                         </form>
                     </div>
                 </div>
-
+                {%endif%}
+                {% if user.person.doctor.INP is not None %}
                 <div id="become-pharmacist" class="section-1">
                     <h2>Become a Pharmacist</h2>
                     <div class="rows privacy-settings">
@@ -393,7 +395,7 @@
                 </div>
 
          
-
+                {%endif%}
 
             <div  id="submit_btn_settings" id="submit" class="submit-btn-holder" type="submit">
                 <div class="submit-btn">
