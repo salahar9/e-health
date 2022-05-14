@@ -38,7 +38,7 @@ def register(request):
 				defaults=change)
 		
 		messages.add_message(request, messages.ERROR,"Good job")
-		return JsonResponse({"done":" done"})
+		return JsonResponse(change)
 	else:
 		return render(request,"patient/edit.html",{"title":"Settings & Privacy","profile_settings":True})
 @check_patient
