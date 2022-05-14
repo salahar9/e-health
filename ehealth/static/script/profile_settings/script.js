@@ -2,9 +2,7 @@
 document.querySelector(".popup-holder .card .close-btn span").addEventListener("click", () => {
         document.querySelector(".popup-holder").classList.add("hide")
     })
-document.querySelector("#add-note").addEventListener("click", () => {
-        document.querySelector(".popup-holder").classList.remove("hide")
-    })
+
 
 // show forms
 const show_form = (id) => {
@@ -122,3 +120,7 @@ change_pic.addEventListener("change", e => {
 
 
 })
+
+document.querySelector("#add-note").addEventListener("click", () => {
+        document.querySelector(".popup-holder").classList.remove("hide")
+    })
