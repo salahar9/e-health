@@ -33,14 +33,12 @@ def register(request):
 		
 		if (len(change)==0) :
 			return JsonResponse({"error":"no changes done"})
-		else:
-			
 		obj=Patient.objects.update_or_create(
-			person_id=request.user.person,
-			defaults=change)
+				person_id=request.user.person,
+				defaults=change)
 		
 		messages.add_message(request, messages.ERROR,"Good job")
-		return  redirect("patient:register")
+		return JsonResponse({"done":" done"})
 	else:
 		return render(request,"patient/edit.html",{"title":"Settings & Privacy","profile_settings":True})
 @check_patient
