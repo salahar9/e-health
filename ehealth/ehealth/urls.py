@@ -18,6 +18,8 @@ from django.urls import include, path,re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from patient import views
+from django.views.static import serve
+
 
 urlpatterns = [
     path('',include("landing.urls")),
@@ -28,6 +30,7 @@ urlpatterns = [
     path('pharmacie/', include('pharmacie.urls')),
     path('ordonnance/', include('ordonnance.urls')),
     path('mutuelle/', include('mutuelle.urls')),
-    re_path(r'^media/(?P<path>.*)$', 'django.views.static.serve',
-                        {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+    re_path(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
