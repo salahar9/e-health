@@ -234,6 +234,7 @@
                         </small>
                         <form  method="post" action="{% url 'doctor:register' %}" {% if not user.person.doctor %} hide-from {%endif%}>
                             <div class="form-row">
+                                
                                 <label for="">INP</label>
                                 <input id="input-16" name="INP" class="primary" type="text" value="{{user.person.doctor.INP}}" readonly>
                                 <button type="button" id="edit-16" onclick="switching(16)">
@@ -249,7 +250,7 @@
                                     <h4 class="text-muted">Edit</h4>
                                 </button>
                             </div>
-
+                            {%csrf_token%}
                             <div class="form-row">
                                 <label for="">City</label>
                                 <input id="input-18" name="ville" class="primary" type="text" value="{{user.person.doctor.ville}}"
@@ -341,13 +342,14 @@
                             This option allows you to to become a Pharmacist.
                         </small>
                         <form method="post" action="{% url 'pharmacist:register' %}">
+                            
                             <div class="form-row">
                                 <label for="">INP</label>
                                 <input id="input-19" name="INP" class="primary" type="text" value="{{user.person.pharmacie.INP}}" readonly>
                                 <button type="button" id="edit-19" onclick="switching(19)">
                                     <h4 class="text-muted">Edit</h4>
                             </div></button>
-
+                            {%csrf_token%}
                              <div class="form-row">
                                 <label for="">Nom de la pharmacie</label>
                                 <input id="input-21" name="nom" class="primary" type="text" value="{{ user.person.pharmacie.nom }}"
