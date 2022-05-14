@@ -18,7 +18,7 @@ set_login_as_value = (value,d) => {
         document.querySelector("input#login").value = d
     } catch (error) {}
     try {
-        document.querySelector("input#sex").value = value.innerHTML
+        document.querySelector("input#sex").value = d
     } catch (error) {}
 }
 

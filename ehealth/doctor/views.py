@@ -181,7 +181,7 @@ def fill(request):
 	for x in res:
 		logging.warning(x)
 		Meds.objects.create(
-			code=x[1],
+			code=x[0],
 			nom=x[2] ,
 			dci1=x[3],
 			dosage1=x[4],
