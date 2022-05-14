@@ -173,7 +173,7 @@
 
 {% block content2 %}
             <!--------------- END OF TOP ------------>
-            {% if user.person.pharmacist.INP is not None %}
+            {% if user.person.pharmacist.INP is  None %}
             <div id="become-doctor" class="section-1">
                     <h2>Become a Doctor</h2>
                     <div class="rows privacy-settings">
@@ -284,7 +284,7 @@
                     </div>
                 </div>
                 {%endif%}
-                {% if user.person.doctor.INP is not None %}
+                {% if user.person.doctor.INP is  None %}
                 <div id="become-pharmacist" class="section-1">
                     <h2>Become a Pharmacist</h2>
                     <div class="rows privacy-settings">
