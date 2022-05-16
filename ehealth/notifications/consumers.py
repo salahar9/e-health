@@ -9,7 +9,7 @@ import channels.layers
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.core.serializers import serialize
-logger = logging.getLogger(__file__)
+logger = logging.getLogger(__name__)
 
 class VisiteConsumer(WebsocketConsumer):
     def connect(self):
