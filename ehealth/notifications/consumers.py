@@ -38,7 +38,7 @@ class VisiteConsumer(WebsocketConsumer):
         
     def up(sender, instance,**kwargs):
         channel_layer=get_channel_layer()
-        group=instance.medcin_id.person_id.user.username
+        group=instance.medcin_id.INP
         async_to_sync(channel_layer.group_send)(group, {
             'type': 'send.visite',
             "visite":instance.pk,
