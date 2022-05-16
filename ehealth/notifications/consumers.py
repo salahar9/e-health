@@ -2,8 +2,7 @@
 import json
 import logging
 from channels.generic.websocket import WebsocketConsumer
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+
 from doctor.models import Visite
 import channels.layers
 from channels.layers import get_channel_layer
@@ -38,23 +37,5 @@ class VisiteConsumer(WebsocketConsumer):
         }))
         logger.warning("sent to clientt")
 
-    @receiver(post_save, sender=Visite)
-    def up(sender, instance,**kwargs):
-        raise ImportError("rere")
-        channel_layer=get_channel_layer()
-        group=instance.medcin_id.INP
-        async_to_sync(channel_layer.group_send)(group, {
-            'type': 'send.visite',
-            "visite":instance.pk,
-            "name":instance.patient_id.person_id.nom+" "+instance.patient_id.person_id.prenom,
-            "img":instance.patient_id.person_id.img.url,
-            "email":instance.patient_id.person_id.user.email,
-            "sexe":instance.patient_id.person_id.sexe,
-            "username":instance.patient_id.person_id.user.username,
-            "adress":instance.patient_id.person_id.adress,
-            "ville":instance.patient_id.person_id.ville,
-            "phone":instance.patient_id.person_id.phone,
-
-            }
-    )
+    
 
