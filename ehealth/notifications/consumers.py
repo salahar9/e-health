@@ -39,9 +39,8 @@ class VisiteConsumer(WebsocketConsumer):
         logger.warning("sent to clientt")
 
     @receiver(post_save, sender=Visite)
-        
     def up(sender, instance,**kwargs):
-        logging.warning("signal")
+        logger.exception("heeeeeeeeere")
         channel_layer=get_channel_layer()
         group=instance.medcin_id.INP
         async_to_sync(channel_layer.group_send)(group, {
