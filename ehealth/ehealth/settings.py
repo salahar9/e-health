@@ -207,22 +207,16 @@ BASE_URL = "http://3.18.29.109"
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "root": {"level": "INFO", "handlers": ["file"]},
+    "root": {"level": "DEBUG", "handlers": ["file"]},
     "handlers": {
         "file": {
-            "level": "INFO",
+            "level": "DEBUG",
             "class": "logging.FileHandler",
             "filename": config('LOG_FILE'),
             "formatter": "app",
         },
     },
-    "loggers": {
-        "django": {
-            "handlers": ["file"],
-            "level": "INFO",
-            "propagate": True
-        },
-    },
+    
     "formatters": {
         "app": {
             "format": (
