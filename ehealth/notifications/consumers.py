@@ -32,16 +32,9 @@ class VisiteConsumer(WebsocketConsumer):
             {
 
             'message': message,
-            # "name":visite["name"],
-            # "img":visite["img"],
-            # "email":visite["email"],
-            # "sexe":visite["sexe"],
-            # "username":visite["username"],
-            # "adress":visite["adress"],
-            # "ville":visite["ville"],
-            # "phone":visite["phone"],
+           
             
-        }
+            }
         )
         )
 

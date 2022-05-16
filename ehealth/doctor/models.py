@@ -52,7 +52,7 @@ def up(sender, instance,**kwargs):
         async_to_sync(channel_layer.group_send)(group, {
             'type': 'send.visite',
 
-            "infos":{			
+            "visite":{			
             			"visite":instance.pk,
                         "name":instance.patient_id.person_id.nom+" "+instance.patient_id.person_id.prenom,
                         "img":instance.patient_id.person_id.img.url,
