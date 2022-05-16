@@ -25,7 +25,7 @@ class Visite(models.Model):
 		ordering=["-date_created"]
 	def get_absolute_url(self):
 		from django.urls import reverse
-		return reverse('doctor:get_visite_details', kwargs={'pk' : self.pk})
+		return reverse('doctor:get_visite_details', kwargs={'visite' : self.pk})
 class Appointement(models.Model):
 	class time(models.TextChoices):
 		Matin = "09h - 12h"
