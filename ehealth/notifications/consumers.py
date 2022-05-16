@@ -1,5 +1,6 @@
 
 import json
+import logging
 from channels.generic.websocket import WebsocketConsumer
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -32,11 +33,14 @@ class VisiteConsumer(WebsocketConsumer):
         self.send(text_data=json.dumps({
 
             'message': visite["visite"]
+            
         }))
+        logging.warning("sent to clientt")
 
     @receiver(post_save, sender=Visite)
         
     def up(sender, instance,**kwargs):
+        logging.warning("signal")
         channel_layer=get_channel_layer()
         group=instance.medcin_id.INP
         async_to_sync(channel_layer.group_send)(group, {
