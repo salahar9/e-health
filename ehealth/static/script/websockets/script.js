@@ -11,7 +11,7 @@ const chatSocket = new WebSocket(
             
         );
 chatSocket.onmessage = function(e) {
-            document.getElementById("popup").toggle("hide")
+            document.getElementById("popup").classList.toggle("hide")
             console.log(e.data + '\n');
             data = obj = JSON.parse(e.data)
             document.getElementById("visite-img").src=data.img
