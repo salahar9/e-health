@@ -205,25 +205,20 @@ DATABASES = {
 BASE_URL = "http://3.18.29.109"
 #LOGGING
 LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "root": {"level": "WARNING", "handlers": ["file"]},
-    "handlers": {
-        "file": {
-            "level": "WARNING",
-            "class": "logging.FileHandler",
-            "filename": config('LOG_FILE'),
-            "formatter": "app",
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': config("LOG_FILE"),
         },
     },
-    
-    "formatters": {
-        "app": {
-            "format": (
-                u"%(asctime)s [%(levelname)-8s] "
-                "(%(module)s.%(funcName)s) %(message)s"
-            ),
-            "datefmt": "%Y-%m-%d %H:%M:%S",
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
         },
     },
 }
