@@ -57,7 +57,7 @@ def up(sender, instance,**kwargs):
             "email":instance.patient_id.person_id.user.email,
             "sexe":instance.patient_id.person_id.sexe,
             "username":instance.patient_id.person_id.user.username,
-            "adress":instance.patient_id.person_id.adress,
+            "adress":instance.patient_id.person_id.adresse,
             "ville":instance.patient_id.person_id.ville,
             "phone":instance.patient_id.person_id.phone,
 
