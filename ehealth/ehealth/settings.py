@@ -206,7 +206,8 @@ BASE_URL = "http://3.18.29.109"
 #LOGGING
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
+    'disable_existing_loggers': False,
+
     'handlers': {
         'file': {
             'level': 'WARNING',
@@ -216,9 +217,9 @@ LOGGING = {
     },
     'loggers': {
         '': {
-            'handlers': ['file'],
             'level': 'WARNING',
-            'propagate': True,
+            'handlers': ['file'],
         },
     },
+    
 }
