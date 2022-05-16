@@ -127,7 +127,64 @@
             
 
         </div>
-    <div id="websocket"></div>
+     <div class="popup-holder pharmacy">
+                    <div class="card profile">
+                    <div class="left">
+                        <div class="big-profile-photo">
+                            <img id="visite-img" src="" alt="">
+                        </div>
+
+                        <div class="middle">
+
+                            <h2 id="visite-name"></h2>
+                            <h3 id="visite-email" class="text-muted"></h3>
+
+                            
+                            <div id="send-msg-btn">
+                                <h3>Send Message</h3>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="rigth">
+                        <a href="" class="primary" id="edit">
+                            <span class="material-icons-sharp">
+                                edit
+                            </span>
+                        </a>
+                        <div class="info">
+                            <div class="info-elem">
+                                <h3 class="text-muted">Gender</h3>
+                                <h3 id="visite-sexe" class="user-info"></h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">Birthday</h3>
+                                <h3  id="visite-nais"class="user-info"></h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">Phone Number</h3>
+                                <h3 id="visite-phone" class="user-info"></h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">CIN</h3>
+                                <h3  id="visite-username" class="user-info"></h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">Adress</h3>
+                                <h3  id="visite-adress" class="user-info"></h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">City</h3>
+                                <h3 id="visite-ville" class="user-info"></h3>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+        </div>
     {{user.person.doctor.pk|json_script:"doc_id" }}
     <script type="text/javascript" src="{% static 'script/websockets/script.js' %}"></script>
   {% endblock %} 
