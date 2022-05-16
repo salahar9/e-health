@@ -1,4 +1,5 @@
 Django
+django-chatter
 requests~=2.27.1
 easy-thumbnails
 django-channels
