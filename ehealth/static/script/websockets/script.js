@@ -1,8 +1,14 @@
 const d=document.getElementById('websocket')
 const id  = JSON.parse(document.getElementById('doc_id').textContent);
 
-
-
+const close=document.querySelector('.card .close')
+if (close !=null){
+    close.addEventListener("click",
+        ()=>{
+            document.getElementById("popup").classList.toggle("hide")
+        }
+        )
+}
 const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
@@ -23,6 +29,10 @@ chatSocket.onmessage = function(e) {
             document.getElementById("visite-username").textContent=data.username
             document.getElementById("visite-adress").textContent=data.adress
             document.getElementById("visite-ville").textContent=data.ville
+            document.getElementById("visite-visite").href=data.visite
+            document.getElementById("visite-profile").href=data.profile
+
+
 
             
         };

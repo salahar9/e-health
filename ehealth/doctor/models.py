@@ -23,6 +23,9 @@ class Visite(models.Model):
 	medcin_id=models.ForeignKey(Doctor,on_delete=models.CASCADE,related_name="visites")
 	class Meta:
 		ordering=["-date_created"]
+	def get_absolute_url(self):
+		from django.urls import reverse
+		return reverse('doctor:get_visite_details', kwargs={'pk' : self.pk})
 class Appointement(models.Model):
 	class time(models.TextChoices):
 		Matin = "09h - 12h"
@@ -53,15 +56,18 @@ def up(sender, instance,**kwargs):
             'type': 'send.visite',
 
             "visite":{			
-            			"visite":instance.pk,
+            			"visite":instance.get_absolute_url(),
                         "name":instance.patient_id.person_id.nom+" "+instance.patient_id.person_id.prenom,
-                        "img":instance.patient_id.person_id.img.url,
+                        "img":instance.patient_id.person_id.img.avatar.url,
                         "email":instance.patient_id.person_id.user.email,
                         "sexe":instance.patient_id.person_id.sexe,
                         "username":instance.patient_id.person_id.user.username,
                         "adress":instance.patient_id.person_id.adresse,
                         "ville":instance.patient_id.person_id.ville,
-                        "phone":instance.patient_id.person_id.phone,}
+                        "phone":instance.patient_id.person_id.phone,
+                        "profile":instance.patient_id.get_absolute_url()
+
+                        }
 
             }
     )

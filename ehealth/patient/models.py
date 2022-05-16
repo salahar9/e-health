@@ -18,5 +18,8 @@ class Patient(models.Model):
 			self.date_adhesion is not None and 
 			self.n_affiliation is not None) else False)
 		super(Patient, self).save(*args, **kwargs)
+	def get_absolute_url(self):
+		from django.urls import reverse
+		return reverse('patient:profile', kwargs={'pk' : self.pk})
 
  	
