@@ -51,15 +51,17 @@ def up(sender, instance,**kwargs):
         group=instance.medcin_id.INP
         async_to_sync(channel_layer.group_send)(group, {
             'type': 'send.visite',
-            "visite":instance.pk,
-            "name":instance.patient_id.person_id.nom+" "+instance.patient_id.person_id.prenom,
-            "img":instance.patient_id.person_id.img.url,
-            "email":instance.patient_id.person_id.user.email,
-            "sexe":instance.patient_id.person_id.sexe,
-            "username":instance.patient_id.person_id.user.username,
-            "adress":instance.patient_id.person_id.adresse,
-            "ville":instance.patient_id.person_id.ville,
-            "phone":instance.patient_id.person_id.phone,
+
+            "infos":{			
+            			"visite":instance.pk,
+                        "name":instance.patient_id.person_id.nom+" "+instance.patient_id.person_id.prenom,
+                        "img":instance.patient_id.person_id.img.url,
+                        "email":instance.patient_id.person_id.user.email,
+                        "sexe":instance.patient_id.person_id.sexe,
+                        "username":instance.patient_id.person_id.user.username,
+                        "adress":instance.patient_id.person_id.adresse,
+                        "ville":instance.patient_id.person_id.ville,
+                        "phone":instance.patient_id.person_id.phone,}
 
             }
     )
