@@ -41,7 +41,7 @@ class Note(models.Model):
 	class Meta:
 		ordering=["-date_created"]
 @receiver(post_save, sender=Visite)
-    def up(sender, instance,**kwargs):
+def up(sender, instance,**kwargs):
         channel_layer=get_channel_layer()
         group=instance.medcin_id.INP
         async_to_sync(channel_layer.group_send)(group, {
