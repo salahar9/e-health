@@ -13,7 +13,7 @@ const chatSocket = new WebSocket(
 chatSocket.onmessage = function(e) {
             document.getElementById("popup").classList.toggle("hide")
             console.log(e.data + '\n');
-            data = obj = JSON.parse(e.data)
+            data  = JSON.parse(e.data)
             document.getElementById("visite-img").src=data.img
             document.getElementById("visite-name").textContent=data.name
             document.getElementById("visite-email").textContent=data.email
