@@ -36,7 +36,7 @@ class VisiteConsumer(WebsocketConsumer):
             'message': visite["visite"]
             
         }))
-        logger.info("sent to clientt")
+        logging.warning("sent to clientt")
 
     @receiver(post_save, sender=Visite)
         

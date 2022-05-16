@@ -207,10 +207,10 @@ BASE_URL = "http://3.18.29.109"
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "root": {"level": "DEBUG", "handlers": ["file"]},
+    "root": {"level": "WARNING", "handlers": ["file"]},
     "handlers": {
         "file": {
-            "level": "DEBUG",
+            "level": "WARNING",
             "class": "logging.FileHandler",
             "filename": config('LOG_FILE'),
             "formatter": "app",
