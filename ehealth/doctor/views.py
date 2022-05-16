@@ -48,7 +48,7 @@ def create_visite(request):
 	medcin=params["medcin"]
 	patient=Patient.objects.get(pk=patient)
 	medcin=Doctor.objects.get(pk=medcin)
-	obj=Visite.objects.create(patient_id=patient,medcin_id=medcin)
+	obj=Visite(patient_id=patient,medcin_id=medcin)
 	obj.save()
 	data={"Done":"Visite created"}
 	return  JsonResponse(data)
