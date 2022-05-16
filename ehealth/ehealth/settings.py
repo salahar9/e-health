@@ -212,7 +212,7 @@ LOGGING = {
         "file": {
             "level": "INFO",
             "class": "logging.FileHandler",
-            "filename": onfig('LOG_FILE'),
+            "filename": config('LOG_FILE'),
             "formatter": "app",
         },
     },
