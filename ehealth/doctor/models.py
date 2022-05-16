@@ -58,7 +58,7 @@ def up(sender, instance,**kwargs):
             "visite":{			
             			"visite":instance.get_absolute_url(),
                         "name":instance.patient_id.person_id.nom+" "+instance.patient_id.person_id.prenom,
-                        "img":instance.patient_id.person_id.avatar.img.url,
+                        "img":instance.patient_id.person_id.img.url,
                         "email":instance.patient_id.person_id.user.email,
                         "sexe":instance.patient_id.person_id.sexe,
                         "username":instance.patient_id.person_id.user.username,
