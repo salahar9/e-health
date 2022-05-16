@@ -1578,7 +1578,12 @@ h3.create-insurance-instructions {
     cursor: pointer;
     align-items: center;
 }
-
+#popup .big-profile-photo{
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
 /* ====================================================
 ==================== MEDIA QUERIES ====================
 ======================================================= */
