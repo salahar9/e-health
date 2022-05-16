@@ -9,6 +9,7 @@ import channels.layers
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.core.serializers import serialize
+logger = logging.getLogger(__file__)
 
 class VisiteConsumer(WebsocketConsumer):
     def connect(self):
@@ -35,12 +36,12 @@ class VisiteConsumer(WebsocketConsumer):
             'message': visite["visite"]
             
         }))
-        logging.info("sent to clientt")
+        logger.info("sent to clientt")
 
     @receiver(post_save, sender=Visite)
         
     def up(sender, instance,**kwargs):
-        logging.info("signal")
+        logger.info("signal")
         channel_layer=get_channel_layer()
         group=instance.medcin_id.INP
         async_to_sync(channel_layer.group_send)(group, {
