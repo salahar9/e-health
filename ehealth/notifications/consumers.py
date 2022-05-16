@@ -29,7 +29,7 @@ class VisiteConsumer(WebsocketConsumer):
 
         self.send(text_data=json.dumps({
 
-            'message': visite["visite"],
+            'message':{
             "name":visite["name"],
             "img":visite["img"],
             "email":visite["email"],
@@ -39,7 +39,10 @@ class VisiteConsumer(WebsocketConsumer):
             "ville":visite["ville"],
             "phone":visite["phone"],
             
-        }))
+        }
+        }
+        )
+        )
 
     
 
