@@ -216,7 +216,7 @@ LOGGING = {
         },
     },
     'loggers': {
-        '': {
+        'notifications': {
             'level': 'WARNING',
             'handlers': ['file'],
         },
