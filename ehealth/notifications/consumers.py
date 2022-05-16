@@ -29,10 +29,17 @@ class VisiteConsumer(WebsocketConsumer):
 
         self.send(text_data=json.dumps({
 
-            'message': visite["visite"]
+            'message': visite["visite"],
+            "name":visite["name"],
+            "img":visite["img"],
+            "email":visite["email"],
+            "sexe":visite["sexe"],
+            "username":visite["username"],
+            "adress":visite["adress"],
+            "ville":visite["ville"],
+            "phone":visite["phone"],
             
         }))
-        logger.warning("sent to clientt")
 
     
 
