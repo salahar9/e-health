@@ -216,7 +216,7 @@ LOGGING = {
         },
     },
     'loggers': {
-        'notifications': {
+        'django': {
             'level': 'WARNING',
             'handlers': ['file'],
         },
