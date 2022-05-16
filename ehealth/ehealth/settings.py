@@ -210,14 +210,14 @@ LOGGING = {
 
     'handlers': {
         'file': {
-            'level': 'WARNING',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': config("LOG_FILE"),
         },
     },
     'loggers': {
         'django': {
-            'level': 'WARNING',
+            'level': 'INFO',
             'handlers': ['file'],
         },
     },
