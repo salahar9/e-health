@@ -899,3 +899,11 @@ responsive area
         font-size: 10px;
     }
 }
+/* SALAH ADDED DASHBOARD CSS */
+.form-requests{
+    overflow-x: visible;
+    display: flex;
+}
+.form-requests span{
+    cursor: pointer;
+}

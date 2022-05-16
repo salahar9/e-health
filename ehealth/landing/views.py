@@ -11,6 +11,8 @@ from  django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from .decorators import check_login
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.hashers import check_password
+
 
 def re_redirect(request,loginp):
 
