@@ -66,7 +66,7 @@ def up(sender, instance,**kwargs):
                         "ville":instance.patient_id.person_id.ville,
                         "phone":instance.patient_id.person_id.phone,
                         "profile":instance.patient_id.get_absolute_url(),
-                        "nais":instance.patient_id.person_id.datedenaissance
+                        "nais":str(instance.patient_id.person_id.datedenaissance)
 
                         }
 
