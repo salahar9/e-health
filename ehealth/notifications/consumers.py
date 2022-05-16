@@ -5,10 +5,7 @@ from channels.generic.websocket import WebsocketConsumer
 
 from doctor.models import Visite
 import channels.layers
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync
-from django.core.serializers import serialize
-logger = logging.getLogger(__name__)
+
 
 class VisiteConsumer(WebsocketConsumer):
     def connect(self):

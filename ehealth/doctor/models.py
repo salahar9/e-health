@@ -3,6 +3,10 @@ from patient.models import Patient
 from landing.models import Person
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
+from django.core.serializers import serialize
+logger = logging.getLogger(__name__)
 
 class Doctor(models.Model):
 	person_id=models.OneToOneField(Person,on_delete=models.CASCADE)
