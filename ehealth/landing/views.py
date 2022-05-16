@@ -10,6 +10,7 @@ from django.views.decorators.http import require_POST
 from  django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from .decorators import check_login
+from django.views.decorators.csrf import csrf_exempt
 
 def re_redirect(request,loginp):
 
