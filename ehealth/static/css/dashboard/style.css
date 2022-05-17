@@ -649,7 +649,7 @@ main .insights,
 main .insights.dashboard,
 main .insights.insurances {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.6rem;
 }
 
@@ -718,7 +718,7 @@ main .insights>.card .middle a *:last-child {
 }
 
 
-main .insights.dashboard>.card:last-child,
+
 main .insights.insurances>.card:last-child {
     background: transparent;
     border: 2px dashed var(--color-primary);
