@@ -4,10 +4,10 @@ from django.shortcuts import redirect
 def check_login(f):
 	def wrapper(request,*args,**kwargs):
 		d={"patient":1,"medecin":2,"pharmacist":3}
-		if request.user.is_authenticated:
+		try: 
 			role=request.session["role"]
 			return redirect('landing:redirect',loginp=d[role])
-		else:
+		except KeyError:
 			return f(request,*args,**kwargs)
 		
 	return wrapper

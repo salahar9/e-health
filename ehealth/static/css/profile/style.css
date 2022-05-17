@@ -1096,7 +1096,7 @@ div#become-doctor.section-1{
     align-items: center;
     transition: all 300ms ease;
     z-index: 100;
-    animation: animate 300ms ease;
+    /*animation: animate 300ms ease;*/
 
 }
 
@@ -1210,7 +1210,8 @@ div#become-doctor.section-1{
         position: absolute;
     }
     .rigth {
-        position: unset;
+        /*position: unset;*/
+        width: 20%;
     }
 }
 
@@ -1324,6 +1325,7 @@ div#become-doctor.section-1{
         width: 94%;
         margin: 0 auto 4rem;
         padding: 0 1rem;
+        position: unset;
     }
 
     .rigth .top {
