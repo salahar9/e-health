@@ -833,7 +833,7 @@ main table tbody tr:last-child td {
 .rigth {
     margin-top: 1.4rem;
     position: fixed;
-    right: 2rem;
+    right: 1rem;
     }
 
     .rigth.settings {
@@ -942,6 +942,10 @@ main table tbody tr:last-child td {
 /* ====================================================
 ====================== SECTION-1 ======================
 ======================================================= */
+div#become-doctor.section-1{
+    margin-top: 0;
+}
+
 .section-1,
 .section-1 {
     margin-top: 1rem;

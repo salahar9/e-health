@@ -2,6 +2,7 @@
 import json
 import logging
 from channels.generic.websocket import WebsocketConsumer
+from asgiref.sync import async_to_sync
 
 from doctor.models import Visite
 import channels.layers
