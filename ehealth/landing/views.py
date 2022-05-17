@@ -173,3 +173,14 @@ def login_json(request):
 	except User.DoesNotExist:
 		data={"error":"Not found"}
 	return JsonResponse(data)
+@require_POST
+@csrf_exempt
+def patient_from_card(request):
+	data={}
+	card=request.POST["card"]
+	try:
+		pat=Patient.objects.get(card_id=card)
+		data={"pat":pat.pk}
+	except Patient.DoesNotExist:
+		data={"error":"Not found"}
+	return JsonResponse(data)

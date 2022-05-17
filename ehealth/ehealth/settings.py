@@ -47,7 +47,6 @@ ASGI_APPLICATION = f'{config("PROJECT_NAME")}.routing.application'
 
 INSTALLED_APPS = [
     "channels",
-    'django_chatter',
     "easy_thumbnails",
     'django.contrib.admin',
     'django.contrib.auth',

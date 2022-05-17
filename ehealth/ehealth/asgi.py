@@ -27,7 +27,6 @@ application = ProtocolTypeRouter({
     "websocket": AuthMiddlewareStack(
         URLRouter(
             notifications.routing.websocket_urlpatterns,
-            django_chatter.routing.websocket_urlpatterns # send request to chatter's urls
 
         )
     )
