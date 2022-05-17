@@ -6,7 +6,6 @@ class Patient(models.Model):
 	class Gender(models.TextChoices):
 		Male = 'M'
 		Female = 'F'
-	card_id=models.IntegerField(blank=True,null=True)
 	card_id_str=models.CharField(max_length=30,blank=True,null=True)
 	permission_privacy=models.BooleanField(default=False)
 	a_mutuelle=models.BooleanField(default=False,null=True,blank=True)
