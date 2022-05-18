@@ -887,6 +887,7 @@ main table tbody tr:last-child td {
     display: flex;
     gap: 2rem;
     text-align: right;
+    width: 100%;
 }
 
 .rigth .top .profile .role {
