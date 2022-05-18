@@ -644,7 +644,8 @@ main form.add-form button .submit-btn {
     bottom: 2rem;
     right: 1rem;
 }
-.visite.submit-btn{
+
+.visite.submit-btn {
     position: unset;
 }
 
@@ -837,11 +838,11 @@ main table tbody tr:last-child td {
     margin-top: 1.4rem;
     position: fixed;
     right: 1rem;
-    }
+}
 
-    .rigth.settings {
-        position: relative;
-        right: unset;
+.rigth.settings {
+    position: relative;
+    right: unset;
 }
 
 .rigth .top {
@@ -949,7 +950,7 @@ main table tbody tr:last-child td {
 /* ====================================================
 ====================== SECTION-1 ======================
 ======================================================= */
-div#become-doctor.section-1{
+div#become-doctor.section-1 {
     margin-top: 0;
 }
 
@@ -1112,12 +1113,12 @@ div#become-doctor.section-1{
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     animation: animate 300ms ease;
-    }
+}
 
-    @keyframes animate {
-        0% {
-            transform: scale(0%);
-        }
+@keyframes animate {
+    0% {
+        transform: scale(0%);
+    }
 
     100% {
         transform: scale(100%);
@@ -1391,6 +1392,7 @@ div#become-doctor.section-1{
         width: 80%;
     }
 }
+
 /* ====================================================
 ============== CHANGE PROFILE PICTURE ==================
 ======================================================= */
@@ -1410,27 +1412,32 @@ form#change-pic-form #change-pic {
 
 
 /*        AJAX               */
-main form.add-form .form-row>div{
+main form.add-form .form-row>div {
     border-bottom: 0;
     justify-content: start;
-    }
-.form-row > div > input,.form-row > div > textarea{
+}
+
+.form-row>div>input,
+.form-row>div>textarea {
     border-bottom: 1px solid var(--color-light);
 }
 
-.ajax-primary{
+.ajax-primary {
 
     padding-top: 0.5rem !important;
 }
-.input-ajax{
-    padding-top:  2rem;
+
+.input-ajax {
+    padding-top: 2rem;
     padding-bottom: 1rem;
     padding-left: 1rem;
 }
-.ajax_option{
+
+.ajax_option {
     padding: 5px !important;
 }
-.select-ajax{
+
+.select-ajax {
     overflow-y: auto;
     padding: 0px !important;
 
