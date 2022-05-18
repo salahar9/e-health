@@ -141,7 +141,7 @@ def dashboard(request):
 							appoint_count=Count("appointements",filter=Q(appointements__medcin_id=doctor),distinct=True)
 						)
 	visites = Visite.objects.filter(medcin_id=doctor).values('patient_id')
-	pat=Patient.objects.filter(pk__in=visites).distinct('pk').order_by("visite__date_created","pk")[:3]
+	pat=Patient.objects.filter(pk__in=visites).distinct('pk').order_by("visites__date_created","pk")[:3]
 
 	appointements=Appointement.objects.filter(medcin_id=request.user.person.doctor,status="2")[0:3]
 	appointements_list=Appointement.objects.filter(medcin_id=request.user.person.doctor)[:6]
