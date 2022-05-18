@@ -17,15 +17,15 @@
                 </a>
                 <a href="{% if doctor %}{% url 'doctor:patients' %}{% elif patient %} {% url 'patient:doctors' %} {% elif pharmacist %} #{% endif %}" class="{% if get_patient %}active {% endif %}">
                     <span class="material-icons-sharp"> people_alt</span>
-                    <h3>{% if doctor %}My Patients{% elif patient %} My Doctors{% elif pharmacist %} My Clients{% endif %}</h3>
+                    <h3>{% if doctor %} Patients{% elif patient %}  Doctors{% elif pharmacist %} My Clients{% endif %}</h3>
                 </a>
                 <a href="{% if doctor %}{% url 'doctor:visites' %}{% elif patient %} {% url 'patient:visites' %} {% elif pharmacist %} #{% endif %}"  class="{% if visite_seek or other_visite_seek %}active {% endif %}">
                     <span class="material-icons-sharp">medication</span>
-                    <h3>{% if doctor %}My Consultations{% elif patient %} My Consultations {% elif pharmacist %} All Orders{% endif %}</h3>
+                    <h3>{% if doctor %} Consultations{% elif patient %}  Consultations {% elif pharmacist %} All Orders{% endif %}</h3>
                 </a>
                 <a href="{% if doctor %}#{% elif patient %} # {% elif pharmacist %} #{% endif %}">
-                    <span class="material-icons-sharp">event</span>
-                    <h3>{% if doctor %}My Appointements{% elif patient %} My Prescriptions {% elif pharmacist %} All Orders{% endif %}</h3>
+                    <span class="material-icons-sharp">{% if doctor %}event{% elif patient %}receipt_long{%endif%}</span>
+                    <h3>{% if doctor %} Appointements{% elif patient %}  Prescriptions {% elif pharmacist %} All Orders{% endif %}</h3>
 
                 </a>
                 {% if patient %}
@@ -36,8 +36,8 @@
         </a>
          <a href="{% url 'patient:search' %}"
             class="{% if book %} active {%endif%}">
-            <span class="material-icons-sharp">health_and_safety</span>
-            <h3>Book Appointement</h3>
+            <span class="material-icons-sharp">event</span>
+            <h3> Appointement</h3>
         </a>
                 {% endif %}
                 <a href="">

@@ -6,7 +6,7 @@
                     <span class="material-icons-sharp">people_alt</span>
                     <div class="middle">
 
-                        <h3>Total Patients</h3>
+                        <h3>Total Clients</h3>
                         <h1>{{pat_num}}</h1>
 
                     </div>
@@ -20,7 +20,7 @@
                     <span class="material-icons-sharp">analytics</span>
                     <div class="middle">
                         <h3>Total Sales</h3>
-                        <h1>{{income}}  DH</h1>
+                        <h1>{{income|default_if_none:"0"}}  DH</h1>
                     </div>
                     <small class="text-muted">
                         Last Week
