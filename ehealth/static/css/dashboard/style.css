@@ -2109,6 +2109,7 @@ h3.create-insurance-instructions {
     .rigth {
         width: 94%;
         margin: 0 auto 4rem;
+        position: unset;
     }
 
     .rigth .top {
