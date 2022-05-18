@@ -1854,6 +1854,69 @@ h3.create-insurance-instructions {
 }
 
 /* ====================================================
+==================== PAGINATION ====================
+======================================================= */
+
+.pagination {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination .step-links .all-pages,
+.pagination .step-links {
+    display: flex;
+    align-items: center;
+}
+
+.pagination .step-links .arrows{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--color-primary);
+    border-radius: 2rem;
+    padding-inline: 0.5rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.pagination .step-links .all-pages>a.page-num {
+    border: 1.5px solid var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.2rem;
+    transition: all 300ms ease;
+}
+
+.pagination .step-links .all-pages>a.page-num:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.pagination .step-links .all-pages>a.page-num.more:hover {
+    background-color: unset;
+    color: unset;
+}
+
+.pagination .step-links .all-pages>a.page-num:last-child {
+    margin-right: 0.8rem;
+}
+
+.pagination .step-links .all-pages>a.page-num:first-child{
+    margin-left: 0.8rem;
+
+}
+
+.pagination .step-links .all-pages>a.page-num.current {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* ====================================================
 ==================== MEDIA QUERIES ====================
 ======================================================= */
 
