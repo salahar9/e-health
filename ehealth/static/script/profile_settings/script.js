@@ -78,13 +78,15 @@ try {
 }
 
 const privacy_toggle=document.getElementById("privacy")
+if (privacy_toggle != null){
+
 
 privacy_toggle.addEventListener("change", e => {
     privacy=document.getElementById("input-privacy")
     if (privacy_toggle.checked){privacy.setAttribute("value","on")}
     else{privacy.setAttribute("value","off")}
 })
-
+}
     
 
 const submit_btn_settings=document.getElementById("submit_btn_settings")

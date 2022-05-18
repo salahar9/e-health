@@ -141,7 +141,7 @@ def get_doc(request):
 @login_required
 def profile(request,pk):
 	pat=get_object_or_404(Patient,pk=pk)
-	visites = Visite.objects.filter( patient_id=pat).select_related("medcin_id")[:6]
+	visites = Visite.objects.filter( patient_id=pat).select_related("medcin_id")[:2]
 	pres=Visite.objects.filter( patient_id=pat).annotate(count=Count("ordonnance",filter=Q(ordonnance__le_type="Medicaments"))).filter(Q(count__gt=0)).select_related("medcin_id")[:3]
 	appointements_waiting=Appointement.objects.filter(status="2",patient_id=pat).aggregate(count=Count("id"))
 	appointements_done=Appointement.objects.filter(status="1",patient_id=pat).aggregate(count=Count("id"))
