@@ -507,7 +507,7 @@ main .insights.settings>div form {
 .rigth .popup-holder form .form-row,
 .rigth .section-1 form .form-row {
     display: grid;
-    grid-template-columns: 11rem auto 5rem;
+    grid-template-columns: 6rem auto 2rem;
 
 
 }
