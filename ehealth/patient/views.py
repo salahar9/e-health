@@ -16,7 +16,7 @@ from django.contrib import messages
 import datetime,logging
 from django.db.models.aggregates import Count,Sum
 from django.core.paginator import Paginator
-
+PAGINATION_COUNT=15
 def register(request):
 	if request.method=="POST":
 
@@ -53,7 +53,7 @@ def get_patient_visites_history(request):
 							appoint_count=Count("appointements",filter=Q(appointements__patient_id=pat),distinct=True)
 						)
 	
-	paginator=Paginator(visites, 25)
+	paginator=Paginator(visites, PAGINATION_COUNT)
 	page_number = request.GET.get('page')
 	page_obj = paginator.get_page(page_number)
 
@@ -133,7 +133,7 @@ def get_doc(request):
 							tot=Count("INP",distinct=True),visites_sum=Count("visites",filter=Q(visites__patient_id=pat),distinct=True),
 							appoint_count=Count("appointements",filter=Q(appointements__patient_id=pat),distinct=True)
 						)
-	paginator=Paginator(doc, 25)
+	paginator=Paginator(doc, PAGINATION_COUNT)
 	page_number = request.GET.get('page')
 	page_obj = paginator.get_page(page_number)
 

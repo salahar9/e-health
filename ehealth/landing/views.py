@@ -170,6 +170,8 @@ def login_json(request):
 					except Exception as e:
 						#data["error"]="user exists but doesn't have a role"
 						data["error"]=str(e)
+		else:
+			data={"error":"Not found"}	
 	except User.DoesNotExist:
 		data={"error":"Not found"}
 	return JsonResponse(data)

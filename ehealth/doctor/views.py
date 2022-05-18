@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import login_required
 from .decorators import check_doctor,check_activated
 
 from django.db.models.aggregates import Count
-
+PAGINATION_COUNT=15
 def register(request):
 	if request.method=="POST":
 		params=request.POST
@@ -95,7 +95,7 @@ def get_doc_visites_history(request):
 							appoint_count=Count("appointements",filter=Q(appointements__medcin_id=doctor),distinct=True)
 						)
 	
-	paginator=Paginator(visites, 25)
+	paginator=Paginator(visites, PAGINATION_COUNT)
 	page_number = request.GET.get('page')
 	page_obj = paginator.get_page(page_number)
 	temp_data={"data":page_obj,'visite_seek':True,"title":"My Consultations","num_doc":pat_stat["tot"],"num_visite":pat_stat["visites_sum"],"num_appointement":pat_stat["appoint_count"]}
@@ -157,7 +157,7 @@ def get_patient(request):
 							tot=Count("id",distinct=True),visites_sum=Count("visites",filter=Q(visites__medcin_id=doctor),distinct=True),
 							appoint_count=Count("appointements",filter=Q(appointements__medcin_id=doctor),distinct=True)
 						)
-	paginator=Paginator(pat, 25)
+	paginator=Paginator(pat, PAGINATION_COUNT)
 	page_number = request.GET.get('page')
 	page_obj = paginator.get_page(page_number)
 	return render(request,"doctor/visites.html",{"data":page_obj,"title":"Patients","get_patient":True,"num_doc":pat_stat["tot"],"num_visite":pat_stat["visites_sum"],"num_appointement":pat_stat["appoint_count"]})
