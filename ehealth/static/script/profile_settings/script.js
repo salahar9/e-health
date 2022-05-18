@@ -1,8 +1,11 @@
 //notes
-document.querySelector(".popup-holder .card .close-btn span").addEventListener("click", () => {
+notes = document.querySelector(".popup-holder .card .close-btn span")
+if ( notes != null )
+{
+notes.addEventListener("click", () => {
         document.querySelector(".popup-holder").classList.add("hide")
     })
-
+}
 
 // show forms
 const show_form = (id) => {
@@ -78,7 +81,9 @@ try {
 }
 
 const privacy_toggle=document.getElementById("privacy")
-if (privacy_toggle != null){
+
+if ( privacy_toggle != null )
+{
 
 
 privacy_toggle.addEventListener("change", e => {
@@ -90,6 +95,8 @@ privacy_toggle.addEventListener("change", e => {
     
 
 const submit_btn_settings=document.getElementById("submit_btn_settings")
+if ( submit_btn_settings != null )
+{
 
 submit_btn_settings.addEventListener("click", e => {
     form1=document.getElementById("form-profile")
@@ -102,8 +109,11 @@ submit_btn_settings.addEventListener("click", e => {
 
 
 })
+}
 
 const change_pic=document.getElementById("change-pic")
+if ( change_pic != null )
+{
 
 
 change_pic.addEventListener("change", e => {
@@ -119,7 +129,10 @@ change_pic.addEventListener("change", e => {
 
 
 })
-if (document.querySelector("#add-note") != null){
+}
+
+if ( document.querySelector("#add-note") != null )
+{
 document.querySelector("#add-note").addEventListener("click", () => {
         document.querySelector(".popup-holder").classList.remove("hide")
     })
