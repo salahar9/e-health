@@ -644,6 +644,9 @@ main form.add-form button .submit-btn {
     bottom: 2rem;
     right: 1rem;
 }
+.visite.submit-btn{
+    position: unset;
+}
 
 main form.add-form .add-more-btn:hover,
 main form.add-form .submit-btn:hover {
