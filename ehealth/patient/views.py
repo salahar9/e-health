@@ -16,7 +16,7 @@ from django.contrib import messages
 import datetime,logging
 from django.db.models.aggregates import Count,Sum
 from django.core.paginator import Paginator
-PAGINATION_COUNT=15
+PAGINATION_COUNT=10
 def register(request):
 	if request.method=="POST":
 
