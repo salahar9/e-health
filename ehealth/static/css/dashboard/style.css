@@ -1915,10 +1915,6 @@ h3.create-insurance-instructions {
         gap: 0.8rem;
     }
 
-    main .insights.dashboard>div:last-child {
-        display: none;
-    }
-
     main .insights.dashboard,
     main .insights.insurances {
         grid-template-columns: repeat(2, 1fr);
@@ -1931,6 +1927,7 @@ h3.create-insurance-instructions {
         left: 50%;
         transform: translate(-50%, 20%);
         padding-bottom: 3rem;
+        z-index: 10;
     }
 
     .drop-down-content {

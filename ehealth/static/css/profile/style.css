@@ -507,7 +507,7 @@ main .insights.settings>div form {
 .rigth .popup-holder form .form-row,
 .rigth .section-1 form .form-row {
     display: grid;
-    grid-template-columns: 11rem auto 5rem;
+    grid-template-columns: 6rem auto 2rem;
 
 
 }
@@ -889,6 +889,10 @@ main table tbody tr:last-child td {
     text-align: right;
 }
 
+.rigth .top .profile .info p {
+    display: flex;
+}
+
 .rigth .top .profile .role {
     display: flex;
     align-items: center;
@@ -1211,10 +1215,6 @@ div#become-doctor.section-1{
     main #form-holder-trait.card,
     main #form-holder-med.card {
         position: absolute;
-    }
-    .rigth {
-        /*position: unset;*/
-        width: 20%;
     }
 }
 
