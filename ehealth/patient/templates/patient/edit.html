@@ -15,7 +15,7 @@
                                 <img src="{{user.person.img.avatar.url}}" alt="">
                             </div>
                             <div class="description">
-                                <h2>Abdoessordo</h2>
+                                <h2>{{user.person.nom|capfirst}} {{user.person.prenom|capfirst}}</h2>
                                 <form action="{% url 'landing:change_pic'%}" method="POST" id="change-pic-form">
                                     {%csrf_token%}
                                     <label id="change-pic-btn" for="change-pic" class="text-muted">Change Profile  Picture</label>
@@ -284,8 +284,8 @@
                     </div>
                 </div>
                 {%endif%}
-
-                {% if user.person.doctor is  None %}
+                {{user.person.doctor.INP}}
+                {% if user.person.doctor.INP is None %}
                 <div id="become-pharmacist" class="section-1">
                     <h2>Become a Pharmacist</h2>
                     <div class="rows privacy-settings">
