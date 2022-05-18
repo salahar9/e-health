@@ -1938,11 +1938,7 @@ h3.create-insurance-instructions {
     }
 
     main .booking-dashboard .calendar.card {
-        width: 80%;
-    }
-
-    main .results-container {
-        position: absolute;
+        /* width: 80%; */
     }
 
     .landing.register,
@@ -1975,9 +1971,13 @@ h3.create-insurance-instructions {
         all: unset;
     }
 
-    .rigth {
-        position: unset;
-    }
+    
+    
+    main.book-appointment {
+    position: absolute;
+    left: 10rem;
+    width: 78vw;
+}
 
 }
 
@@ -2236,6 +2236,13 @@ h3.create-insurance-instructions {
 
     .conversation .chat-header .profile >span {
         display: unset;
+    }
+
+    
+    main.book-appointment {
+        position: unset;
+        left: unset;
+        width: unset;
     }
 }
 /* SALAH ADDED DASHBOARD CSS */
