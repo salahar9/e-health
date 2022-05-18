@@ -5,7 +5,7 @@ if ( notes != null )
 notes.addEventListener("click", () => {
         document.querySelector(".popup-holder").classList.add("hide")
     })
-
+}
 
 // show forms
 const show_form = (id) => {
@@ -109,6 +109,7 @@ submit_btn_settings.addEventListener("click", e => {
 
 
 })
+}
 
 const change_pic=document.getElementById("change-pic")
 if ( change_pic != null )
@@ -128,7 +129,10 @@ change_pic.addEventListener("change", e => {
 
 
 })
-if (document.querySelector("#add-note") != null){
+}
+
+if ( document.querySelector("#add-note") != null )
+{
 document.querySelector("#add-note").addEventListener("click", () => {
         document.querySelector(".popup-holder").classList.remove("hide")
     })
