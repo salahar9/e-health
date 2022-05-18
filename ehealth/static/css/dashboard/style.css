@@ -2080,7 +2080,7 @@ h3.create-insurance-instructions {
         margin-top: 3rem;
         width: 100%;
         transform: translateX(-50%);
-
+        z-index: unset;
     }
 
     main .bottom table {
@@ -2235,7 +2235,7 @@ h3.create-insurance-instructions {
         left: unset;
         width: unset;
     }
-    
+
     main form#search-doc .form-row {
         display: flex;
         flex-direction: column;
