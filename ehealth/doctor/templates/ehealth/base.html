@@ -34,7 +34,7 @@
     
     <div class="container">
         {% include "ehealth/aside.html"%}
-    	  <main>
+    	  <main class="{% if book %}book-appointment{%endif%}">
     	  	<h1>{{title}}</h1>
     	
     	{% block content %}
