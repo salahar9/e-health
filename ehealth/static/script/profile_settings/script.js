@@ -78,6 +78,7 @@ try {
 }
 
 const privacy_toggle=document.getElementById("privacy")
+
 if (privacy_toggle != null){
 
 
