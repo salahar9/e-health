@@ -173,7 +173,7 @@
 
 {% block content2 %}
             <!--------------- END OF TOP ------------>
-            {% if  not user.person.pharmacist.INP  %}
+            {% if  not user.person.pharmacie.INP  %}
             <div id="become-doctor" class="section-1">
                     <h2>Become a Doctor</h2>
                     <div class="rows privacy-settings">
@@ -284,7 +284,7 @@
                     </div>
                 </div>
                 {%endif%}
-                <p> HEEEEEEEEY {{user.person.doctor.INP}} {{user.person.pharmacist.INP}}</p>
+                <p> HEEEEEEEEY {{user.person.doctor.INP}} {{user.person.pharmacie.INP}}</p>
                 {% if  not user.person.doctor.INP  %}
                 <div id="become-pharmacist" class="section-1">
                     <h2>Become a Pharmacist</h2>
