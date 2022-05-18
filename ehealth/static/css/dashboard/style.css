@@ -931,7 +931,7 @@ main form#form-med .form-row {
 }
 
 main form#search-doc .form-row {
-    grid-template-columns: 12rem auto 5rem;
+    grid-template-columns: 12rem auto;
 }
 
 
@@ -1934,9 +1934,6 @@ h3.create-insurance-instructions {
         right: 1rem;
     }
 
-    main .booking-dashboard .calendar.card {
-        /* width: 80%; */
-    }
 
     .landing.register,
     .landing {
@@ -2217,10 +2214,6 @@ h3.create-insurance-instructions {
         height: 5rem;
     }
 
-    body.messages {
-        /* overflow: hidden */
-    }
-
     .recent-messages-body .all-chats {
         max-height: 52vh;
     }
@@ -2241,6 +2234,11 @@ h3.create-insurance-instructions {
         position: unset;
         left: unset;
         width: unset;
+    }
+    
+    main form#search-doc .form-row {
+        display: flex;
+        flex-direction: column;
     }
 }
 /* SALAH ADDED DASHBOARD CSS */
