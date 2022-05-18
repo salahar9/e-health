@@ -103,13 +103,16 @@ def register_user(request):
 			email=request.POST["email"]
 			phone=request.POST["phone"]
 			if password==password2:
-				us=User.objects.create_user(username=username,password=password,email=email)
-				per=Person(user=us,nom=last_name,prenom=first_name,sexe=sexe,datedenaissance=datedenaissance,ville=ville,adresse=adresse,phone=phone)
-				per.save()
-				pat=Patient(person_id=per)
-				pat.save()
-				messages.add_message(request, messages.ERROR, 'You can login now')
-				return redirect('landing:login')
+				try:
+					us=User.objects.create_user(username=username,password=password,email=email)
+					per=Person(user=us,nom=last_name,prenom=first_name,sexe=sexe,datedenaissance=datedenaissance,ville=ville,adresse=adresse,phone=phone)
+					per.save()
+					pat=Patient(person_id=per)
+					pat.save()
+					messages.add_message(request, messages.ERROR, 'You can login now')
+					return redirect('landing:login')
+				except:
+					us.delete()
 			else:
 				
 				messages.add_message(request, messages.ERROR, 'Something is Wrong')
