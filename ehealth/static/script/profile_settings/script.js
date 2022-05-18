@@ -79,7 +79,8 @@ try {
 
 const privacy_toggle=document.getElementById("privacy")
 
-if (privacy_toggle != null){
+if ( privacy_toggle != null )
+{
 
 
 privacy_toggle.addEventListener("change", e => {
