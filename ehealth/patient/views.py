@@ -212,5 +212,5 @@ def prescriptions(request):
 							appoint_count=Count("appointements",filter=Q(appointements__patient_id=pat),distinct=True)
 						)
 		
-	meds=Meds.objects.filter(ordonnance__id_visite__patient_id=pat).order_by("-ordonnance__date_purchase").select_related("ordonnance")
+	meds=Meds.objects.filter(ordonnance__id_visite__patient_id=pat).order_by("-ordonnance__date_purchase")
 	return render(request, 'patient/prescriptions.html', {"prescriptions": True,"meds":meds,"num_doc":doc_stat["tot"],"num_appointement":doc_stat["appoint_count"],"num_visite":doc_stat["visites_sum"]})
