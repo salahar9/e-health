@@ -47,7 +47,7 @@
 
                             <div class="form-row">
                                 <label for="">Gender</label>
-                                <input name="sexe" id="input-3" class="primary" type="text" value="{{user.person.sexe}}"
+                                <input name="sexe" id="input-3" class="primary" type="text" value="{% if user.person.sexe == 'M'  %} Male {%else%} Female {%endif%}"
                                     readonly>
                                 <button type="button" id="edit-3">
                                     <h4 class="text-muted">Edit</h4>

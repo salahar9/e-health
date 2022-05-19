@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
-from django.db.models import (Model, TextField, DateTimeField, ForeignKey,
-                              CASCADE)
+from django.db.models import (Model, TextField, DateTimeField, ForeignKey,CASCADE)
 from landing.models import Person
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
