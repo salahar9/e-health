@@ -206,10 +206,14 @@ def search_doc(request):
 
 @check_patient
 def prescriptions(request):
-	doc_stat=Doctor.objects.filter(visites__patient_id=pat,visites__date_created__gte=filt).aggregate(
+	pat=request.user.person.patient
+	doc_stat=Doctor.objects.filter(visites__patient_id=pat).aggregate(
 							tot=Count("INP",distinct=True),visites_sum=Count("visites",filter=Q(visites__patient_id=pat),distinct=True),
 							appoint_count=Count("appointements",filter=Q(appointements__patient_id=pat),distinct=True)
 						)
 		
-	meds=Meds.objects.filter(ordonnance__id_visite__patient_id=pat).order_by("-ordonnance__date_purchase").select_related("ordonnance")
-	return render(request, 'patient/prescriptions.html', {"prescriptions": True,"meds":meds,"num_doc":doc_stat["tot"],"num_appointement":doc_stat["appoint_count"],"num_visite":doc_stat["visites_sum"]})
+	meds=Ordonnance.objects.filter(le_type="Medicaments",id_visite__patient_id=pat).order_by("-date_purchase")
+	meds=Paginator(meds,PAGINATION_COUNT)
+	page_number = request.GET.get('page')
+	page_obj = meds.get_page(page_number)
+	return render(request, 'patient/prescriptions.html', {"prescriptions": True,"meds":page_obj,"num_doc":doc_stat["tot"],"num_appointement":doc_stat["appoint_count"],"num_visite":doc_stat["visites_sum"]})
