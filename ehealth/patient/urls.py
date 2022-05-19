@@ -16,5 +16,6 @@ urlpatterns=[
 	path("add_mutuelle/",mviews.add_mutuelle,name="add_mutuelle"),
 	path("presc/<int:pk>",views.get_other_presc,name="others_presc"),
 	path("book/<int:doc>",views.book_appointement,name="book"),
-	path("search",views.search_doc,name="search")
+	path("search", views.search_doc, name="search"),
+	path("prescriptions", views.prescriptions, name="prescriptions")
 ]

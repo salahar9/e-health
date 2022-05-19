@@ -640,9 +640,13 @@ main form.user-settings .submit-btn:hover {
 main form.add-form button .submit-btn {
     border: 2px solid var(--color-primary);
     margin: 0 auto;
-    position: fixed;
+    /* position: fixed; */
     bottom: 2rem;
     right: 1rem;
+}
+
+main form.add-form button .submit-btn#submit{
+    position: unset !important;
 }
 
 .visite.submit-btn {

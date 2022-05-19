@@ -202,3 +202,6 @@ def search_doc(request):
 		return render(request,"patient/search_result.html",{"book":True,"docs":docs})
 	else:
 		return render(request,"patient/search.html",{"book":True})
+
+def prescriptions(request):
+	return render(request, 'patient/prescriptions.html')
