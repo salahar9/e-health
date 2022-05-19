@@ -143,13 +143,14 @@
                     </div>
                 </div>
             </div>
-       
+
         {% block content2 %}
         {%endblock%}
-
-        
+         
     </div>
-
+{% if doctor  or pharmacist %}
+<script src="{% static 'script/websockets/script.js' %}" crossorigin="anonymous"></script>
+{%endif%}
     <script src="{% static 'script/dashboard/script.js' %}"></script>
     {% if add_trai %}
     <script src="{% static 'script/ordonnance/main.js' %}"></script>
