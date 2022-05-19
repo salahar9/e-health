@@ -207,7 +207,7 @@ def search_doc(request):
 @check_patient
 def prescriptions(request):
 	pat=request.user.person.patient
-	doc_stat=Doctor.objects.filter(visites__patient_id=pat,visites__date_created__gte=filt).aggregate(
+	doc_stat=Doctor.objects.filter(visites__patient_id=pat).aggregate(
 							tot=Count("INP",distinct=True),visites_sum=Count("visites",filter=Q(visites__patient_id=pat),distinct=True),
 							appoint_count=Count("appointements",filter=Q(appointements__patient_id=pat),distinct=True)
 						)
