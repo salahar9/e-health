@@ -53,15 +53,18 @@
 
             <thead>
                 <tr>
-                    <th>{% if patient  %}Doctor Name {%else%} Patient Name{%endif%}</th>
-                    <th>Phone Number</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Details</th>
+                    <th>Brand Name</th>
+                    <th>Generic Name</th>
+                    <th>Strength</th>
+                    <th>Pack</th>
+                    <th>Form</th>
+                    <th>Quantity/day</th>
+                    <th>Usage Description</th>
                 </tr>
             </thead>
 
-            <!-- <tbody>
+            {% comment %}
+            <tbody>
                 {% for r in data %}
                 <tr>
                     <td>
@@ -111,11 +114,21 @@
                 {%endfor%}
 
 
-            </tbody> -->
-            <tbody>
-                
             </tbody>
-        </div>
+            {% comment %}
+
+            <tbody>
+                <tr>
+                    <td>PRETERAX</td>
+                    <td>INDAPAMIDE / PERINDOPRIL</td>
+                    <td>0.625 / 2</td>
+                    <td>1 BOITE 30 COMPRIME</td>
+                    <td>COMPRIME SECABLE</td>
+                    <td>2</td>
+                    <td>Kol 2 f nhar w7da 9bl lghda o w7da 9bl l3cha o n3as mzyan</td>
+                </tr>
+            </tbody>
+    </div>
     </table>
 
     <div class="pagination">
