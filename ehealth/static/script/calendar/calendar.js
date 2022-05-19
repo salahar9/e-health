@@ -175,4 +175,4 @@ all_intervals.forEach(interval => {
     })
 })
 }
-catch(){}
+catch(error){}
