@@ -1,3 +1,4 @@
+try {
 let calendar = document.querySelector('.calendar')
 let month_list = calendar.querySelector('.month-list')
 let month_picker = calendar.querySelector('#month-picker')
@@ -173,3 +174,5 @@ all_intervals.forEach(interval => {
         document.querySelector("#appointement-time").value = time
     })
 })
+}
+catch(){}
