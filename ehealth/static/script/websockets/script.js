@@ -1,5 +1,5 @@
-const d=document.getElementById('websocket')
 const id  = JSON.parse(document.getElementById('doc_id').textContent);
+const phar_id  = JSON.parse(document.getElementById('phar_id').textContent);
 
 const close=document.querySelector('.card .close')
 if (close !=null){
