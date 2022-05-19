@@ -203,5 +203,7 @@ def search_doc(request):
 	else:
 		return render(request,"patient/search.html",{"book":True})
 
+
+@check_patient
 def prescriptions(request):
 	return render(request, 'patient/prescriptions.html')
