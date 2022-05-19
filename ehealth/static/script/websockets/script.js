@@ -1,6 +1,12 @@
-const id  = JSON.parse(document.getElementById('doc_id').textContent);
-const phar_id  = JSON.parse(document.getElementById('phar_id').textContent);
 
+const id  = JSON.parse(document.getElementById('doc_id'));
+if (id != null){
+    id=id.textContent
+}
+const phar_id  = JSON.parse(document.getElementById('phar_id'));
+if (phar_id != null){
+    phar_id=phar_id.textContent
+}
 const close=document.querySelector('.card .close')
 if (close !=null){
     close.addEventListener("click",
