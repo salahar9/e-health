@@ -126,7 +126,7 @@ def profile_register(request):
 		# try:
 			
 			sexe=request.POST["sexe"]
-			datedenaissance=request.POST["date"]
+			datedenaissance=request.POST["datedenaissance"]
 			adresse=request.POST["adresse"]
 			ville=request.POST["ville"]
 			phone=request.POST["phone"]
