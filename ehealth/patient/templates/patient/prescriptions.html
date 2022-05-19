@@ -49,15 +49,11 @@
     <h2>{% if patient and get_patient %}All Doctors {% elif get_patient and doctor%}All Patients {%elif visite_seek%}All
         Consultations{%endif%}</h2>
     <div class="card">
-        <table>
+        <table class="prescriptions">
 
             <thead>
                 <tr>
                     <th>Brand Name</th>
-                    <th>Generic Name</th>
-                    <th>Strength</th>
-                    <th>Pack</th>
-                    <th>Form</th>
                     <th>Quantity/day</th>
                     <th>Usage Description</th>
                 </tr>
@@ -120,10 +116,6 @@
             <tbody>
                 <tr>
                     <td>PRETERAX</td>
-                    <td>INDAPAMIDE / PERINDOPRIL</td>
-                    <td>0.625 / 2</td>
-                    <td>1 BOITE 30 COMPRIME</td>
-                    <td>COMPRIME SECABLE</td>
                     <td>2</td>
                     <td>Kol 2 f nhar w7da 9bl lghda o w7da 9bl l3cha o n3as mzyan</td>
                 </tr>
