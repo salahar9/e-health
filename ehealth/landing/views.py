@@ -124,8 +124,7 @@ def register_user(request):
 @require_POST
 def profile_register(request):
 		# try:
-			first_name=request.POST["first_name"]
-			last_name=request.POST["last_name"]
+			
 			sexe=request.POST["sexe"]
 			datedenaissance=request.POST["date"]
 			adresse=request.POST["adresse"]
@@ -136,8 +135,6 @@ def profile_register(request):
 			request.user.person.adresse=adresse
 			request.user.person.phone=phone
 			request.user.person.datedenaissance=datedenaissance
-			request.user.person.prenom=first_name
-			request.user.person.nom=last_name
 			request.user.person.phone=phone
 
 			request.user.person.save()
