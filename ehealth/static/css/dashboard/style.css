@@ -448,7 +448,7 @@ main form#create_insurance button h2,
     z-index: 1;
     height: 100vh;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%),
-        url(../images/Background.png);
+        url(http://3.18.29.109/static/images/landing/Background.png);
 }
 
 
@@ -931,7 +931,7 @@ main form#form-med .form-row {
 }
 
 main form#search-doc .form-row {
-    grid-template-columns: 12rem auto 5rem;
+    grid-template-columns: 12rem auto;
 }
 
 
@@ -1854,6 +1854,69 @@ h3.create-insurance-instructions {
 }
 
 /* ====================================================
+==================== PAGINATION ====================
+======================================================= */
+
+.pagination {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination .step-links .all-pages,
+.pagination .step-links {
+    display: flex;
+    align-items: center;
+}
+
+.pagination .step-links .arrows{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--color-primary);
+    border-radius: 2rem;
+    padding-inline: 0.5rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.pagination .step-links .all-pages>a.page-num {
+    border: 1.5px solid var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.2rem;
+    transition: all 300ms ease;
+}
+
+.pagination .step-links .all-pages>a.page-num:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.pagination .step-links .all-pages>a.page-num.more:hover {
+    background-color: unset;
+    color: unset;
+}
+
+.pagination .step-links .all-pages>a.page-num:last-child {
+    margin-right: 0.8rem;
+}
+
+.pagination .step-links .all-pages>a.page-num:first-child{
+    margin-left: 0.8rem;
+
+}
+
+.pagination .step-links .all-pages>a.page-num.current {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* ====================================================
 ==================== MEDIA QUERIES ====================
 ======================================================= */
 
@@ -1934,9 +1997,6 @@ h3.create-insurance-instructions {
         right: 1rem;
     }
 
-    main .booking-dashboard .calendar.card {
-        /* width: 80%; */
-    }
 
     .landing.register,
     .landing {
@@ -2083,7 +2143,7 @@ h3.create-insurance-instructions {
         margin-top: 3rem;
         width: 100%;
         transform: translateX(-50%);
-
+        z-index: unset;
     }
 
     main .bottom table {
@@ -2109,6 +2169,7 @@ h3.create-insurance-instructions {
     .rigth {
         width: 94%;
         margin: 0 auto 4rem;
+        position: unset;
     }
 
     .rigth .top {
@@ -2216,10 +2277,6 @@ h3.create-insurance-instructions {
         height: 5rem;
     }
 
-    body.messages {
-        /* overflow: hidden */
-    }
-
     .recent-messages-body .all-chats {
         max-height: 52vh;
     }
@@ -2240,6 +2297,11 @@ h3.create-insurance-instructions {
         position: unset;
         left: unset;
         width: unset;
+    }
+
+    main form#search-doc .form-row {
+        display: flex;
+        flex-direction: column;
     }
 }
 /* SALAH ADDED DASHBOARD CSS */
