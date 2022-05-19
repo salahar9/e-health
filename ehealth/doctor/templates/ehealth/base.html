@@ -40,6 +40,73 @@
     	{% block content %}
         	
         {% endblock %}
+        {% if doctor or pharmacist %}
+        <div id="popup" class="popup-holder pharmacy hide ">
+
+                    <div class="card profile">
+                     <div class="close">
+                       <span class="material-icons-round">
+                            cancel
+                        </span>
+                     </div>
+                    <div class="left">
+                        <div class="big-profile-photo">
+                            <img id="visite-img" src="http://3.18.29.109/media/profile_pics/269837925_4389726447803609_487430985084605668_n.jpg" alt="">
+                        </div>
+                        <div>
+                        
+                            <h2 id="visite-name">Essordo Abdellah</h2>
+                            <h3 id="visite-email" class="text-muted">abdoessordo01@gmail.com</h3>
+                       
+                         </div>
+                         <div class="buttons">
+                            <h3><a id="visite-visite"href="">Add treatments</a>
+                            </h3><h3><a id="visite-profile" href="">View Profile</a></h3>
+                        </div>
+                       
+                    </div>
+
+                        <div class="middle">
+                            
+                           
+
+                        </div>
+
+                    <div class="bottom">
+                        
+                        <div class="row">
+                            <div class="info-elem">
+                                <h3 class="text-muted">Gender</h3>
+                                <h3 id="visite-sexe" class="user-info">M</h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">Birthday</h3>
+                                <h3 id="visite-nais" class="user-info"></h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">Phone Number</h3>
+                                <h3 id="visite-phone" class="user-info">0672407504</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="info-elem">
+                                <h3 class="text-muted">CIN</h3>
+                                <h3 id="visite-username" class="user-info">K570940</h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">Adress</h3>
+                                <h3 id="visite-adress" class="user-info">Casablanca</h3>
+                            </div>
+                            <div class="info-elem">
+                                <h3 class="text-muted">City</h3>
+                                <h3 id="visite-ville" class="user-info">Casablanca</h3>
+                            </div>
+                        </div>
+                            
+                        </div>
+
+                    </div>
+                    {%endif%}
          </main>
     	<div class="rigth {% if profile_settings %}settings{%endif%}">
             <div class="top">
