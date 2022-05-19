@@ -1,17 +1,19 @@
 {% load static %}
 <div class="insights dashboard">
+                {% if doctor %}
                 <div class="card">
                     <span class="material-icons-sharp">people_alt</span>
                     <div class="middle">
 
-                        <h3>{% if doctor %}Total Patients{% elif patient %} {% elif pharmacist %} Total Clients{% endif %}</h3>
-                        <h1>{% if doctor %}{{num_doc}}{% elif pharmacist %} Total Clients{% endif %}</h1>
+                        <h3>Total Patients</h3>
+                        <h1>{{num_doc}} </h1>
 
                     </div>
                     <small class="text-muted">
-                        {% if doctor %}Last Week{% elif pharmacist %} Last Week{% endif %}
+                        {% if doctor %}Last Week{% endif %}
                     </small>
                 </div>
+                {%endif%}
                 <!--------------- END OF CARD 1 ------------>
 
                 <div class="card">

@@ -99,6 +99,7 @@
                             <span class="material-icons-sharp"> open_in_new</span>
                         </a>
                         {% elif visite_seek   and patient or other_visite_seek and patient %}
+                    {% if get_patient %}
                     <td class="primary">
                         <a class="see-detils-btn" href=" {% url 'patient:get_visite_details' r.id %}">
                             <span class="material-icons-sharp"> open_in_new</span>
@@ -107,6 +108,7 @@
 
                         {%endif%}
                     </td>
+                    {%endif%}
                 </tr>
                 {%endfor%}
 
