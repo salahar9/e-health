@@ -62,9 +62,9 @@
             <tbody>
                 {%for ord in meds %}
                         <tr>
-                            <td>{{ord.nom}}</td>
-                            <td>{{ord.ordonnane}}</td>
-                            <td>{{ord.ordonnance.description_de_traitement}}</td>
+                            <td>{{ord.id_medicament.nom}}</td>
+                            <td>{{ord.quantite}}</td>
+                            <td>{{ord.description_de_traitement}}</td>
                         </tr>
                 {%empty%}
                         No records
