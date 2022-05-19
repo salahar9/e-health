@@ -136,7 +136,7 @@ def profile_register(request):
 			request.user.person.phone=phone
 			request.user.person.datedenaissance=datedenaissance
 			request.user.person.phone=phone
-
+			request.user.person.sexe=sexe
 			request.user.person.save()
 			messages.add_message(request,messages.SUCCESS,"Values Updated")
 			return JsonResponse({"data":"Done"})
