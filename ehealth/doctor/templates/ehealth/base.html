@@ -146,11 +146,17 @@
 
         {% block content2 %}
         {%endblock%}
-         
+
     </div>
-{% if doctor  or pharmacist %}
-<script src="{% static 'script/websockets/script.js' %}" crossorigin="anonymous"></script>
-{%endif%}
+    {% if doctor %}
+        {{user.person.doctor.pk|json_script:"doc_id" }}
+    {% elif pharmacie %}
+        {{user.person.pharmacie.pk|json_script:"phar_id" }}
+    {%endif%}
+
+    {% if doctor  or pharmacist %}
+        <script src="{% static 'script/websockets/script.js' %}" crossorigin="anonymous"></script>
+    {%endif%}
     <script src="{% static 'script/dashboard/script.js' %}"></script>
     {% if add_trai %}
     <script src="{% static 'script/ordonnance/main.js' %}"></script>

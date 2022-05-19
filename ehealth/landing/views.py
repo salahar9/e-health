@@ -125,12 +125,18 @@ def register_user(request):
 def profile_register(request):
 		# try:
 			
+			sexe=request.POST["sexe"]
+			datedenaissance=request.POST["datedenaissance"]
 			adresse=request.POST["adresse"]
 			ville=request.POST["ville"]
 			phone=request.POST["phone"]
+			
 			request.user.person.ville=ville
 			request.user.person.adresse=adresse
 			request.user.person.phone=phone
+			request.user.person.datedenaissance=datedenaissance
+			request.user.person.phone=phone
+			request.user.person.sexe=sexe
 			request.user.person.save()
 			messages.add_message(request,messages.SUCCESS,"Values Updated")
 			return JsonResponse({"data":"Done"})

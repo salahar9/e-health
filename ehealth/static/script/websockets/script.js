@@ -1,7 +1,13 @@
-const d=document.getElementById('websocket')
-const id  = JSON.parse(document.getElementById('doc_id').textContent);
 
-const close=document.querySelector('.card .close')
+id  = (document.getElementById('doc_id'));
+if (id != null){
+    id=JSON.parse(id.textContent)
+}
+phar_id  = JSON.parse(document.getElementById('phar_id'));
+if (phar_id != null){
+    phar_id=JSON.parse(phar_id.textContent)
+}
+close=document.querySelector('.card .close')
 if (close !=null){
     close.addEventListener("click",
         ()=>{
