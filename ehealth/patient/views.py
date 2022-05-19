@@ -213,4 +213,7 @@ def prescriptions(request):
 						)
 		
 	meds=Ordonnance.objects.filter(le_type="Medicaments",id_visite__patient_id=pat).order_by("-date_purchase")
+	meds=Paginator(meds,PAGINATION_COUNT)
+	page_number = request.GET.get('page')
+	page_obj = paginator.get_page(page_number)
 	return render(request, 'patient/prescriptions.html', {"prescriptions": True,"meds":meds,"num_doc":doc_stat["tot"],"num_appointement":doc_stat["appoint_count"],"num_visite":doc_stat["visites_sum"]})
