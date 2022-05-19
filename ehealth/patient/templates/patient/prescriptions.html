@@ -53,73 +53,33 @@
 
             <thead>
                 <tr>
-                    <th>Brand Name</th>
+                    <th>Name</th>
                     <th>Quantity/day</th>
                     <th>Usage Description</th>
                 </tr>
             </thead>
 
-            {% comment %}
+         
             <tbody>
-                {% for r in data %}
-                <tr>
-                    <td>
-                        <a class="patient-name" href="
-                                {% if doctor and visite_seek %} {% url 'patient:profile' r.patient_id.pk %}
-                                {% elif doctor and get_patient %} {% url 'patient:profile' r.pk %}
-                                {% elif patient and get_patient   %} {% url 'patient:book' r.pk %}
-                                {% elif patient and visite_seek  or other_visite_seek %} {% url 'patient:book' r.medcin_id.pk %}
-                                
-                                {%endif%}
+                        
+                        {%for ord in meds %}
+                        <tr>
+                            <td>{{ord.nom}}</td>
+                           
+                          
+                            <td>{{ord.ordonnane.quantite}}</td>
+                            <td>{{ord.ordonnance.description_de_traitement}}</td>
+                        </tr>
+                        {%empty%}
+                        No records
+                        {%endfor%}
+                     
+                        
 
+                    </tbody>
+           
 
-                                ">
-                            {% if visite_seek and doctor  %}{{r.patient_id.person_id.nom}}
-                            {{r.patient_id.person_id.prenom}}
-
-                            {% elif visite_seek and patient or other_visite_seek %}{{r.medcin_id.person_id.nom}}
-                            {{r.medcin_id.person_id.prenom}}
-                            {%elif get_patient%}
-
-                            {{ r.person_id.nom }}
-
-                            {{ r.person_id.prenom }} {%endif%}
-                        </a>
-                    </td>
-                    <td> {% if visite_seek or other_visite_seek %} {{r.patient_id.person_id.phone}}
-                        {% elif get_patient %}{{r.person_id.phone}}{%endif%}</td>
-                    <td>{% if visite_seek or  other_visite_seek %}{{r.date_created|date:"D d M Y" }}{% elif get_patient %}
-                        {{r.visites.first.date_created|date:"D d M Y"}}{%endif%} </td>
-                    <td>{% if visite_seek  or other_visite_seek%}{{r.date_created|time:"H:i" }}{% elif get_patient %}
-                        {{r.visites.first.date_created|time:"H:i"}} {%endif%} </td>
-                    {% if visite_seek   and doctor or other_visite_seek and doctor %}
-                    <td class="primary">
-                        <a class="see-detils-btn" href=" {% url 'doctor:get_visite_details' r.id %}">
-                            <span class="material-icons-sharp"> open_in_new</span>
-                        </a>
-                        {% elif visite_seek   and patient or other_visite_seek and patient %}
-                    <td class="primary">
-                        <a class="see-detils-btn" href=" {% url 'patient:get_visite_details' r.id %}">
-                            <span class="material-icons-sharp"> open_in_new</span>
-                        </a>
-
-
-                        {%endif%}
-                    </td>
-                </tr>
-                {%endfor%}
-
-
-            </tbody>
-            {% endcomment %}
-
-            <tbody>
-                <tr>
-                    <td>PRETERAX</td>
-                    <td>2</td>
-                    <td>Kol 2 f nhar w7da 9bl lghda o w7da 9bl l3cha o n3as mzyan</td>
-                </tr>
-            </tbody>
+            
     </div>
     </table>
 
