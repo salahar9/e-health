@@ -1234,7 +1234,7 @@ div#become-doctor.section-1 {
 
 /* ========== SAMLL LAPTOPS AND TABLETS ========== */
 
-@media screen and (max-width:1500px) {
+@media screen and (max-width:1200px) {
     .container {
         width: 94%;
         grid-template-columns: 7rem auto 18rem;
