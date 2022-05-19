@@ -1,9 +1,9 @@
 
-const id  = (document.getElementById('doc_id'));
+id  = (document.getElementById('doc_id'));
 if (id != null){
     id=JSON.parse(id.textContent)
 }
-const phar_id  = JSON.parse(document.getElementById('phar_id'));
+phar_id  = JSON.parse(document.getElementById('phar_id'));
 if (phar_id != null){
     phar_id=JSON.parse(phar_id.textContent)
 }
