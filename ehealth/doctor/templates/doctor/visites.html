@@ -57,7 +57,7 @@
                     <th>Phone Number</th>
                     <th>Date</th>
                     <th>Time</th>
-                    <th>Details</th>
+                    {% if visite_seek or other_visite_seek %}<th>Details</th> {%endif%}
                 </tr>
             </thead>
 
@@ -105,7 +105,7 @@
                             <span class="material-icons-sharp"> open_in_new</span>
                         </a>
 
-                    
+
                    {%endif%}
                     </td>
                     
