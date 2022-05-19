@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from chat.models import MessageModel
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+
 def chat(request,pk):
 	return render(request,"chat/chats.html",{})
 @require_POST
