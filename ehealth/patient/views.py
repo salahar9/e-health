@@ -206,4 +206,4 @@ def search_doc(request):
 
 @check_patient
 def prescriptions(request):
-	return render(request, 'patient/prescriptions.html')
+	return render(request, 'patient/prescriptions.html', {"prescriptions": True})
