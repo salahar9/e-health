@@ -2150,6 +2150,11 @@ h3.create-insurance-instructions {
         display: none;
     }
 
+    main .bottom table.prescriptions thead tr>th:last-child,
+    main .bottom table.prescriptions tbody tr>td:last-child {
+        display: block;
+    }
+
     main .bottom table#insurances tbody tr>td:last-child,
     main .bottom table#insurances thead tr>th:last-child {
         display: block;
