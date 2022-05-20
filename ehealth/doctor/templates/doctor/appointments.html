@@ -1,0 +1,159 @@
+{% extends 'ehealth/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Appointments</h1>
+<div class="insights ">
+    <div class="card">
+        <span class="material-icons-sharp">people_alt</span>
+        <div class="middle">
+
+            <h3>{%if other_visite_seek%}Total Doctors{%elif doctor %}Total Patients{%elif patient %}Total
+                Doctors{%endif%}</h3>
+            <h1>{{num_doc}}</h1>
+
+        </div>
+        <small class="text-muted">
+            Last Week
+        </small>
+    </div>
+    <!-- ------------- END OF CARD 1 ---------- -->
+
+    <div class="card">
+        <span class="material-icons-sharp">event</span>
+        <div class="middle">
+            <h3>Appointments</h3>
+            <h1>{{num_appointement}} </h1>
+        </div>
+        <small class="text-muted">
+            Last Week
+        </small>
+    </div>
+    <!-- ------------- END OF CARD 2 ---------- -->
+
+    <div class="card">
+        <span class="material-icons-sharp">medication</span>
+        <div class="middle">
+            <h3>Consultations</h3>
+            <h1>{{num_visite}}</h1>
+        </div>
+        <small class="text-muted">
+            Last Week
+        </small>
+    </div>
+    <!-- ------------- END OF CARD 4 ---------- -->
+</div>
+<!-- ------------- END OF INSIGHTS ---------- -->
+
+<div class="bottom consultations">
+    <h2>{% if patient and get_patient %}All Doctors {% elif get_patient and doctor%}All Patients {%elif visite_seek%}All
+        Consultations{%endif%}</h2>
+    <div class="card">
+        <table>
+
+            <thead>
+                <tr>
+                    <th>{% if patient  %}Doctor Name {%else%} Patient Name{%endif%}</th>
+                    <th>Phone Number</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    {% if visite_seek or other_visite_seek %}<th>Details</th> {%endif%}
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for r in data %}
+                <tr>
+                    <td>
+                        <a class="patient-name" href="
+                                {% if doctor and visite_seek %} {% url 'patient:profile' r.patient_id.pk %}
+                                {% elif doctor and get_patient %} {% url 'patient:profile' r.pk %}
+                                {% elif patient and get_patient   %} {% url 'patient:book' r.pk %}
+                                {% elif patient and visite_seek  or other_visite_seek %} {% url 'patient:book' r.medcin_id.pk %}
+                                
+                                {%endif%}
+
+
+                                ">
+                            {% if visite_seek and doctor  %}{{r.patient_id.person_id.nom}}
+                            {{r.patient_id.person_id.prenom}}
+
+                            {% elif visite_seek and patient or other_visite_seek %}{{r.medcin_id.person_id.nom}}
+                            {{r.medcin_id.person_id.prenom}}
+                            {%elif get_patient%}
+
+                            {{ r.person_id.nom }}
+
+                            {{ r.person_id.prenom }} {%endif%}
+                        </a>
+                    </td>
+                    <td> {% if visite_seek or other_visite_seek %} {{r.patient_id.person_id.phone}}
+                        {% elif get_patient %}{{r.person_id.phone}}{%endif%}</td>
+                    <td>{% if visite_seek or  other_visite_seek %}{{r.date_created|date:"D d M Y" }}{% elif get_patient %}
+                        {{r.visites.first.date_created|date:"D d M Y"}}{%endif%} </td>
+                    <td>{% if visite_seek  or other_visite_seek%}{{r.date_created|time:"H:i" }}{% elif get_patient %}
+                        {{r.visites.first.date_created|time:"H:i"}} {%endif%} </td>
+                    {% if visite_seek   and doctor or other_visite_seek and doctor %}
+                    <td class="primary">
+                        <a class="see-detils-btn" href=" {% url 'doctor:get_visite_details' r.id %}">
+                            <span class="material-icons-sharp"> open_in_new</span>
+                        </a>
+                        {% elif visite_seek   and patient or other_visite_seek and patient %}
+
+                    <td class="primary">
+                        <a class="see-detils-btn" href=" {% url 'patient:get_visite_details' r.id %}">
+                            <span class="material-icons-sharp"> open_in_new</span>
+                        </a>
+
+
+                        {%endif%}
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        <div class="pagination">
+            <span class="step-links">
+                <!-- hadi prev -->
+                <a href="?page=9" class="arrows">
+                    <span class="material-icons-sharp">
+                        arrow_back
+                    </span>
+                    Prev
+                </a>
+
+                <div class="all-pages">
+
+                    <!-- hadi first -->
+                    <a href="?page=1" class="page-num">1</a>
+
+                    <a class="page-num more">...</a>
+
+                    <!-- hadi prev -->
+                    <a href="?page=9" class="page-num">9</a>
+
+                    <!-- hadi current -->
+                    <a href="?page=10" class="page-num current">10</a>
+
+                    <!-- hadi next -->
+                    <a href="?page=11" class="page-num">11</a>
+
+                    <a class="page-num more">...</a>
+
+                    <!-- hadi last -->
+                    <a href="?page=19" class="page-num">19</a>
+                </div>
+
+                <!-- hadi next -->
+                <a href="?page=11" class="arrows">
+                    Next
+                    <span class="material-icons-sharp">
+                        arrow_forward
+                    </span>
+                </a>
+
+            </span>
+        </div>
+    </div>
+
+    {% endblock content %}

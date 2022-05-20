@@ -14,5 +14,5 @@ urlpatterns=[
 	path("fill",views.fill),
 	path('add_note/<int:visite>',views.add_note,name="add_note"),
 	path('accept_app/<int:app>',views.accept_app,name="accept_app"),
-
+	path('appointments', views.appointments, name='appointments'),
 ]
