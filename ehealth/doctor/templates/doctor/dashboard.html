@@ -87,9 +87,9 @@
                 <img src="{{pat.person_id.img.avatar.url}}" alt="">
             </div>
             <div class="description">
-                {% url 'patient:profile' pat.pk %}
+
                 <p>
-                    <a href="http://3.18.29.109/patient/profile/10">
+                    <a href="{% url 'patient:profile' pat.pk %}">
                         <b>{{pat.person_id.nom}} {{pat.person_id.prenom}}</b>
                     </a>
                     <br>
