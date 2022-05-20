@@ -1,0 +1,818 @@
+{%extends ehealth/base.html%}
+{%block content%}
+                <h1>Messages</h1>
+
+                <div class="messages-container ">
+                    <div class="recent-messages card">
+                        <div class="header">
+                            <div class="header-content">
+
+                                <h2>Chats</h2>
+                                <div class="new-conv">
+                                    <span class="material-icons-sharp">
+                                        add_circle_outline
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recent-messages-body">
+                            <div class="search-chat">
+                                <form action="">
+                                    <div class="search-bar">
+                                        <input type="text" placeholder="Search recent chat"
+                                            onkeyup="search_bar(this.value)">
+                                        <span class="material-icons-sharp">
+                                            search
+                                        </span>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="all-chats">
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Ruby Perrin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">2 min</h4>
+                                        <div class="messages-count">
+                                            <h3>15</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Ruby Perrin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">8:01 PM</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-2" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-2.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Ruby Perrin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Yesterday</h4>
+                                        <div class="messages-count">
+                                            <h3>3</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-3" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-3.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Ruby Perrin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-4" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-4.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Ruby Perrin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Ruby Perrin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Ruby Perrin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Ruby Perrin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Ruby Perrin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Ruby Perrin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Essordo Mohsin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Ruby Perrin</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Oussama Balouki</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Laghmich Saloua</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Oussama Zaid</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Saad Ennigro</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Salah</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+
+                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+
+                                    <div class="profile-photo">
+                                        <img src="../images/profile-1.jpg" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>Dr.Abdellah Essordo</h3>
+                                        <h4 class="text-muted">Hey, How are you?</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">Sunday</h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conversation card hide" id="conv-1">
+                        <div class="chat-header">
+                            <div class="profile">
+                                <span class="material-icons-sharp" id="back-1" onclick="back_to_recent(this.id)">
+                                    arrow_back
+                                </span>
+                                <div class="profile-photo">
+                                    <img src="../images/profile-1.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <div class="contact-details">
+                                <h3>Dr.Ruby Perrin</h3>
+                                <h4 class="text-muted">Online</h4>
+                            </div>
+
+                            <div class="chat-params">
+                                <span class="material-icons-sharp">
+                                    call
+                                </span>
+                                <span class="material-icons-sharp">
+                                    videocam
+                                </span>
+                                <span class="material-icons-sharp">
+                                    more_vert
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="conversation-body">
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="chat-input-container">
+
+                            <div class="message-input">
+                                <form action="">
+                                    <input type="text" placeholder="Type a message">
+                                </form>
+                            </div>
+
+                            <div class="buttons">
+                                <div class="attach-file">
+                                    <span class="material-icons-sharp">
+                                        attach_file
+                                    </span>
+                                </div>
+
+                                <div class="send-message">
+                                    <span class="material-icons-sharp">
+                                        send
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="conversation card hide" id="conv-2">
+                        <div class="chat-header">
+                            <div class="profile">
+                                <span class="material-icons-sharp" id="back-2" onclick="back_to_recent(this.id)">
+                                    arrow_back
+                                </span>
+                                <div class="profile-photo">
+                                    <img src="../images/profile-2.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <div class="contact-details">
+                                <h3>Dr.Ruby Perrin</h3>
+                                <h4 class="text-muted">Online</h4>
+                            </div>
+
+                            <div class="chat-params">
+                                <span class="material-icons-sharp">
+                                    call
+                                </span>
+                                <span class="material-icons-sharp">
+                                    videocam
+                                </span>
+                                <span class="material-icons-sharp">
+                                    more_vert
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="conversation-body">
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="chat-input-container">
+
+                            <div class="message-input">
+                                <form action="">
+                                    <input type="text" placeholder="Type a message">
+                                </form>
+                            </div>
+
+                            <div class="buttons">
+                                <div class="attach-file">
+                                    <span class="material-icons-sharp">
+                                        attach_file
+                                    </span>
+                                </div>
+
+                                <div class="send-message">
+                                    <span class="material-icons-sharp">
+                                        send
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="conversation card hide" id="conv-3">
+                        <div class="chat-header">
+                            <div class="profile">
+                                <span class="material-icons-sharp" id="back-3" onclick="back_to_recent(this.id)">
+                                    arrow_back
+                                </span>
+                                <div class="profile-photo">
+                                    <img src="../images/profile-3.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Dr.Ruby Perrin</h3>
+                                <h4 class="text-muted">Online</h4>
+                            </div>
+
+                            <div class="chat-params">
+                                <span class="material-icons-sharp">
+                                    call
+                                </span>
+                                <span class="material-icons-sharp">
+                                    videocam
+                                </span>
+                                <span class="material-icons-sharp">
+                                    more_vert
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="conversation-body">
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="chat-input-container">
+
+                            <div class="message-input">
+                                <form action="">
+                                    <input type="text" placeholder="Type a message">
+                                </form>
+                            </div>
+
+                            <div class="buttons">
+                                <div class="attach-file">
+                                    <span class="material-icons-sharp">
+                                        attach_file
+                                    </span>
+                                </div>
+
+                                <div class="send-message">
+                                    <span class="material-icons-sharp">
+                                        send
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="conversation card hide" id="conv-4">
+                        <div class="chat-header">
+                            <div class="profile">
+                                <span class="material-icons-sharp" id="back-4" onclick="back_to_recent(this.id)">
+                                    arrow_back
+                                </span>
+                                <div class="profile-photo">
+                                    <img src="../images/profile-4.jpg" alt="">
+                                </div>
+                            </div>
+
+                            <div class="contact-details">
+                                <h3>Dr.Ruby Perrin</h3>
+                                <h4 class="text-muted">Online</h4>
+                            </div>
+
+                            <div class="chat-params">
+                                <span class="material-icons-sharp">
+                                    call
+                                </span>
+                                <span class="material-icons-sharp">
+                                    videocam
+                                </span>
+                                <span class="material-icons-sharp">
+                                    more_vert
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="conversation-body">
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box incoming">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                            <div class="chat-box outgoing">
+                                <div class="detail">
+                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
+                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
+                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
+                                        labore exercitationem repellat.</h3>
+                                    <small class="text-muted">8:42 AM</small>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="chat-input-container">
+
+                            <div class="message-input">
+                                <form action="">
+                                    <input type="text" placeholder="Type a message">
+                                </form>
+                            </div>
+
+                            <div class="buttons">
+                                <div class="attach-file">
+                                    <span class="material-icons-sharp">
+                                        attach_file
+                                    </span>
+                                </div>
+
+                                <div class="send-message">
+                                    <span class="material-icons-sharp">
+                                        send
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+{%endblock%}

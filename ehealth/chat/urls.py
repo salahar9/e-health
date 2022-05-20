@@ -3,7 +3,7 @@ from . import views
 app_name='chat'
 urlpatterns=[
 
-	path("chat/<int:pk>/",views.chat,name="chat"),
+	path("/<int:pk>/",views.chat,name="chat"),
 	
 
 ]
