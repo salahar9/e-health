@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.db import models
 
 from landing.models import Person
@@ -7,7 +6,7 @@ from channels.layers import get_channel_layer
 
 	 
 
-class MessageModel(models.Model):
+class Message(models.Model):
     sender= models.ForeignKey(Person, on_delete=models.CASCADE)
     to= models.ForeignKey(Person, on_delete=models.CASCADE)
     timestamp = models.DateTimeField('timestamp', auto_now_add=True, editable=False)
@@ -33,6 +32,4 @@ class MessageModel(models.Model):
         super(MessageModel, self).save(*args, **kwargs)
         self.notify_ws_clients()
     class Meta:
-        verbose_name = 'message'
-        verbose_name_plural = 'messages'
         ordering = ('-timestamp',)
