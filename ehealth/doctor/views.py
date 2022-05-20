@@ -209,3 +209,8 @@ def accept_app(request,app):
 		app.status="3"
 	app.save()
 	return JsonResponse({"data":"DOne"})
+
+
+@login_required
+def reclamation(request):
+	return render(request, 'reclamation/reclamation.html')

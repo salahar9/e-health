@@ -18,6 +18,7 @@ from django.urls import include, path,re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from patient import views
+from doctor import views as doctor_views
 from django.views.static import serve
 
 
@@ -33,5 +34,6 @@ urlpatterns = [
     re_path(r'^media/(?P<path>.*)$', serve, {
             'document_root': settings.MEDIA_ROOT,
         }),
-    path("chat/",include("chat.urls"))
+    path("chat/", include("chat.urls")),
+    path("reclamation", doctor_views.reclamation),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

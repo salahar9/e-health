@@ -3,79 +3,80 @@
 
 {% block content %}
 
-            <h1>Details</h1>
+<h1>Details</h1>
 
-            <div class="insights">
-                <div class="card profile doctor">
-                    <div class="left">
-                        <div class="big-profile-photo">
-                            <img src="{{visite.medcin_id.person_id.img.avatar.url}}" alt="">
-                        </div>
-                        <div class="middle">
+<div class="insights">
+    <div class="card profile doctor">
+        <div class="left">
+            <div class="big-profile-photo">
+                <img src="{{visite.medcin_id.person_id.img.avatar.url}}" alt="">
+            </div>
+            <div class="middle">
 
-                            <h2>Dr.{{visite.medcin_id.person_id.nom}} {{visite.medcin_id.person_id.prenom}}</h2>
-                            <h3 class="text-muted">{{visite.medcin_id.person_id.user.email}}</h3>
-                            <div id="send-msg-btn">
-                                <h3>Send Message</h3>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="rigth">
-                        <div class="info">
-                            <div class="info-elem">
-                                <h3 class="text-muted">Gender</h3>
-                                <h3 class="user-info">{{visite.medcin_id.person_id.sexe}}</h3>
-                            </div>
-                            <div class="info-elem">
-                                <h3 class="text-muted">Birthdar</h3>
-                                <h3 class="user-info">{{visite.medcin_id.person_id.datedenaissance}}</h3>
-                            </div>
-                            <div class="info-elem">
-                                <h3 class="text-muted">Phone Number</h3>
-                                <h3 class="user-info">{{visite.medcin_id.person_id.phone}}</h3>
-                            </div>
-                            <div class="info-elem">
-                                <h3 class="text-muted">CIN</h3>
-                                <h3 class="user-info">{{user.username}}</h3>
-                            </div>
-                            <div class="info-elem">
-                                <h3 class="text-muted">Adress</h3>
-                                <h3 class="user-info">{{visite.medcin_id.person_id.adresse}}</h3>
-                            </div>
-                            <div class="info-elem">
-                                <h3 class="text-muted">City</h3>
-                                <h3 class="user-info">{{visite.medcin_id.person_id.ville}}</h3>
-                            </div>
-                            <div class="info-elem">
-                                <h3 class="text-muted">Speciality</h3>
-                                <h3 class="user-info">{{visite.medcin_id.speciality}}</h3>
-                            </div>
-                            <div class="info-elem">
-                                <h3 class="text-muted ">Member Status</h3>
-                                <h3 class="user-info">{% if visite.medcin_id.activated %}Active Member {%else%}NOT active{%endif%}</h3>
-                            </div>
-                        </div>
-
-                    </div>
-
+                <h2>Dr.{{visite.medcin_id.person_id.nom}} {{visite.medcin_id.person_id.prenom}}</h2>
+                <h3 class="text-muted">{{visite.medcin_id.person_id.user.email}}</h3>
+                <div id="send-msg-btn">
+                    <h3>Send Message</h3>
                 </div>
-                <!--------------- END OF CARD 1 ------------>
-                {%if show_notes %}
-                <div class="">
-                    <div class="div">
-                        <div class="section-4">
-                            <h2>Doctor's Notes</h2>
-                            
-                            {% for note in notes %}
-                            <div class="item">
-                                {% if  forloop.counter  == 1 %}
+
+            </div>
+
+        </div>
+        <div class="rigth">
+            <div class="info">
+                <div class="info-elem">
+                    <h3 class="text-muted">Gender</h3>
+                    <h3 class="user-info">{{visite.medcin_id.person_id.sexe}}</h3>
+                </div>
+                <div class="info-elem">
+                    <h3 class="text-muted">Birthdar</h3>
+                    <h3 class="user-info">{{visite.medcin_id.person_id.datedenaissance}}</h3>
+                </div>
+                <div class="info-elem">
+                    <h3 class="text-muted">Phone Number</h3>
+                    <h3 class="user-info">{{visite.medcin_id.person_id.phone}}</h3>
+                </div>
+                <div class="info-elem">
+                    <h3 class="text-muted">CIN</h3>
+                    <h3 class="user-info">{{user.username}}</h3>
+                </div>
+                <div class="info-elem">
+                    <h3 class="text-muted">Adress</h3>
+                    <h3 class="user-info">{{visite.medcin_id.person_id.adresse}}</h3>
+                </div>
+                <div class="info-elem">
+                    <h3 class="text-muted">City</h3>
+                    <h3 class="user-info">{{visite.medcin_id.person_id.ville}}</h3>
+                </div>
+                <div class="info-elem">
+                    <h3 class="text-muted">Speciality</h3>
+                    <h3 class="user-info">{{visite.medcin_id.speciality}}</h3>
+                </div>
+                <div class="info-elem">
+                    <h3 class="text-muted ">Member Status</h3>
+                    <h3 class="user-info">{% if visite.medcin_id.activated %}Active Member {%else%}NOT active{%endif%}
+                    </h3>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!--------------- END OF CARD 1 ------------>
+    {%if show_notes %}
+    <div class="">
+        <div class="div">
+            <div class="section-4">
+                <h2>Doctor's Notes</h2>
+
+                {% for note in notes %}
+                <div class="item">
+                    {% if  forloop.counter  == 1 %}
                     <div class="primary">
                         <span class="material-icons-sharp">looks_one</span>
                     </div>
-                     {% elif  forloop.counter  == 2 %}
-                      <div class="success">
+                    {% elif  forloop.counter  == 2 %}
+                    <div class="success">
                         <span class="material-icons-sharp">looks_two</span>
                     </div>
                     {%else%}
@@ -83,156 +84,158 @@
                         <span class="material-icons-sharp">looks_{{forloop.counter}}</span>
                     </div>
                     {%endif%}
-                                <div class="description">
-                                    <p><b> {{note.note}}</b></p>
-                                </div>
-                                </div>
-                    {%empty%} 
-                    <div class="item"> 
-                     <div class="primary">
                     <div class="description">
-                                    <p><b> No records</b></p>
-                    </div>
+                        <p><b> {{note.note}}</b></p>
                     </div>
                 </div>
-
-                   
-                          
-                    {%endfor%}    
-                    <div class="item add-new" id="add-note">
-                                <div>
-                                    <span class="material-icons-sharp primary">add</span>
-                                </div>
-                                <h3>
-                                    Create New
-                                </h3>
-                    </div>
-                     </div>
-                    </div>
-                    <div class="popup-holder hide">
-                        <div class="card">
-                            <div class="close-btn">
-                                <span class="material-icons-sharp">
-                                    close
-                                </span>
-                            </div>
-                            <h2>New Note</h2>
-                            <form action="{% url 'doctor:add_note' visite.pk %}" method="POST">
-                                {%csrf_token%}
-                                <div class="form-row">
-                                    <input type="text" name="note" placeholder="Enter a note">
-                                </div>
-
-                                <button type="submit" class="item add-new">
-                                    <div>
-                                        <span class="material-icons-sharp primary">add</span>
-                                    </div>
-                                    <h3>
-                                        Create New
-                                    </h3>
-                                </button>
-                            </form>
+                {%empty%}
+                <div class="item">
+                    <div class="primary">
+                        <div class="description">
+                            <p><b> No records</b></p>
                         </div>
                     </div>
-
-
-
                 </div>
-               
-                {%endif%}
- </div>
-     <!--------------- END OF CARD 2 ------------>
-            
-            <!--------------- END OF INSIGHTS ------------>
 
-            <div class="bottom">
-                <div class="table-title">
-                    <h2>Traitements</h2>
-                    {% if modifiable %}
-                   <a href="{% url 'ordonnance:add_traitements' visite.pk %}" class="submit-btn-holder details">
-                        
-                        <div class="visite submit-btn">
-                            <div class="item add-new">
-                                <div>
-                                    <span class="material-icons-sharp primary">add</span>
-                                </div>
-                                <h3>Add</h3>
-                            </div>
-                        </div>
-                       
-                    </a>
-                     {%endif%}
-                </div>
-                <div class="card">
-                    <table id="table-trait">
-                        <thead>
-                            <tr>
-                                <th>Traitement</th>
-                                <th>Description</th>
-                                <th>Price</th>
 
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                            {% for trait in traitements %}
-                            <tr>
-                                <td>{{trait.nom_traitement}}</td>
-                                <td>{{trait.description_de_traitement}}</td>
-                                <td>{{trait.price}}</td>
-                            </tr>
-                            {%empty%}
-                            <tr>
-                                <td>no records</td>
-                            </tr>
-                            {% endfor %}
-
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-title">
-                    <h2>Drugs</h2>
-
-                    {% if modifiable %}
-                    <a href="{% url 'ordonnance:add_medicaments' visite.pk %}" class="submit-btn-holder details">
-                        <div class="visite submit-btn">
-                            <div class="item add-new">
-                                <div>
-                                    <span class="material-icons-sharp primary">add</span>
-                                </div>
-                                <h3>Add</h3>
-                            </div>
-                        </div>
-                    </a>
-                    {%endif%}
-                </div>
-                <div class="card">
-                    <table id="table-drug">
-                        <thead>
-                            <tr>
-                                <th>Brand Name</th>
-                                <th>Generic Name</th>
-                                <th>Strength</th>
-                                <th>Pack</th>
-                                <th>Form</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                           {% for med in meds %}
-                            <tr>
-                                <td>{{med.id_medicament.nom}}</td>
-                                <td>{{med.id_medicament.dci1}}</td>
-                                <td>{{med.id_medicament.dosage1}}</td>
-                                <td>{{med.id_medicament.presentation}}</td>
-                                <td>{{med.id_medicament.forme}}</td>
-
-                            </tr>
-                            {%empty%}
-                            <tr><td> No records </td></tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                {%endfor%}
+                <div class="item add-new" id="add-note">
+                    <div>
+                        <span class="material-icons-sharp primary">add</span>
+                    </div>
+                    <h3>
+                        Create New
+                    </h3>
                 </div>
             </div>
+        </div>
+        <div class="popup-holder hide">
+            <div class="card">
+                <div class="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+                <h2>New Note</h2>
+                <form action="{% url 'doctor:add_note' visite.pk %}" method="POST">
+                    {%csrf_token%}
+                    <div class="form-row">
+                        <input type="text" name="note" placeholder="Enter a note">
+                    </div>
+
+                    <button type="submit" class="item add-new">
+                        <div>
+                            <span class="material-icons-sharp primary">add</span>
+                        </div>
+                        <h3>
+                            Create New
+                        </h3>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    {%endif%}
+</div>
+<!--------------- END OF CARD 2 ------------>
+
+<!--------------- END OF INSIGHTS ------------>
+
+<div class="bottom">
+    <div class="table-title">
+        <h2>Traitements</h2>
+        {% if modifiable %}
+        <a href="{% url 'ordonnance:add_traitements' visite.pk %}" class="submit-btn-holder details">
+
+            <div class="visite submit-btn">
+                <div class="item add-new">
+                    <div>
+                        <span class="material-icons-sharp primary">add</span>
+                    </div>
+                    <h3>Add</h3>
+                </div>
+            </div>
+
+        </a>
+        {%endif%}
+    </div>
+    <div class="card">
+        <table id="table-trait">
+            <thead>
+                <tr>
+                    <th>Traitement</th>
+                    <th>Description</th>
+                    <th>Price</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for trait in traitements %}
+                <tr>
+                    <td>{{trait.nom_traitement}}</td>
+                    <td>{{trait.description_de_traitement}}</td>
+                    <td>{{trait.price}}</td>
+                </tr>
+                {%empty%}
+                <tr>
+                    <td>no records</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+    <div class="table-title">
+        <h2>Drugs</h2>
+
+        {% if modifiable %}
+        <a href="{% url 'ordonnance:add_medicaments' visite.pk %}" class="submit-btn-holder details">
+            <div class="visite submit-btn">
+                <div class="item add-new">
+                    <div>
+                        <span class="material-icons-sharp primary">add</span>
+                    </div>
+                    <h3>Add</h3>
+                </div>
+            </div>
+        </a>
+        {%endif%}
+    </div>
+    <div class="card">
+        <table id="table-drug">
+            <thead>
+                <tr>
+                    <th>Brand Name</th>
+                    <th>Generic Name</th>
+                    <th>Strength</th>
+                    <th>Pack</th>
+                    <th>Form</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for med in meds %}
+                <tr>
+                    <td>{{med.id_medicament.nom}}</td>
+                    <td>{{med.id_medicament.dci1}}</td>
+                    <td>{{med.id_medicament.dosage1}}</td>
+                    <td>{{med.id_medicament.presentation}}</td>
+                    <td>{{med.id_medicament.forme}}</td>
+
+                </tr>
+                {%empty%}
+                <tr>
+                    <td> No records </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {%endblock%}
