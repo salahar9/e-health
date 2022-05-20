@@ -28,7 +28,7 @@
                 Orders{% endif %}</h3>
         </a>
         <a href="{% if doctor %}{% url 'doctor:appointments' %}{% elif patient %} {% url 'patient:prescriptions' %} {% elif pharmacist %} #{% endif %}"
-            class="{% if prescriptions %}active{% endif %}">
+            class="{% if prescriptions or appointments %}active{% endif %}">
             <span class="material-icons-sharp">{% if doctor %}event{% elif patient %}receipt_long{%endif%}</span>
             <h3>{% if doctor %} Appointements{% elif patient %} Prescriptions {% elif pharmacist %} All
                 Orders{% endif %}</h3>
