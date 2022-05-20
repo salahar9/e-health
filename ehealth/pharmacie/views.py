@@ -50,3 +50,11 @@ def register(request):
 					return JsonResponse({"data":str(e)})
 	else:
 			return render(request,"patient/edit.html",{"profile_settings":True,"title":"Settings & Privacy"})
+
+
+def allsales(request):
+	ordonnances = Ordonnance.objects.filter(
+            le_type="Medicaments", id_pharmacie=request.user.person.pharmacie.pk,
+        ).order_by("-date_purchase").select_related("id_visite__patient_id")
+
+	return render(request, 'pharmacist/all_sales.html', {'all_sales': True, 'pharmacist': True, "title": "All Sales", "ordonnances": ordonnances})
