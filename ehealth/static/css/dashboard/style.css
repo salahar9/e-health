@@ -2346,8 +2346,8 @@ h3.create-insurance-instructions {
     }
 
     .pagination .step-links .all-pages>a.page-num {
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
     }
 }
 
