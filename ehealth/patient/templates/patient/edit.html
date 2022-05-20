@@ -110,7 +110,7 @@
                                     </small>
                                 </div>
                                 <label class="switch">
-                                    <input id="privacy" type="checkbox"  {% if user.person.patient.permission_privacy%} checked {%endif%}>
+                                    <input id="privacy" type="checkbox"  {% if not user.person.patient.permission_privacy%} checked {%endif%}>
                                     <span class="slider round"></span>
                                 </label>
                             </div>
