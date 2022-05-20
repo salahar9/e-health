@@ -5,5 +5,5 @@ app_name = "pharmacist"
 urlpatterns = [
     path("dashboard/", views.dashboard, name="dashboard"),
     path("register/", views.register, name="register"),
-    path("allsales/", views.allsales, name="allsales")
+    path("allsales/", views.allsales, name="allsales")	
 ]
