@@ -640,12 +640,15 @@ main form.user-settings .submit-btn:hover {
 main form.add-form button .submit-btn {
     border: 2px solid var(--color-primary);
     margin: 0 auto;
-    /* position: fixed; */
     bottom: 2rem;
     right: 1rem;
 }
 
-main form.add-form button .submit-btn#submit{
+.submit-btn-holder .submit-btn.settings {
+    position: fixed;
+}
+
+main form.add-form button .submit-btn#submit {
     position: unset !important;
 }
 
@@ -1111,24 +1114,25 @@ div#become-doctor.section-1 {
 }
 
 .popup-holder .card {
-    width: 50% ;/* Salah */
-    background-color :#f3f3f3;
+    width: 50%;
+    /* Salah */
+    background-color: #f3f3f3;
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     animation: animate 300ms ease;
     position: relative;
-    }
-.close{
+}
+.close {
     position: absolute;
     top: 0;
     right: 0;
     cursor: pointer;
 }
 
-    @keyframes animate {
-        0% {
-            transform: scale(0%);
-        }
+@keyframes animate {
+    0% {
+        transform: scale(0%);
+    }
 
     100% {
         transform: scale(100%);
@@ -1171,25 +1175,24 @@ div#become-doctor.section-1 {
     align-items: center;
 }
 /* SALAH POPUP */
-#popup{
+#popup {}
 
-}
-#popup .big-profile-photo{
+#popup .big-profile-photo {
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
     overflow: hidden;
 }
 
-#popup .left{
+#popup .left {
     display: flex;
     align-items: center;
     gap: 3rem;
 }
-#popup .row:nth-of-type(1){
+#popup .row:nth-of-type(1) {
     grid-column: 1;
 }
-#popup .row:nth-of-type(2){
+#popup .row:nth-of-type(2) {
     grid-column: 2;
 }
 #popup .row {
@@ -1197,10 +1200,10 @@ div#become-doctor.section-1 {
     align-items: center;
 
 }
-#popup .bottom{
+#popup .bottom {
     display: grid;
 }
-#popup .info-elem{
+#popup .info-elem {
     padding: 5px;
 }
 
@@ -1214,7 +1217,6 @@ div#become-doctor.section-1 {
     margin-bottom: 5px;
 }
 #popup .buttons h3:nth-of-type(2) a {
-    
     border-radius: 5px;
     padding: 0.6em 2em;
     font-size: 1rem;
@@ -1222,7 +1224,7 @@ div#become-doctor.section-1 {
     border: 1px dashed #464343;
     display: block;
 }
-#popup .buttons{
+#popup .buttons {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -1233,6 +1235,25 @@ div#become-doctor.section-1 {
 
 
 /* ========== SAMLL LAPTOPS AND TABLETS ========== */
+
+@media screen and (max-width:1600px) {
+
+    main .insights.settings,
+    main .insights.settings>div:nth-child(2) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    main .insights>div:nth-child(2) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    main .insights.settings>div form .form-row {
+        grid-template-columns: 10rem auto 5rem;
+    }
+
+}
 
 @media screen and (max-width:1500px) {
     .container {
@@ -1257,9 +1278,7 @@ div#become-doctor.section-1 {
         margin-top: 1.8rem;
     }
 
-    main .insights,
-    main .insights.settings,
-    main .insights.settings>div:nth-child(2) {
+    main .insights {
         grid-template-columns: repeat(1, 1fr);
     }
 
@@ -1267,10 +1286,6 @@ div#become-doctor.section-1 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 0.8rem;
-    }
-
-    main .insights.settings>div form .form-row {
-        grid-template-columns: 10rem auto 5rem;
     }
 
     main .bottom {
@@ -1468,7 +1483,6 @@ div#become-doctor.section-1 {
         margin-top: 3rem;
     }
 
-    
 }
 
 /* ====================================================

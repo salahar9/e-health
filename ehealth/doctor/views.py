@@ -17,6 +17,7 @@ from .decorators import check_doctor,check_activated
 
 from django.db.models.aggregates import Count
 PAGINATION_COUNT=10
+
 def register(request):
 	if request.method=="POST":
 		params=request.POST

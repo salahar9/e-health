@@ -4,416 +4,416 @@
 
 
 
-           
 
-            <div class="insights settings">
-                <div>
-                    <h2>General Account Settings</h2>
-                    <div class="card">
-                        <div class="row">
-                            <div class="profile-photo">
-                                <img src="{{user.person.img.avatar.url}}" alt="">
-                            </div>
-                            <div class="description">
-                                <h2>{{user.person.nom|capfirst}} {{user.person.prenom|capfirst}}</h2>
-                                <form action="{% url 'landing:change_pic'%}" method="POST" id="change-pic-form">
-                                    {%csrf_token%}
-                                    <label id="change-pic-btn" for="change-pic" class="text-muted">Change Profile  Picture</label>
 
-                                    <input id="change-pic" type='file' name="img" class="text-muted">
-                                    
-                                </form>
-                            </div>
-                        </div>
-                        <form action="{% url 'landing:profile_register' %}" class="user-settings" id="form-profile" method="POST">
-
-                            {% csrf_token %}
-                            <div class="form-row">
-                                <label for="">Name</label>
-                                <input id="input-1" name="name" class="primary" type="text"
-                                    value="{{user.person.nom|capfirst}} {{user.person.prenom|capfirst}}" readonly>
-                                <button type="button" id="edit-1" onclick="switching(1)">
-                                    <h4 class="text-muted">Edit</h4>
-                                </button>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="">Email</label>
-                                <input name="email" id="input-2" class="primary" type="email" value="{{user.email}}"
-                                    readonly>
-                                <button type="button" id="edit-2"onclick="switching(2)">
-                                    <h4 class="text-muted">Edit</h4>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="">Gender</label>
-                                <input name="sexe" id="input-3" class="primary" type="text" value="{{ user.person.sexe }}"
-                                    readonly>
-                                <button type="button" id="edit-3"onclick="switching(3)">
-                                    <h4 class="text-muted">Edit</h4>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="">Birthday</label>
-                                <input id="input-4" name="datedenaissance" class="primary" type="date"
-                                    value="{{user.person.datedenaissance|date:'Y-m-d'}}" readonly>
-                                <button type="button" id="edit-4"onclick="switching(4)">
-                                    <h4 class="text-muted">Edit</h4>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="">Phone Number</label>
-                                <input id="input-5" name="phone" class="primary" type="number"
-                                    value="{{user.person.phone}}" readonly>
-                                <button type="button" id="edit-5" onclick="switching(5)">
-                                    <h4 class="text-muted">Edit</h4>
-                            </div>
-                            <div class="form-row">
-                                <label for="">CIN</label>
-                                <input id="input-6" name="CIN" class="primary" type="text" value="{{user.username}}"
-                                    readonly>
-                                <button type="button" id="edit-6" onclick="switching(6)">
-                                    <h4 class="text-muted">Edit</h4>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="">Adress</label>
-                                <input id="input-7" name="adresse" class="primary" type="text"
-                                    value="{{user.person.adresse}}" readonly>
-                                <button type="button" id="edit-7" onclick="switching(7)">
-                                    <h4 class="text-muted">Edit</h4>
-                            </div>
-                            
-                            <div class="form-row">
-                                <label for="">City</label>
-                                <input id="input-8" name="ville" class="primary" type="text"
-                                    value="{{user.person.ville}}" readonly>
-                                <button type="button" id="edit-8" onclick="switching(8)">
-                                    <h4 class="text-muted">Edit</h4>
-                            </div>
-
-                        </form>
-                    </div>
+<div class="insights settings">
+    <div>
+        <h2>General Account Settings</h2>
+        <div class="card">
+            <div class="row">
+                <div class="profile-photo">
+                    <img src="{{user.person.img.avatar.url}}" alt="">
                 </div>
-                <!--------------- END OF CARD 1 ------------>
-                <div>
+                <div class="description">
+                    <h2>{{user.person.nom|capfirst}} {{user.person.prenom|capfirst}}</h2>
+                    <form action="{% url 'landing:change_pic'%}" method="POST" id="change-pic-form">
+                        {%csrf_token%}
+                        <label id="change-pic-btn" for="change-pic" class="text-muted">Change Profile Picture</label>
 
-                    <div class="section-1">
-                        <h2>Privacy Settings</h2>
-                        <div class="rows privacy-settings">
-                            <div class="row">
-                                <div class="description">
-                                    <h3>Private Account</h3>
-                                    <small class="text-muted">
-                                        When your account is private, no one can view your account informations, past
-                                        consultations, drugs used and insurances...
-                                    </small>
-                                </div>
-                                <label class="switch">
-                                    <input id="privacy" type="checkbox"  {% if not user.person.patient.permission_privacy%} checked {%endif%}>
-                                    <span class="slider round"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                        <input id="change-pic" type='file' name="img" class="text-muted">
 
-                    <div class="section-1">
-                        <h2>Insurance Settings</h2>
-                        <div class="rows privacy-settings">
-                            <div class="row">
-                                <div class="description">
-                                    <h3>Activate Insurance</h3>
-                                    <small class="text-muted">
-                                        You will be able to create insurances from past consultations and prescriptions
-                                    </small>
-                                </div>
-                                <label class="switch">
-                                    <input id="insrurance-btn" onclick="show_form(this.id)" name=""
-                                        type="checkbox" {% if user.person.patient.a_mutuelle %} checked {%endif%}>
-                                    <span class="slider round"></span>
-                                </label>
-                            </div>
-                            <form action="{% url 'patient:register' %}" class="user-settings hide-from" id="form-assur" method="POST">
-                                {% csrf_token %}
-                                <div class="form-row">
-                                    <label for="">N&deg Affiliation</label>
-                                    <input id="input-9" name="n_affiliation" class="primary" type="text"
-                                        value="{{user.person.patient.n_affiliation|default_if_none:''}}" readonly>
-                                    <button type="button" id="edit-9" onclick="switching(9)">
-                                        <h4 class="text-muted">Edit</h4>
-                                </div></button>
-
-                                <div class="form-row">
-                                    <label for="">N&deg Immatriculation</label>
-                                    <input id="input-10" name="immatriculation" class="primary" type="text"
-                                        value="{{user.person.patient.immatriculation|default_if_none:''}}" readonly>
-                                    <button type="button" id="edit-10" onclick="switching(10)">
-                                        <h4 class="text-muted">Edit</h4>
-                                    </button>
-                                </div>
-                                 <input id="input-privacy" name="privacy" class="primary" type="text"
-                                    value="{% if user.person.patient.permission_privacy %}on {%else%}off{%endif%}"  hidden>
-                                <div class="form-row">
-                                    <label for="">Date d'adhesion</label>
-                                    <input id="input-11" name="date_adhesion" class="primary" type="date"
-                                        value="{{user.person.patient.date_adhesion |date:'Y-m-d' }}" readonly>
-                                    <button type="button" id="edit-11" onclick="switching(11)">
-                                        <h4 class="text-muted">Edit</h4>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-{%endblock%}
-
-{% block content2 %}
-            <!--------------- END OF TOP ------------>
-            {% if  not user.person.pharmacie.INP  %}
-            <div id="become-doctor" class="section-1">
-                    <h2>Become a Doctor</h2>
-                    <div class="rows privacy-settings">
-                        <div class="edit-button primary" type="doctor" onclick="show_popup(this)"  >
-                            <span class="material-icons-sharp">
-                                edit
-                            </span>
-                        </div>
-                        <div class="row">
-                            <div class="description">
-                                <h3>Activate Doctor</h3>
-                                <small class="text-muted">
-                                    This option allows you to to become a doctor.
-                                </small>
-                            </div>
-                            <label class="switch">
-                                <input id="become-doctor-btn" name="" type="checkbox" {% if user.person.doctor %} checked {%endif%}>
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        
-                        {% if user.person.doctor.activated == 0 %}
-                        <div class="row status">
-                            <div class="label">
-                                <h3>Status</h3>
-                            </div>
-                            <div class="warning">
-                                <span class="material-icons-sharp"> watch_later</span>
-                                <h3>Pending</h3>
-                                </d>
-                            </div>
-                        </div>
-                        {% elif user.person.doctor.activated == 1 %}
-                        <div class="row status">
-                            <div class="label">
-                                <h3>Status</h3>
-                            </div>
-                            <div class="success">
-                                <span class="material-icons-sharp"> done</span>
-                                <h3>Active</h3>
-                                </d>
-                            </div>
-                        </div>
-                        {%endif%}
-                    </div>
-                </div>
-
-
-                <div class="popup-holder doctor hide">
-                    <div class="card">
-                        <div class="close-btn">
-                            <span class="material-icons-sharp">
-                                close
-                            </span>
-                        </div>
-                        <h2>Activate Doctor</h2>
-                        <small class="text-muted">
-                            This option allows you to to become a doctor.
-                        </small>
-                        <form  method="post" action="{% url 'doctor:register' %}" {% if not user.person.doctor %} hide-from {%endif%}>
-                            <div class="form-row">
-
-                                <label for="">INP</label>
-                                <input id="input-16" name="INP" class="primary" type="text" value="{{user.person.doctor.INP}}" readonly>
-                                <button type="button" id="edit-16" onclick="switching(16)">
-                                    <h4 class="text-muted">Edit</h4>
-                            </div>
-                            </button>
-
-                            <div class="form-row">
-                                <label for="">Speciality</label>
-                                <input id="input-17" name="speciality" class="primary" type="text" value="{{user.person.doctor.speciality}}"
-                                    readonly>
-                                <button type="button" id="edit-17" onclick="switching(17)">
-                                    <h4 class="text-muted">Edit</h4>
-                                </button>
-                            </div>
-                            {%csrf_token%}
-                            <div class="form-row">
-                                <label for="">City</label>
-                                <input id="input-18" name="ville" class="primary" type="text" value="{{user.person.doctor.ville}}"
-                                    readonly>
-                                <button type="button" id="edit-18" onclick="switching(18)">
-                                    <h4 class="text-muted">Edit</h4>
-                                </button>
-                            </div>
-
-
-                            <div class="form-row">
-                                <label for="">Adress</label>
-                                <input id="input-23" name="adresse" class="primary" type="text" value="{{user.person.doctor.adresse}}" readonly>
-                                <button type="button" id="edit-23" onclick="switching(23)">
-                                    <h4 class="text-muted">Edit</h4>
-                                </button>
-                            </div>
-
-                            <button>
-                                <div class="submit-btn-holder" type="submit">
-                                    <div class="submit-btn">
-                                        <span class="material-icons-sharp">
-                                            save
-                                        </span>
-                                        <h3>&#32;Save Changes</h3>
-                                    </div>
-                                </div>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                {%endif%}
-               
-                {% if  not user.person.doctor.INP  %}
-                <div id="become-pharmacist" class="section-1">
-                    <h2>Become a Pharmacist</h2>
-                    <div class="rows privacy-settings">
-                        <div class="edit-button primary">
-                            <span onclick="show_popup(this)" type="pharmacy" class="material-icons-sharp">
-                                edit
-                            </span>
-                        </div>
-                        <div class="row">
-                            <div class="description">
-                                <h3>Activate Pharmacien</h3>
-                                <small class="text-muted">
-                                    This option allows you to to become a pharmacist.
-                                </small>
-                            </div>
-                            <label class="switch">
-                                <input id="become-pharmacist-btn" name="" type="checkbox" {% if user.person.pharmacie %} checked {%endif%}>
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                         {% if user.person.pharmacie.activated == 0 %}
-                        <div class="row status">
-                            <div class="label">
-                                <h3>Status</h3>
-                            </div>
-                            <div class="warning">
-                                <span class="material-icons-sharp"> watch_later</span>
-                                <h3>Pending</h3>
-                                </d>
-                            </div>
-                        </div>
-                         {% elif user.person.pharmacie.activated == 1%}
-                        <div class="row status">
-                            <div class="label">
-                                <h3>Status</h3>
-                            </div>
-                            <div class="success">
-                                <span class="material-icons-sharp"> done</span>
-                                <h3>Active</h3>
-                                </d>
-                            </div>
-                        </div>
-                        {%endif%}
-
-                    </div>
-                </div>
-
-                <div class="popup-holder pharmacy hide">
-                    <div class="card">
-                        <div class="close-btn">
-                            <span class="material-icons-sharp">
-                                close
-                            </span>
-                        </div>
-                        <h2>Activate Pharmacist</h2>
-                        <small class="text-muted">
-                            This option allows you to to become a Pharmacist.
-                        </small>
-                        <form method="post" action="{% url 'pharmacist:register' %}">
-                            
-                            <div class="form-row">
-                                <label for="">INP</label>
-                                <input id="input-19" name="INP" class="primary" type="text" value="{{user.person.pharmacie.INP}}" readonly>
-                                <button type="button" id="edit-19" onclick="switching(19)">
-                                    <h4 class="text-muted">Edit</h4>
-                            </div></button>
-                            {%csrf_token%}
-                             <div class="form-row">
-                                <label for="">Nom de la pharmacie</label>
-                                <input id="input-21" name="nom" class="primary" type="text" value="{{ user.person.pharmacie.nom }}"
-                                    readonly>
-                                <button type="button" id="edit-21" onclick="switching(21)">
-                                    <h4 class="text-muted">Edit</h4>
-                                </button>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="">City</label>
-                                <input id="input-20" name="ville" class="primary" type="text" value="{{ user.person.pharmacie.nom }}"
-                                    readonly>
-                                <button type="button" id="edit-20" onclick="switching(20)">
-                                    <h4 class="text-muted">Edit</h4>
-                                </button>
-                            </div>
-
-                            <div class="form-row">
-                                <label for="">Adress</label>
-                                <input id="input-22" name="adresse" class="primary" type="text" value="{{ user.person.pharmacie.adresse }}" readonly>
-                                <button type="button" id="edit-22" onclick="switching(22)">
-                                    <h4 class="text-muted">Edit</h4>
-                                </button>
-                            </div>
-
-                            <button>
-                                <div class="submit-btn-holder" type="submit">
-                                    <div class="submit-btn">
-                                        <span class="material-icons-sharp">
-                                            save
-                                        </span>
-                                        <h3>&#32;Save Changes</h3>
-                                    </div>
-                                </div>
-                            </button>
-
-
-                        </form>
-                    </div>
-                </div>
-
-         
-                {%endif%}
-
-            <div  id="submit_btn_settings" id="submit" class="submit-btn-holder" type="submit">
-                <div class="submit-btn">
-                    <span class="material-icons-sharp">
-                        save
-                    </span>
-                    <h3>&#32;Save Changes</h3>
+                    </form>
                 </div>
             </div>
+            <form action="{% url 'landing:profile_register' %}" class="user-settings" id="form-profile" method="POST">
 
+                {% csrf_token %}
+                <div class="form-row">
+                    <label for="">Name</label>
+                    <input id="input-1" name="name" class="primary" type="text"
+                        value="{{user.person.nom|capfirst}} {{user.person.prenom|capfirst}}" readonly>
+                    <button type="button" id="edit-1" onclick="switching(1)">
+                        <h4 class="text-muted">Edit</h4>
+                    </button>
+                </div>
+
+                <div class="form-row">
+                    <label for="">Email</label>
+                    <input name="email" id="input-2" class="primary" type="email" value="{{user.email}}" readonly>
+                    <button type="button" id="edit-2" onclick="switching(2)">
+                        <h4 class="text-muted">Edit</h4>
+                </div>
+
+                <div class="form-row">
+                    <label for="">Gender</label>
+                    <input name="sexe" id="input-3" class="primary" type="text" value="{{ user.person.sexe }}" readonly>
+                    <button type="button" id="edit-3" onclick="switching(3)">
+                        <h4 class="text-muted">Edit</h4>
+                </div>
+
+                <div class="form-row">
+                    <label for="">Birthday</label>
+                    <input id="input-4" name="datedenaissance" class="primary" type="date"
+                        value="{{user.person.datedenaissance|date:'Y-m-d'}}" readonly>
+                    <button type="button" id="edit-4" onclick="switching(4)">
+                        <h4 class="text-muted">Edit</h4>
+                </div>
+
+                <div class="form-row">
+                    <label for="">Phone Number</label>
+                    <input id="input-5" name="phone" class="primary" type="number" value="{{user.person.phone}}"
+                        readonly>
+                    <button type="button" id="edit-5" onclick="switching(5)">
+                        <h4 class="text-muted">Edit</h4>
+                </div>
+                <div class="form-row">
+                    <label for="">CIN</label>
+                    <input id="input-6" name="CIN" class="primary" type="text" value="{{user.username}}" readonly>
+                    <button type="button" id="edit-6" onclick="switching(6)">
+                        <h4 class="text-muted">Edit</h4>
+                </div>
+
+                <div class="form-row">
+                    <label for="">Adress</label>
+                    <input id="input-7" name="adresse" class="primary" type="text" value="{{user.person.adresse}}"
+                        readonly>
+                    <button type="button" id="edit-7" onclick="switching(7)">
+                        <h4 class="text-muted">Edit</h4>
+                </div>
+
+                <div class="form-row">
+                    <label for="">City</label>
+                    <input id="input-8" name="ville" class="primary" type="text" value="{{user.person.ville}}" readonly>
+                    <button type="button" id="edit-8" onclick="switching(8)">
+                        <h4 class="text-muted">Edit</h4>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <!--------------- END OF CARD 1 ------------>
+    <div>
+
+        <div class="section-1">
+            <h2>Privacy Settings</h2>
+            <div class="rows privacy-settings">
+                <div class="row">
+                    <div class="description">
+                        <h3>Private Account</h3>
+                        <small class="text-muted">
+                            When your account is private, no one can view your account informations, past
+                            consultations, drugs used and insurances...
+                        </small>
+                    </div>
+                    <label class="switch">
+                        <input id="privacy" type="checkbox" {% if not user.person.patient.permission_privacy%} checked
+                            {%endif%}>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-1">
+            <h2>Insurance Settings</h2>
+            <div class="rows privacy-settings">
+                <div class="row">
+                    <div class="description">
+                        <h3>Activate Insurance</h3>
+                        <small class="text-muted">
+                            You will be able to create insurances from past consultations and prescriptions
+                        </small>
+                    </div>
+                    <label class="switch">
+                        <input id="insrurance-btn" onclick="show_form(this.id)" name="" type="checkbox"
+                            {% if user.person.patient.a_mutuelle %} checked {%endif%}>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <form action="{% url 'patient:register' %}" class="user-settings hide-from" id="form-assur"
+                    method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <label for="">N&deg Affiliation</label>
+                        <input id="input-9" name="n_affiliation" class="primary" type="text"
+                            value="{{user.person.patient.n_affiliation|default_if_none:''}}" readonly>
+                        <button type="button" id="edit-9" onclick="switching(9)">
+                            <h4 class="text-muted">Edit</h4>
+                    </div></button>
+
+                    <div class="form-row">
+                        <label for="">N&deg Immatriculation</label>
+                        <input id="input-10" name="immatriculation" class="primary" type="text"
+                            value="{{user.person.patient.immatriculation|default_if_none:''}}" readonly>
+                        <button type="button" id="edit-10" onclick="switching(10)">
+                            <h4 class="text-muted">Edit</h4>
+                        </button>
+                    </div>
+                    <input id="input-privacy" name="privacy" class="primary" type="text"
+                        value="{% if user.person.patient.permission_privacy %}on {%else%}off{%endif%}" hidden>
+                    <div class="form-row">
+                        <label for="">Date d'adhesion</label>
+                        <input id="input-11" name="date_adhesion" class="primary" type="date"
+                            value="{{user.person.patient.date_adhesion |date:'Y-m-d' }}" readonly>
+                        <button type="button" id="edit-11" onclick="switching(11)">
+                            <h4 class="text-muted">Edit</h4>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
 
- <script type="text/javascript" src="{% static 'script/profile_settings/pop.js' %} "></script>
-{%endblock%}
-        
-            
 
-        
+
+    {%endblock%}
+
+    {% block content2 %}
+    <!--------------- END OF TOP ------------>
+    {% if  not user.person.pharmacie.INP  %}
+    <div id="become-doctor" class="section-1">
+        <h2>Become a Doctor</h2>
+        <div class="rows privacy-settings">
+            <div class="edit-button primary" type="doctor" onclick="show_popup(this)">
+                <span class="material-icons-sharp">
+                    edit
+                </span>
+            </div>
+            <div class="row">
+                <div class="description">
+                    <h3>Activate Doctor</h3>
+                    <small class="text-muted">
+                        This option allows you to to become a doctor.
+                    </small>
+                </div>
+                <label class="switch">
+                    <input id="become-doctor-btn" name="" type="checkbox" {% if user.person.doctor %} checked {%endif%}>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            {% if user.person.doctor.activated == 0 %}
+            <div class="row status">
+                <div class="label">
+                    <h3>Status</h3>
+                </div>
+                <div class="warning">
+                    <span class="material-icons-sharp"> watch_later</span>
+                    <h3>Pending</h3>
+                    </d>
+                </div>
+            </div>
+            {% elif user.person.doctor.activated == 1 %}
+            <div class="row status">
+                <div class="label">
+                    <h3>Status</h3>
+                </div>
+                <div class="success">
+                    <span class="material-icons-sharp"> done</span>
+                    <h3>Active</h3>
+                    </d>
+                </div>
+            </div>
+            {%endif%}
+        </div>
+    </div>
+
+
+    <div class="popup-holder doctor hide">
+        <div class="card">
+            <div class="close-btn">
+                <span class="material-icons-sharp">
+                    close
+                </span>
+            </div>
+            <h2>Activate Doctor</h2>
+            <small class="text-muted">
+                This option allows you to to become a doctor.
+            </small>
+            <form method="post" action="{% url 'doctor:register' %}" {% if not user.person.doctor %} hide-from
+                {%endif%}>
+                <div class="form-row">
+
+                    <label for="">INP</label>
+                    <input id="input-16" name="INP" class="primary" type="text" value="{{user.person.doctor.INP}}"
+                        readonly>
+                    <button type="button" id="edit-16" onclick="switching(16)">
+                        <h4 class="text-muted">Edit</h4>
+                </div>
+                </button>
+
+                <div class="form-row">
+                    <label for="">Speciality</label>
+                    <input id="input-17" name="speciality" class="primary" type="text"
+                        value="{{user.person.doctor.speciality}}" readonly>
+                    <button type="button" id="edit-17" onclick="switching(17)">
+                        <h4 class="text-muted">Edit</h4>
+                    </button>
+                </div>
+                {%csrf_token%}
+                <div class="form-row">
+                    <label for="">City</label>
+                    <input id="input-18" name="ville" class="primary" type="text" value="{{user.person.doctor.ville}}"
+                        readonly>
+                    <button type="button" id="edit-18" onclick="switching(18)">
+                        <h4 class="text-muted">Edit</h4>
+                    </button>
+                </div>
+
+
+                <div class="form-row">
+                    <label for="">Adress</label>
+                    <input id="input-23" name="adresse" class="primary" type="text"
+                        value="{{user.person.doctor.adresse}}" readonly>
+                    <button type="button" id="edit-23" onclick="switching(23)">
+                        <h4 class="text-muted">Edit</h4>
+                    </button>
+                </div>
+
+                <button>
+                    <div class="submit-btn-holder" type="submit">
+                        <div class="submit-btn settings">
+                            <span class="material-icons-sharp">
+                                save
+                            </span>
+                            <h3>&#32;Save Changes</h3>
+                        </div>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </div>
+    {%endif%}
+
+    {% if  not user.person.doctor.INP  %}
+    <div id="become-pharmacist" class="section-1">
+        <h2>Become a Pharmacist</h2>
+        <div class="rows privacy-settings">
+            <div class="edit-button primary">
+                <span onclick="show_popup(this)" type="pharmacy" class="material-icons-sharp">
+                    edit
+                </span>
+            </div>
+            <div class="row">
+                <div class="description">
+                    <h3>Activate Pharmacien</h3>
+                    <small class="text-muted">
+                        This option allows you to to become a pharmacist.
+                    </small>
+                </div>
+                <label class="switch">
+                    <input id="become-pharmacist-btn" name="" type="checkbox" {% if user.person.pharmacie %} checked
+                        {%endif%}>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            {% if user.person.pharmacie.activated == 0 %}
+            <div class="row status">
+                <div class="label">
+                    <h3>Status</h3>
+                </div>
+                <div class="warning">
+                    <span class="material-icons-sharp"> watch_later</span>
+                    <h3>Pending</h3>
+                    </d>
+                </div>
+            </div>
+            {% elif user.person.pharmacie.activated == 1%}
+            <div class="row status">
+                <div class="label">
+                    <h3>Status</h3>
+                </div>
+                <div class="success">
+                    <span class="material-icons-sharp"> done</span>
+                    <h3>Active</h3>
+                    </d>
+                </div>
+            </div>
+            {%endif%}
+
+        </div>
+    </div>
+
+    <div class="popup-holder pharmacy hide">
+        <div class="card">
+            <div class="close-btn">
+                <span class="material-icons-sharp">
+                    close
+                </span>
+            </div>
+            <h2>Activate Pharmacist</h2>
+            <small class="text-muted">
+                This option allows you to to become a Pharmacist.
+            </small>
+            <form method="post" action="{% url 'pharmacist:register' %}">
+
+                <div class="form-row">
+                    <label for="">INP</label>
+                    <input id="input-19" name="INP" class="primary" type="text" value="{{user.person.pharmacie.INP}}"
+                        readonly>
+                    <button type="button" id="edit-19" onclick="switching(19)">
+                        <h4 class="text-muted">Edit</h4>
+                </div></button>
+                {%csrf_token%}
+                <div class="form-row">
+                    <label for="">Nom de la pharmacie</label>
+                    <input id="input-21" name="nom" class="primary" type="text" value="{{ user.person.pharmacie.nom }}"
+                        readonly>
+                    <button type="button" id="edit-21" onclick="switching(21)">
+                        <h4 class="text-muted">Edit</h4>
+                    </button>
+                </div>
+
+                <div class="form-row">
+                    <label for="">City</label>
+                    <input id="input-20" name="ville" class="primary" type="text"
+                        value="{{ user.person.pharmacie.nom }}" readonly>
+                    <button type="button" id="edit-20" onclick="switching(20)">
+                        <h4 class="text-muted">Edit</h4>
+                    </button>
+                </div>
+
+                <div class="form-row">
+                    <label for="">Adress</label>
+                    <input id="input-22" name="adresse" class="primary" type="text"
+                        value="{{ user.person.pharmacie.adresse }}" readonly>
+                    <button type="button" id="edit-22" onclick="switching(22)">
+                        <h4 class="text-muted">Edit</h4>
+                    </button>
+                </div>
+
+                <button>
+                    <div class="submit-btn-holder" type="submit">
+                        <div class="submit-btn settings">
+                            <span class="material-icons-sharp">
+                                save
+                            </span>
+                            <h3>&#32;Save Changes</h3>
+                        </div>
+                    </div>
+                </button>
+
+
+            </form>
+        </div>
+    </div>
+
+
+    {%endif%}
+
+    <div id="submit_btn_settings" id="submit" class="submit-btn-holder" type="submit">
+        <div class="submit-btn settings">
+            <span class="material-icons-sharp">
+                save
+            </span>
+            <h3>&#32;Save Changes</h3>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+<script type="text/javascript" src="{% static 'script/profile_settings/pop.js' %} "></script>
+{%endblock%}
