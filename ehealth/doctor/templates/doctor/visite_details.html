@@ -88,18 +88,11 @@
                         <p><b> {{note.note}}</b></p>
                     </div>
                 </div>
-                {%empty%}
-                <div class="item">
-                    <div class="primary">
-                        <div class="description">
-                            <p><b> No records</b></p>
-                        </div>
-                    </div>
-                </div>
 
 
 
                 {%endfor%}
+                {% if doctor %}
                 <div class="item add-new" id="add-note">
                     <div>
                         <span class="material-icons-sharp primary">add</span>
@@ -108,7 +101,9 @@
                         Create New
                     </h3>
                 </div>
+                {%endif%}
             </div>
+
         </div>
         <div class="popup-holder hide">
             <div class="card">
@@ -135,12 +130,103 @@
                 </form>
             </div>
         </div>
-
-
-
     </div>
 
+
+
+    <tbody>
+        {% for trait in traitements %}
+        <tr>
+            <td>{{trait.nom_traitement}}</td>
+            <td>{{trait.description_de_traitement}}</td>
+            <td>{{trait.price}}</td>
+        </tr>
+        {%empty%}
+        <tr>
+            <td>no records</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+    </table>
+</div>
+<div class="table-title">
+    <h2>Drugs</h2>
+
+    {% if modifiable %}
+    <a href="{% url 'ordonnance:add_medicaments' visite.pk %}" class="submit-btn-holder details">
+        <div class="visite submit-btn">
+            <div class="item add-new">
+                <div>
+                    <span class="material-icons-sharp primary">add</span>
+                </div>
+                <h3>Add</h3>
+            </div>
+        </div>
+    </a>
     {%endif%}
+</div>
+<div class="card">
+    <table id="table-drug">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity/day</th>
+                <th>Usage Description</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {%for ord in meds %}
+            <tr>
+                <td>{{ord.id_medicament.nom}}</td>
+                <td>{{ord.quantite}}</td>
+                <td>{{ord.description_de_traitement}}</td>
+            </tr>
+            {%empty%}
+            <tr>
+                <td>No records</td>
+            </tr>tr
+            {%endfor%}
+
+
+
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+<div class="popup-holder hide">
+    <div class="card">
+        <div class="close-btn">
+            <span class="material-icons-sharp">
+                close
+            </span>
+        </div>
+        <h2>New Note</h2>
+        <form action="{% url 'doctor:add_note' visite.pk %}" method="POST">
+            {%csrf_token%}
+            <div class="form-row">
+                <input type="text" name="note" placeholder="Enter a note">
+            </div>
+
+            <button type="submit" class="item add-new">
+                <div>
+                    <span class="material-icons-sharp primary">add</span>
+                </div>
+                <h3>
+                    Create New
+                </h3>
+            </button>
+        </form>
+    </div>
+</div>
+
+
+
+</div>
+
+{%endif%}
 </div>
 <!--------------- END OF CARD 2 ------------>
 
