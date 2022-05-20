@@ -2,134 +2,135 @@
 {%load static%}
 {% block content%}
 <div class="insights dashboard">
-    <div class="card">
-        <span class="material-icons-sharp">people_alt</span>
-        <div class="middle">
+                <div class="card">
+                    <span class="material-icons-sharp">people_alt</span>
+                    <div class="middle">
 
-            <h3>Total Clients</h3>
-            <h1>{{pat_num}}</h1>
+                        <h3>Total Clients</h3>
+                        <h1>{{pat_num}}</h1>
 
-        </div>
-        <small class="text-muted">
-            Last Week
-        </small>
-    </div>
-    <!--------------- END OF CARD 1 ------------>
+                    </div>
+                    <small class="text-muted">
+                        Last Week
+                    </small>
+                </div>
+                <!--------------- END OF CARD 1 ------------>
 
-    <div class="card">
-        <span class="material-icons-sharp">analytics</span>
-        <div class="middle">
-            <h3>Total Income</h3>
-            <h1>{{income|default_if_none:"0"}} DH</h1>
-        </div>
-        <small class="text-muted">
-            Last Week
-        </small>
-    </div>
-    <!--------------- END OF CARD 2 ------------>
+                <div class="card">
+                    <span class="material-icons-sharp">analytics</span>
+                    <div class="middle">
+                        <h3>Total Income</h3>
+                        <h1>{{income|default_if_none:"0"}}  DH</h1>
+                    </div>
+                    <small class="text-muted">
+                        Last Week
+                    </small>
+                </div>
+                <!--------------- END OF CARD 2 ------------>
 
-    <div class="card">
-        <span class="material-icons-sharp">stacked_line_chart</span>
-        <div class="middle">
-            <h3>Total Drugs Sold</h3>
-            <h1>73</h1>
-        </div>
-        <small class="text-muted">
-            Last Week
-        </small>
-    </div>
-</div>
-<!--------------- END OF INSIGHTS ------------>
+                
+                <div class="card">
+                    <span class="material-icons-sharp">stacked_line_chart</span>
+                    <div class="middle">
+                        <h3>Total Drugs Sold</h3>
+                        <h1>73</h1>
+                    </div>
+                    <small class="text-muted">
+                        Last Week
+                    </small>
+                </div>
+            </div>
+            <!--------------- END OF INSIGHTS ------------>
 
 
-<div class="bottom">
-    <h2>Recent Orders</h2>
-    <div class="card">
-        <table>
-            <thead>
-                <tr>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Date</th>
-                    <th>Time</th>
+            <div class="bottom">
+                <h2>Recent Orders</h2>
+                <div class="card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                               
+                            </tr>
+                        </thead>
 
-                </tr>
-            </thead>
+                        <tbody>
+                            {% for ord in ordonnances %}
+                            <tr>
+                                <td>{{ord.id_medicament.nom}}</td>
+                                <td>{{ord.quantite}}</td>
+                                <td>{{ord.date_purchase|date:"D d M Y" }}</td>
+                                <td>{{ord.date_purchase|time:"H:i"}}</td>
+                                
+                            </tr>
 
-            <tbody>
-                {% for ord in ordonnances %}
-                <tr>
-                    <td>{{ord.id_medicament.nom}}</td>
-                    <td>{{ord.quantite}}</td>
-                    <td>{{ord.date_purchase|date:"D d M Y" }}</td>
-                    <td>{{ord.date_purchase|time:"H:i"}}</td>
+                                
+                            {% empty %}
+                                 <tr>
+                                <td>No records</td>
+                                
+                            </tr>
+                            {% endfor %}
 
-                </tr>
-
-                {% empty %}
-                <tr>
-                    <td>No records</td>
-
-                </tr>
-                {% endfor %}
-
-            </tbody>
-        </table>
-    </div>
-    <a class="show-all-btn" href="{% url 'pharmacist:sales' %}">Show All</a>
-</div>
+                           
+                        </tbody>
+                    </table>
+                </div>
+                <a class="show-all-btn" href="#">Show All</a>
+            </div>
 
 {%endblock%}
 {%block content2%}
 <div class="section-1">
-    <h2>Last Patients</h2>
-    <div class="rows">
-        {% for ord in ordonnances %}
-        <div class="row">
-            <div class="profile-photo">
-                <img src="{{ord.id_visite.patient_id.person_id.img.url}}" alt="">
+                <h2>Last Patients</h2>
+                <div class="rows">
+                    {% for ord in ordonnances %}
+                        <div class="row">
+                        <div class="profile-photo">
+                            <img src="{{ord.id_visite.patient_id.person_id.img.url}}" alt="">
+                        </div>
+                        <div class="description">
+                            <p><b><a href="{% url 'patient:profile' ord.id_visite.patient_id.pk %}">{{ord.id_visite.patient_id.person_id.nom}}</a> {{ord.id_visite.patient_id.person_id.prenom}}</b><br> {{ord.date_purchase|date:"D d M Y"}} &#8226  {{ord.date_purchase|time:"H:i"}}</p>
+                        </div>
+                    </div>
+                    {% empty %}
+                        <div class="row">
+                            No records
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-            <div class="description">
-                <p><b><a href="{% url 'patient:profile' ord.id_visite.patient_id.pk %}">{{ord.id_visite.patient_id.person_id.nom}}</a>
-                        {{ord.id_visite.patient_id.person_id.prenom}}</b><br> {{ord.date_purchase|date:"D d M Y"}}
-                    &#8226 {{ord.date_purchase|time:"H:i"}}</p>
+            <a href="#" class="show-all-btn">Show All</a>
+            <!--------------- END OF SECTION-1 ------------>
+
+            <div class="section-5">
+                <h2>Recent Sales</h2>
+                
+                     
+{% for ord in ordonnances %}
+                <div class="item">
+                    <div class="profile-photo">
+                        <img src="{{ord.id_visite.patient_id.person_id.img.url}}" alt="">
+                    </div>
+                    <div class="description">
+                        <p><b><a href="{% url 'patient:profile' ord.id_visite.patient_id.pk %}">{{ord.id_visite.patient_id.person_id.nom}} {{ord.id_visite.patient_id.person_id.prenom}}</a></b> <br> {{ord.count}} <br> {{ord.date_purchase|date:"D d M Y"}} &#8226  {{ord.date_purchase|time:"H:i"}} <br></p>
+                    </div>
+                    <div class="primary">
+                        <h3>{{ord.prix}}</h3>
+                    </div>
+                </div>
+
+                
+             
+                {% empty %}
+                        <div class="row">
+                            No records
+                        </div>
+                {% endfor %}
             </div>
-        </div>
-        {% empty %}
-        <div class="row">
-            No records
-        </div>
-        {% endfor %}
-    </div>
-</div>
-<a href="#" class="show-all-btn">Show All</a>
-<!--------------- END OF SECTION-1 ------------>
+            <a href="#" class="show-all-btn">Show All</a>
 
-<div class="section-5">
-    <h2>Recent Sales</h2>
-
-
-    {% for ord in ordonnances %}
-    <div class="item">
-        <div class="profile-photo">
-            <img src="{{ord.id_visite.patient_id.person_id.img.url}}" alt="">
-        </div>
-        <div class="description">
-            <p><b><a href="{% url 'patient:profile' ord.id_visite.patient_id.pk %}">{{ord.id_visite.patient_id.person_id.nom}}
-                        {{ord.id_visite.patient_id.person_id.prenom}}</a></b> <br> {{ord.count}} <br>
-                {{ord.date_purchase|date:"D d M Y"}} &#8226 {{ord.date_purchase|time:"H:i"}} <br></p>
-        </div>
-        <div class="primary">
-            <h3>{{ord.prix}}</h3>
-        </div>
-    </div>
-
-    {% empty %}
-    <div class="row">
-        No records
-    </div>
-    {% endfor %}
-</div>
-<a href="#" class="show-all-btn">Show All</a>
-
-{%endblock%}
+            {%endblock%}
