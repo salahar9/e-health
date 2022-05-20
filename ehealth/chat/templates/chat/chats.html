@@ -38,14 +38,14 @@
                                     </div>
 
                                     <div class="chat-details">
-                                        <h3>{{chat.sender}}</h3>
+                                        <h3>{%if holder %} {{chat.to}} {%else%} {{chat.sender}} {%endif%}</h3>
                                         <h4 class="text-muted">{{ chat.body }}</h4>
                                     </div>
 
                                     <div class="chat-time">
-                                        <h4 class="text-muted">2 min</h4>
+                                        <h4 class="text-muted">{{chat.timestamp}} </h4>
                                         <div class="messages-count">
-                                            <h3>15</h3>
+                                            <h3>{{chat.unread}}</h3>
                                         </div>
                                     </div>
 
