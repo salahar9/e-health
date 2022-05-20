@@ -88,10 +88,11 @@
             </div>
             <div class="description">
                 <p>
-                    <!-- <b><a href="{% url 'patient:profile' pat %}">{{pat.person_id.nom}} -->
-                    <b><a href="http://3.18.29.109/patient/profile/10">{{pat.person_id.nom}}
-                            {{pat.person_id.prenom}}</a></b>
-                    <br>{{pat.visites.last.date_created}}
+                    <a href="http://3.18.29.109/patient/profile/10">
+                        <b>{{pat.person_id.nom}} {{pat.person_id.prenom}}</b>
+                    </a>
+                    <br>
+                    {{pat.visites.last.date_created}}
                 </p>
             </div>
         </div>
