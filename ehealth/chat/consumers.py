@@ -11,8 +11,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.scope["user"].person.pk,
             self.channel_name
         )
-        
-         self.accept()
+        self.accept()
 
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)( 
