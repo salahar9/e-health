@@ -1909,7 +1909,7 @@ h3.create-insurance-instructions {
 ==================== RECLAMATIONS =====================
 ======================================================= */
 
-/* .contact-from-container,
+.contact-from-container,
 .contact-from-container form {
     display: flex;
     flex-direction: column;
@@ -1930,7 +1930,7 @@ h3.create-insurance-instructions {
     margin-top: 5rem;
 }
 
-*/
+
 
 /* ====================================================
 ==================== MEDIA QUERIES ====================
