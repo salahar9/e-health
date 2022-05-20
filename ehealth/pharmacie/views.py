@@ -15,9 +15,11 @@ from .decorators import check_pharmacist
 @check_pharmacist
 def dashboard(request):
     filt = datetime.date.today()-datetime.timedelta(days=7)
+
     ordonnances = Ordonnance.objects.filter(
         le_type="Medicaments", id_pharmacie=request.user.person.pharmacie.pk,
     ).order_by("-date_purchase").select_related("id_visite__patient_id")
+
     ordonnances_stats = Ordonnance.objects.filter(
         le_type="Medicaments", id_pharmacie=request.user.person.pharmacie.pk, date_purchase__gte=filt
     ).aggregate(
@@ -53,7 +55,11 @@ def register(request):
         return render(request, "patient/edit.html", {"profile_settings": True, "title": "Settings & Privacy"})
 
 
-# @login_required
-# @check_pharmacist
+@login_required
+@check_pharmacist
 def sales(request):
-    return render(request, 'pharmacist/all_sales.html', {'all_sales': True, 'pharmacist': True, "title": "All Sales"})
+	ordonnances = Ordonnance.objects.filter(
+        le_type="Medicaments", id_pharmacie=request.user.person.pharmacie.pk,
+    ).order_by("-date_purchase").select_related("id_visite__patient_id")
+	
+	return render(request, 'pharmacist/all_sales.html', {'all_sales': True, 'pharmacist': True, "title": "All Sales", "ordonnances": ordonnances})
