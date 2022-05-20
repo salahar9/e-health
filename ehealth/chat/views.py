@@ -8,9 +8,9 @@ from django.db.models import Case,When,Value
 def chat(request):
 	chats=Message.objects.filter(Q(sender=request.user.person) | Q(to=request.user.person)).annotate(unread=Count("seen",filter=Q(seen=False)),
 		holder=Case(
-			When(sender_id__eq=request.user.person,then=1),
+			When(sender_id=request.user.person,then=1),
 
-			When(to_id__eq=request.user.person,then=0)
+			When(to_id=request.user.person,then=0)
 		))
 	return render(request,"chat/chats.html",{"chats":chats})
 @require_POST
