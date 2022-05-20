@@ -147,7 +147,7 @@ def profile(request,pk):
 	appointements_done=Appointement.objects.filter(status="1",patient_id=pat).aggregate(count=Count("id"))
 	meds=Meds.objects.filter(ordonnance__id_visite__patient_id=pat).order_by("-ordonnance__date_purchase")[:6]
 	mutuelle=AllMutuelle.objects.filter(visite_id__patient_id=pat)
-	if pat.permission_privacy or request.user.person.pk==pat.person_id.pk:
+	if not pat.permission_privacy or request.user.person.pk==pat.person_id.pk:
 		return render(request,"patient/profile_active.html",{"profile":True,"pat":pat,"title":f"{pat.person_id.nom} {pat.person_id.prenom}","visites":visites,"meds":meds,"appointements_waiting":appointements_waiting,"appointements_done":appointements_done,"pres":pres,"mutuelle":mutuelle})
 	else:
 		return render(request,"patient/profile.html",{"patient":pat,"title":f"{pat.person_id.nom} {pat.person_id.prenom}" })
