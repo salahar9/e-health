@@ -127,9 +127,7 @@
                         <div class="info">
                             <p>Hey, <b>{{user.person.prenom|capfirst}}</b></p>
                             <small class="role" onclick="dropMenu(this)">
-                                <small class="text-muted">
-
-                                    {{ request.session.role|capfirst }}</small>
+                                <small class="text-muted">{{ request.session.role|capfirst }}</small>
                                 <span class="material-icons-sharp">expand_more</span>
                             </small>
                             <ul class="drop-down-content">
