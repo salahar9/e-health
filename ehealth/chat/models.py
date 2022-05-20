@@ -1,16 +1,16 @@
-from django.contrib.auth.models import User
-from django.db.models import (Model, TextField, DateTimeField, ForeignKey,CASCADE)
+from django.db import models
+
 from landing.models import Person
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 
-	
+	 
 
-class MessageModel(Model):
-    sender= ForeignKey(Person, on_delete=CASCADE, verbose_name='user',)
-    to= ForeignKey(Person, on_delete=CASCADE, verbose_name='recipient')
-    timestamp = DateTimeField('timestamp', auto_now_add=True, editable=False)
-    body = TextField('body')
+class Message(models.Model):
+    sender = models.ForeignKey(Person, on_delete=models.CASCADE,related_name="message_sender")
+    to = models.ForeignKey(Person, on_delete=models.CASCADE,related_name="message_to")
+    timestamp = models.DateTimeField('timestamp', auto_now_add=True, editable=False)
+    body = models.TextField('body')
     def notify_ws_clients(self):
         """
         Inform client there is a new message.
@@ -21,7 +21,7 @@ class MessageModel(Model):
             'message': '{}'.format(self.id)
         }
         channel_layer = get_channel_layer()
-        #async_to_sync(channel_layer.group_send)(sender.pk, notification)
+        async_to_sync(channel_layer.group_send)(sender.pk, notification)
         async_to_sync(channel_layer.group_send)(to.pk, notification)
     def save(self, *args, **kwargs):
         """
@@ -31,10 +31,5 @@ class MessageModel(Model):
         self.body = self.body.strip()  # Trimming whitespaces from the body
         super(MessageModel, self).save(*args, **kwargs)
         self.notify_ws_clients()
-
-    # Meta
     class Meta:
-        app_label = 'core'
-        verbose_name = 'message'
-        verbose_name_plural = 'messages'
         ordering = ('-timestamp',)
