@@ -30,7 +30,7 @@ class Message(models.Model):
         async_to_sync(channel_layer.group_send)(to.pk, notification_to)
     def save(self, *args, **kwargs):
         self.body = self.body.strip() 
-        super(MessageModel, self).save(*args, **kwargs)
+        super(Message, self).save(*args, **kwargs)
         self.notify_ws_clients()
     class Meta:
         ordering = ('-timestamp',)
