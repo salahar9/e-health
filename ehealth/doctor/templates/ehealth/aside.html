@@ -49,7 +49,7 @@
             <h3>Messages</h3>
             <span class="message-count">26</span>
         </a>
-        <a href="{% if doctor %}#{% elif patient %} # {% elif pharmacist %} #{% endif %}">
+        <a href="{% url 'reclamations' %}" class="{% if reclamations %} active {%endif%}">
             <span class="material-icons-sharp">report_gmailerrorred</span>
             <h3>Reclamation</h3>
         </a>

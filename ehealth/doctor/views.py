@@ -212,5 +212,5 @@ def accept_app(request,app):
 
 
 @login_required
-def reclamation(request):
-	return render(request, 'reclamation/reclamation.html')
+def reclamations(request):
+	return render(request, 'reclamation/reclamation.html', {"reclamations": True})

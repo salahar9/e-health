@@ -35,5 +35,5 @@ urlpatterns = [
             'document_root': settings.MEDIA_ROOT,
         }),
     path("chat/", include("chat.urls")),
-    path("reclamation", doctor_views.reclamation),
+    path("reclamations", doctor_views.reclamations, name="reclamations"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
