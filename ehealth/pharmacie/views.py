@@ -27,8 +27,8 @@ def dashboard(request):
 	
 	#logging.warning(ordonnances[0].prix)
 	
-	
 	return render(request,"pharmacist/dashboard.html",{"dashboard":True,"title":"Dashboard","pat_num":ordonnances_stats["count"],"income":ordonnances_stats["prix"],"ordonnances":ordonnances})
+
 @login_required
 @check_pharmacist
 def register(request):
@@ -53,8 +53,9 @@ def register(request):
 
 
 def allsales(request):
-	ordonnances = Ordonnance.objects.filter(
-            le_type="Medicaments", id_pharmacie=request.user.person.pharmacie.pk,
-        ).order_by("-date_purchase").select_related("id_visite__patient_id")
+	# ordonnances = Ordonnance.objects.filter(
+    #         le_type="Medicaments", id_pharmacie=request.user.person.pharmacie.pk,
+    #     ).order_by("-date_purchase").select_related("id_visite__patient_id")
 
-	return render(request, 'pharmacist/all_sales.html', {'all_sales': True, 'pharmacist': True, "title": "All Sales", "ordonnances": ordonnances})
+	return render(request, 'pharmacist/all_sales.html', {'all_sales': True, 'pharmacist': True, "title": "All Sales"})
+
