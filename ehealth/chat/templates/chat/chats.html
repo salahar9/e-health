@@ -1,4 +1,5 @@
 {% extends 'ehealth/base.html' %}
+{% load static %}
 {%block content%}
                 <h1>Messages</h1>
 
@@ -814,5 +815,5 @@
                         </div>
                     </div>
                 </div>
-
+<script type="text/javascript" src="{% static 'script/messages/messages.js' %}"></script>
 {%endblock%}

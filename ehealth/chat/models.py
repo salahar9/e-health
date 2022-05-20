@@ -17,19 +17,19 @@ class Message(models.Model):
         Inform client there is a new message.
         """
 
-        notification = {
+        notification_sender = {
             'type': 'recieve.msg',
-            'message': '{}'.format(self.id)
+            'message': f"{to}"
+        }
+        notification_to = {
+            'type': 'recieve.msg',
+            'message': f"{sender}"
         }
         channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(sender.pk, notification)
-        async_to_sync(channel_layer.group_send)(to.pk, notification)
+        async_to_sync(channel_layer.group_send)(sender.pk, notification_sender)
+        async_to_sync(channel_layer.group_send)(to.pk, notification_to)
     def save(self, *args, **kwargs):
-        """
-        Trims white spaces, saves the message and notifies the recipient via WS
-        if the message is new.
-        """
-        self.body = self.body.strip()  # Trimming whitespaces from the body
+        self.body = self.body.strip() 
         super(MessageModel, self).save(*args, **kwargs)
         self.notify_ws_clients()
     class Meta:
