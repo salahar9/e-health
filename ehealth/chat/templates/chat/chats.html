@@ -21,7 +21,7 @@
                                 <form action="">
                                     <div class="search-bar">
                                         <input type="text" placeholder="Search recent chat"
-                                            onkeyup="search_bar(this.value)">
+                                            onkeyup="search_bar(this.value);">
                                         <span class="material-icons-sharp">
                                             search
                                         </span>
@@ -30,7 +30,8 @@
                                 </form>
                             </div>
                             <div class="all-chats">
-                                <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
+                                {% for chat in chats %}
+                                <div class="chat-row" id="contact-{{forloop.counter}}" onclick="show_conv(this.id)">
 
                                     <div class="profile-photo">
                                         <img src="../images/profile-1.jpg" alt="">
@@ -49,7 +50,7 @@
                                     </div>
 
                                 </div>
-
+                                {%endfor%}
                                 <div class="chat-row" id="contact-1" onclick="show_conv(this.id)">
 
                                     <div class="profile-photo">
