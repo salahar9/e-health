@@ -221,4 +221,5 @@ def reclamations(request):
 @check_activated
 @check_doctor
 def appointments(request):
-	return render(request, 'doctor/appointments.html', {'appointments': True})
+	appointements_list = Appointement.objects.filter(medcin_id=request.user.person.doctor)
+	return render(request, 'doctor/appointments.html', {'appointments': True, "visites": appointements_list})
