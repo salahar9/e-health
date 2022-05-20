@@ -7,8 +7,8 @@ from channels.layers import get_channel_layer
 	 
 
 class Message(models.Model):
-    sender = models.ForeignKey(Person, on_delete=models.CASCADE,related_name="message")
-    to = models.ForeignKey(Person, on_delete=models.CASCADE,related_name="message")
+    sender = models.ForeignKey(Person, on_delete=models.CASCADE,related_name="message_sender")
+    to = models.ForeignKey(Person, on_delete=models.CASCADE,related_name="message_to")
     timestamp = models.DateTimeField('timestamp', auto_now_add=True, editable=False)
     body = models.TextField('body')
     def notify_ws_clients(self):
