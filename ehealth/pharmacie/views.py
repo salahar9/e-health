@@ -57,5 +57,5 @@ def allsales(request):
     #         le_type="Medicaments", id_pharmacie=request.user.person.pharmacie.pk,
     #     ).order_by("-date_purchase").select_related("id_visite__patient_id")
 
-	return render(request, 'pharmacist/all_sales.html', {'all_sales': True, 'pharmacist': True, "title": "All Sales"})
+	return render(request, "pharmacist/all_sales.html", {'all_sales': True, 'pharmacist': True, "title": "All Sales"})
 
