@@ -88,7 +88,7 @@
             </div>
             <div class="description">
                 <p>
-                    <b><a href="{% url 'patient:profile' visite.patient_id.pk %}">{{pat.person_id.nom}}
+                    <b><a href="{% url 'patient:profile' pat.patient_id.pk %}">{{pat.person_id.nom}}
                             {{pat.person_id.prenom}}</a></b>
                     <br>{{pat.visites.last.date_created}}
                 </p>
