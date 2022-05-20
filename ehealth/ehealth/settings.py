@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'landing',
     'med',
     "mutuelle",
-    "chat",
+    #"chat",
     "notifications",
     
 
