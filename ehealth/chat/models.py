@@ -19,11 +19,11 @@ class Message(models.Model):
 
         notification_sender = {
             'type': 'recieve.msg',
-            'message': f"{to}"
+            'message': f"{self.to}"
         }
         notification_to = {
             'type': 'recieve.msg',
-            'message': f"{sender}"
+            'message': f"{self.sender}"
         }
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(sender.pk, notification_sender)
