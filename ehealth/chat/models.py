@@ -1,15 +1,16 @@
 from django.contrib.auth.models import User
-from django.db.models import (Model, TextField, DateTimeField, ForeignKey,CASCADE)
+from django.db import models
+
 from landing.models import Person
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 
-	
+	 
 
-class MessageModel(Model):
-    sender= ForeignKey(Person, on_delete=CASCADE, verbose_name='user',)
-    to= ForeignKey(Person, on_delete=CASCADE, verbose_name='recipient')
-    timestamp = DateTimeField('timestamp', auto_now_add=True, editable=False)
+class MessageModel(models.Model):
+    sender= models.ForeignKey(Person, on_delete=CASCADE, verbose_name='user',)
+    to= models.ForeignKey(Person, on_delete=CASCADE, verbose_name='recipient')
+    timestamp = models.DateTimeField('timestamp', auto_now_add=True, editable=False)
     body = TextField('body')
     def notify_ws_clients(self):
         """
