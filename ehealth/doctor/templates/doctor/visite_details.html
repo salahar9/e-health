@@ -99,6 +99,7 @@
                    
                           
                     {%endfor%}    
+                    {% if doctor %}
                     <div class="item add-new" id="add-note">
                                 <div>
                                     <span class="material-icons-sharp primary">add</span>
@@ -107,7 +108,9 @@
                                     Create New
                                 </h3>
                     </div>
+                    {%endif%}
                      </div>
+                    }
                     </div>
                     <div class="popup-holder hide">
                         <div class="card">
@@ -210,28 +213,26 @@
                     <table id="table-drug">
                         <thead>
                             <tr>
-                                <th>Brand Name</th>
-                                <th>Generic Name</th>
-                                <th>Strength</th>
-                                <th>Pack</th>
-                                <th>Form</th>
+                                 <th>Name</th>
+                                <th>Quantity/day</th>
+                                 <th>Usage Description</th>
                             </tr>
                         </thead>
 
-                        <tbody>
-                           {% for med in meds %}
-                            <tr>
-                                <td>{{med.id_medicament.nom}}</td>
-                                <td>{{med.id_medicament.dci1}}</td>
-                                <td>{{med.id_medicament.dosage1}}</td>
-                                <td>{{med.id_medicament.presentation}}</td>
-                                <td>{{med.id_medicament.forme}}</td>
+                       <tbody>
+                {%for ord in meds %}
+                        <tr>
+                            <td>{{ord.id_medicament.nom}}</td>
+                            <td>{{ord.quantite}}</td>
+                            <td>{{ord.description_de_traitement}}</td>
+                        </tr>
+                {%empty%}
+                        No records
+                {%endfor%}
+                     
+                        
 
-                            </tr>
-                            {%empty%}
-                            <tr><td> No records </td></tr>
-                            {% endfor %}
-                        </tbody>
+                    </tbody>
                     </table>
                 </div>
             </div>
