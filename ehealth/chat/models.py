@@ -11,6 +11,7 @@ class Message(models.Model):
     to = models.ForeignKey(Person, on_delete=models.CASCADE,related_name="message_to")
     timestamp = models.DateTimeField('timestamp', auto_now_add=True, editable=False)
     body = models.TextField('body')
+    seen=models.BooleanField(default=False)
     def notify_ws_clients(self):
         """
         Inform client there is a new message.
