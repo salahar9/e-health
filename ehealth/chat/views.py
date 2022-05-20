@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.db.models.aggregates import Count
 from django.db.models import F
 def chat(request):
-	chats=Message.objects.filter(Q(sender=request.user.person) | Q(to=request.user.person)).annotate(unread=Count("seen",filter=Q(seen=False)),holder=(request.user.person==sender))
+	chats=Message.objects.filter(Q(sender=request.user.person) | Q(to=request.user.person)).annotate(unread=Count("seen",filter=Q(seen=False)),holder=F("sender")==request.user.person)
 	return render(request,"chat/chats.html",{"chats":chats})
 @require_POST
 @csrf_exempt
