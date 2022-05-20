@@ -1,6 +1,7 @@
 {% extends "ehealth/base.html" %}
 {%load static%}
 {% block content%}
+
 <div class="insights dashboard">
     <div class="card">
         <span class="material-icons-sharp">people_alt</span>
@@ -27,6 +28,7 @@
         </small>
     </div>
     <!--------------- END OF CARD 2 ------------>
+
 
     <div class="card">
         <span class="material-icons-sharp">stacked_line_chart</span>
@@ -66,6 +68,7 @@
 
                 </tr>
 
+
                 {% empty %}
                 <tr>
                     <td>No records</td>
@@ -73,10 +76,11 @@
                 </tr>
                 {% endfor %}
 
+
             </tbody>
         </table>
     </div>
-    <a class="show-all-btn" href="{% url 'pharmacist:sales' %}">Show All</a>
+    <a class="show-all-btn" href="#">Show All</a>
 </div>
 
 {%endblock%}
@@ -123,6 +127,8 @@
             <h3>{{ord.prix}}</h3>
         </div>
     </div>
+
+
 
     {% empty %}
     <div class="row">
