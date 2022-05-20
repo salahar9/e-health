@@ -34,11 +34,11 @@
                                 <div class="chat-row" id="contact-{{forloop.counter}}" onclick="show_conv(this.id)">
 
                                     <div class="profile-photo">
-                                        <img src="../images/profile-1.jpg" alt="">
+                                        <img src="{%if holder %} {{chat.to.img.avatar.url}}  {%else%} {{chat.sender.img.avatar.url}}  {%endif%}" alt="">
                                     </div>
 
                                     <div class="chat-details">
-                                        <h3>{%if holder %} {{chat.to}} {%else%} {{chat.sender}} {%endif%}</h3>
+                                        <h3>{%if holder %} {{chat.to.nom}} {{chat.to.prenom}} {%else%} {{chat.sender.nom}} {{chat.sender.prenom}} {%endif%}</h3>
                                         <h4 class="text-muted">{{ chat.body }}</h4>
                                     </div>
 
@@ -52,7 +52,7 @@
                                 </div>
                                 {%endfor%}
                                
-                                
+                                </div>
                     <div class="conversation card hide" id="conv-1">
                         <div class="chat-header">
                             <div class="profile">
