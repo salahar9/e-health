@@ -19,7 +19,8 @@
             <tbody>
                 {% for visite in  visites %}
                 <tr>
-                    <td><a href="{% url 'patient:profile' visite.patient_id.pk %}">{{visite.patient_id.person_id.nom}}
+                    <td>
+                        <a href="{% url 'patient:profile' visite.patient_id.pk %}">{{visite.patient_id.person_id.nom}}
                             {{visite.patient_id.person_id.prenom}}</a></td>
                     <td>
 
