@@ -1516,24 +1516,26 @@ h3.create-insurance-instructions {
 }
 
 .popup-holder .card {
-    width: 50% ;/* Salah */
-    background-color :#f3f3f3;
+    width: 50%;
+    /* Salah */
+    background-color: #f3f3f3;
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     animation: animate 300ms ease;
     position: relative;
-    }
-.close{
+}
+
+.close {
     position: absolute;
     top: 0;
     right: 0;
     cursor: pointer;
 }
 
-    @keyframes animate {
-        0% {
-            transform: scale(0%);
-        }
+@keyframes animate {
+    0% {
+        transform: scale(0%);
+    }
 
     100% {
         transform: scale(100%);
@@ -1575,37 +1577,42 @@ h3.create-insurance-instructions {
     cursor: pointer;
     align-items: center;
 }
-/* SALAH POPUP */
-#popup{
 
-}
-#popup .big-profile-photo{
+/* SALAH POPUP */
+#popup {}
+
+#popup .big-profile-photo {
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
     overflow: hidden;
 }
 
-#popup .left{
+#popup .left {
     display: flex;
     align-items: center;
     gap: 3rem;
 }
-#popup .row:nth-of-type(1){
+
+#popup .row:nth-of-type(1) {
     grid-column: 1;
 }
-#popup .row:nth-of-type(2){
+
+#popup .row:nth-of-type(2) {
     grid-column: 2;
 }
+
 #popup .row {
     display: grid;
     align-items: center;
 
 }
-#popup .bottom{
+
+#popup .bottom {
     display: grid;
 }
-#popup .info-elem{
+
+#popup .info-elem {
     padding: 5px;
 }
 
@@ -1618,8 +1625,9 @@ h3.create-insurance-instructions {
     display: block;
     margin-bottom: 5px;
 }
+
 #popup .buttons h3:nth-of-type(2) a {
-    
+
     border-radius: 5px;
     padding: 0.6em 2em;
     font-size: 1rem;
@@ -1627,11 +1635,13 @@ h3.create-insurance-instructions {
     border: 1px dashed #464343;
     display: block;
 }
-#popup .buttons{
+
+#popup .buttons {
     display: flex;
     flex-direction: column;
     align-content: center;
 }
+
 /* ============3=======================================
 ======================== CHAT ========================
 ======================================================= */
@@ -1753,7 +1763,7 @@ h3.create-insurance-instructions {
     align-items: center;
 }
 
-.conversation .chat-header .profile >span {
+.conversation .chat-header .profile>span {
     display: none;
 }
 
@@ -1858,7 +1868,7 @@ h3.create-insurance-instructions {
     align-items: center;
 }
 
-.pagination .step-links .arrows{
+.pagination .step-links .arrows {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1895,7 +1905,7 @@ h3.create-insurance-instructions {
     margin-right: 0.8rem;
 }
 
-.pagination .step-links .all-pages>a.page-num:first-child{
+.pagination .step-links .all-pages>a.page-num:first-child {
     margin-left: 0.8rem;
 
 }
@@ -1951,6 +1961,7 @@ h3.create-insurance-instructions {
     .booking-dashboard {
         grid-template-columns: 50% 50%;
     }
+
     .messages-container {
         grid-template-columns: 40% auto;
     }
@@ -1963,7 +1974,7 @@ h3.create-insurance-instructions {
         position: absolute;
         width: 80%;
     }
-    }
+}
 
 @media screen and (max-width:1200px) {
     .container {
@@ -2044,13 +2055,13 @@ h3.create-insurance-instructions {
         all: unset;
     }
 
-    
-    
+
+
     main.book-appointment {
-    position: absolute;
-    left: 10rem;
-    width: 78vw;
-}
+        position: absolute;
+        left: 10rem;
+        width: 78vw;
+    }
 
 }
 
@@ -2301,19 +2312,20 @@ h3.create-insurance-instructions {
     .recent-messages-body .all-chats {
         max-height: 52vh;
     }
-    .conversation .conversation-body{
+
+    .conversation .conversation-body {
         max-height: 30rem;
     }
 
-    .conversation .chat-header .chat-params>span{
+    .conversation .chat-header .chat-params>span {
         padding-left: 1rem;
     }
 
-    .conversation .chat-header .profile >span {
+    .conversation .chat-header .profile>span {
         display: unset;
     }
 
-    
+
     main.book-appointment {
         position: unset;
         left: unset;
@@ -2324,12 +2336,27 @@ h3.create-insurance-instructions {
         display: flex;
         flex-direction: column;
     }
+
+    .pagination .step-links .all-pages>a.page-num:last-child {
+        margin-right: unset;
+    }
+
+    .pagination .step-links .all-pages>a.page-num:first-child {
+        margin-left: unset;
+    }
+
+    .pagination .step-links .all-pages>a.page-num {
+        width: 2rem;
+        height: 2rem;
+    }
 }
+
 /* SALAH ADDED DASHBOARD CSS */
-.form-requests{
+.form-requests {
     overflow-x: visible;
     display: flex;
 }
-.form-requests span{
+
+.form-requests span {
     cursor: pointer;
 }
