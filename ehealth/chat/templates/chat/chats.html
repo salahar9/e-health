@@ -30,6 +30,9 @@
                                 </form>
                             </div>
                             {% include "chat/chataside.html" %}
+                        </div>
+                    </div>
+                </div>
                     <div class="conversation card hide" id="conv-1">
                         <div class="chat-header">
                             <div class="profile">
@@ -57,8 +60,9 @@
                                     more_vert
                                 </span>
                             </div>
-                        </div>
-</div>
+                       
+                    </div>
+
                         <div class="conversation-body">
                             {% for msg in messages %}
                             <div class="{%if msg.holder %}chat-box incoming{%else%}chat-box outgoing{%endif%}">
