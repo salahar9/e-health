@@ -1,6 +1,6 @@
 <div class="all-chats">
                                 {% for chat in chats %}
-                                <a href="{% url 'chat:chat' pk %}">
+                                <a href="{% url 'chat:chat' pk=pk %}">
                                 <div class="chat-row" id="contact-{{forloop.counter}}" onclick="show_conv(this.id)">
 
                                     <div class="profile-photo">
