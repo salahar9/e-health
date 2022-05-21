@@ -248,66 +248,12 @@
                         </div>
 
                         <div class="conversation-body">
-                            <div class="chat-box incoming">
+                            <div class="{%if holder %}chat-box incoming {%else%}chat-box outgoing {%endif%} ">
                                 <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
+                                    <h3>{{chat.body}}</h3>
+                                    <small class="text-muted">chat.timestamp|time:"H:i"</small>
                                 </div>
                             </div>
-
-                            <div class="chat-box outgoing">
-                                <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
-                                </div>
-                            </div>
-
-                            <div class="chat-box incoming">
-                                <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
-                                </div>
-                            </div>
-
-                            <div class="chat-box outgoing">
-                                <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
-                                </div>
-                            </div>
-
-                            <div class="chat-box incoming">
-                                <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
-                                </div>
-                            </div>
-
-                            <div class="chat-box outgoing">
-                                <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
-                                </div>
-                            </div>
-
                         </div>
 
                         <div class="chat-input-container">
