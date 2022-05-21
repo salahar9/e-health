@@ -19,6 +19,7 @@ def dashboard(request):
 	ordonnances=Ordonnance.objects.filter(
 		le_type="Medicaments",id_pharmacie=request.user.person.pharmacie.pk,
 		).order_by("-date_purchase").select_related("id_visite__patient_id")
+
 	ordonnances_stats=Ordonnance.objects.filter(
 		le_type="Medicaments",id_pharmacie=request.user.person.pharmacie.pk,date_purchase__gte=filt
 		).aggregate(
@@ -53,7 +54,10 @@ def register(request):
 			return render(request,"patient/edit.html",{"profile_settings":True,"title":"Settings & Privacy"})
 
 def sales(request):
-	return render(request, 'pharmacist/sales.html', {'pharmacist': True, 'sales': True})
+	ordonnances = Ordonnance.objects.filter(
+            le_type="Medicaments", id_pharmacie=request.user.person.pharmacie.pk,
+        ).order_by("-date_purchase").select_related("id_visite__patient_id")
+	return render(request, 'pharmacist/sales.html', {'pharmacist': True, 'sales': True, "ordonnances": ordonnances})
 
 def clients(request):
 	return render(request, 'pharmacist/clients.html', {'pharmacist': True, 'clients': True})
