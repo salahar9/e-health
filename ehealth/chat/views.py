@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.db.models.aggregates import Count
 from django.db.models import Case,When,Value
 from landing.models import Person
-def chats(request,pk):
+def chats(request):
 	other=Patient.objects.get(pk=pk)
 	chats=Message.objects.filter(Q(sender=request.user.person) | Q(to=request.user.person)).annotate(unread=Count("seen",filter=Q(seen=False)),
 		holder=Case(
