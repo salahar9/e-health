@@ -54,7 +54,7 @@
             <span class="material-icons-sharp">report_gmailerrorred</span>
             <h3>Reclamation</h3>
         </a>
-        <a href="{% if doctor %}{% url 'doctor:register' %}{% elif patient %} {% url 'patient:register' %} {% elif pharmacist %} #{% endif %}"
+        <a href="{% if doctor %}{% url 'doctor:register' %}{% elif patient %} {% url 'patient:register' %} {% elif pharmacist %} {% url 'pharmacist:register' %} {% endif %}"
             class="{% if profile_settings %} active {%endif%}">
             <span class="material-icons-sharp">manage_accounts</span>
             <h3>Settings</h3>
