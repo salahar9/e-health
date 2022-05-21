@@ -21,8 +21,8 @@
             <span class="material-icons-sharp"> people_alt</span>
             <h3>{% if doctor %} Patients{% elif patient %} Doctors{% elif pharmacist %} My Clients{% endif %}</h3>
         </a>
-        <a href="{% if doctor %}{% url 'doctor:visites' %} {% elif patient %} {% url 'patient:visites' %} {% elif pharmacist %} {% url 'pharmacist:slaes' %}{% endif %}"
-            class="{% if visite_seek or other_visite_seek or sales %}active {% endif %}">
+        <a href="{% if doctor %}{% url 'doctor:visites' %} {% elif patient %} {% url 'patient:visites' %} {% elif pharmacist %} {% url 'pharmacist:sales' %}{% endif %}"
+            class="{% if visite_seek or other_visite_seek %}active {% endif %}">
             <span class="material-icons-sharp">{% if pharmacist %}attach_money {% else %}medication {% endif %}</span>
             <h3>{% if doctor %} Consultations{% elif patient %} Consultations {% elif pharmacist %} All Sales{% endif %}</h3>
         </a>
