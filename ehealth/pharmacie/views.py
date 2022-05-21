@@ -50,3 +50,6 @@ def register(request):
 					return JsonResponse({"data":str(e)})
 	else:
 			return render(request,"patient/edit.html",{"profile_settings":True,"title":"Settings & Privacy"})
+
+def sales(request):
+	return HttpResponse("sales")
