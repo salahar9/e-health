@@ -64,7 +64,7 @@
                             <div class="{%if msg.holder %}chat-box incoming{%else%}chat-box outgoing{%endif%}">
                                 <div class="detail">
                                     <h3>{{msg.body}}</h3>
-                                    <small class="text-muted">{{msg.timestamp|time "H:i"}} </small>
+                                    <small class="text-muted">{{msg.timestamp|time:"H:i"}} </small>
                                 </div>
                             </div>
                             {% endfor %}
