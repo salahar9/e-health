@@ -29,6 +29,7 @@ def dashboard(request):
 	
 	
 	return render(request,"pharmacist/dashboard.html",{"dashboard":True,"title":"Dashboard","pat_num":ordonnances_stats["count"],"income":ordonnances_stats["prix"],"ordonnances":ordonnances})
+
 @login_required
 @check_pharmacist
 def register(request):
@@ -53,3 +54,6 @@ def register(request):
 
 def sales(request):
 	return render(request, 'pharmacist/sales.html', {'pharmacist': True, 'sales': True})
+
+def clients(request):
+	return render(request, 'pharmacist/clients.html', {'pharmacist': True, 'clients': True})
