@@ -26,12 +26,15 @@
             <span class="material-icons-sharp">{% if pharmacist %}attach_money {% else %}medication {% endif %}</span>
             <h3>{% if doctor %} Consultations{% elif patient %} Consultations {% elif pharmacist %} All Sales{% endif %}</h3>
         </a>
+        {% if patient or doctor %}
+
         <a href="{% if doctor %}{% url 'doctor:appointments' %}{% elif patient %} {% url 'patient:prescriptions' %} {% endif %}"
             class="{% if prescriptions or appointments %}active{% endif %}">
             <span class="material-icons-sharp">{% if doctor %}event{% elif patient %}receipt_long{%endif%}</span>
             <h3>{% if doctor %} Appointements{% elif patient %} Prescriptions {% endif %}</h3>
-
         </a>
+        {% endif %}
+
         {% if patient %}
         <a href="{% url 'patient:mutuelle' %}" class="{% if all_mutuelles %} active {%endif%}">
             <span class="material-icons-sharp">health_and_safety</span>
