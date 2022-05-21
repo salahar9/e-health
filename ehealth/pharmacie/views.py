@@ -52,4 +52,4 @@ def register(request):
 			return render(request,"patient/edit.html",{"profile_settings":True,"title":"Settings & Privacy"})
 
 def sales(request):
-	return HttpResponse("sales")
+	return render(request, 'pharmacist/sales.html')

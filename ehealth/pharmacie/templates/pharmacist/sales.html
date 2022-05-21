@@ -1,0 +1,44 @@
+{% extends "ehealth/base.html" %}
+{%load static%}
+{% block content%}
+
+<div class="bottom">
+    <h2>Recent Orders</h2>
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                    <th>Time</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for ord in ordonnances %}
+                <tr>
+                    <td>{{ord.id_medicament.nom}}</td>
+                    <td>{{ord.quantite}}</td>
+                    <td>{{ord.date_purchase|date:"D d M Y" }}</td>
+                    <td>{{ord.date_purchase|time:"H:i"}}</td>
+
+                </tr>
+
+
+                {% empty %}
+                <tr>
+                    <td>No records</td>
+
+                </tr>
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+    <a class="show-all-btn" href="#">Show All</a>
+</div>
+
+{%endblock%}
