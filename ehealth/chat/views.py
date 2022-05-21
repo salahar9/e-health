@@ -7,7 +7,6 @@ from django.db.models.aggregates import Count
 from django.db.models import Case,When,Value
 from landing.models import Person
 def chats(request):
-	other=Patient.objects.get(pk=pk)
 	chats=Message.objects.filter(Q(sender=request.user.person) | Q(to=request.user.person)).annotate(unread=Count("seen",filter=Q(seen=False)),
 		holder=Case(
 			When(sender_id=request.user.person,then=1),
@@ -18,7 +17,7 @@ def chats(request):
 		
 	return render(request,"chat/chats.html",{"chats":chats,})
 def chat(request,pk):
-	other=Patient.objects.get(pk=pk)
+	other=Person.objects.get(pk=pk)
 	chats=Message.objects.filter(Q(sender=request.user.person) | Q(to=request.user.person)).annotate(unread=Count("seen",filter=Q(seen=False)),
 		holder=Case(
 			When(sender_id=request.user.person,then=1),
