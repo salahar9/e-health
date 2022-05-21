@@ -29,30 +29,7 @@
 
                                 </form>
                             </div>
-                            <div class="all-chats">
-                                {% for chat in chats %}
-                                <div class="chat-row" id="contact-{{forloop.counter}}" onclick="show_conv(this.id)">
-
-                                    <div class="profile-photo">
-                                        <img src="{%if holder %} {{chat.to.img.avatar.url}}  {%else%} {{chat.sender.img.avatar.url}}  {%endif%}" alt="">
-                                    </div>
-
-                                    <div class="chat-details">
-                                        <h3>{%if holder %} {{chat.to.nom}} {{chat.to.prenom}} {%else%} {{chat.sender.nom}} {{chat.sender.prenom}} {%endif%}</h3>
-                                        <h4 class="text-muted">{{ chat.body }}</h4>
-                                    </div>
-
-                                    <div class="chat-time">
-                                        <h4 class="text-muted">{{chat.timestamp}} </h4>
-                                        <div class="messages-count">
-                                            <h3>{{chat.unread}}</h3>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                {%endfor%}
-                               
-                                </div>
+                            {% include chatasidee.html %}
                     <div class="conversation card hide" id="conv-1">
                         <div class="chat-header">
                             <div class="profile">
@@ -83,65 +60,15 @@
                         </div>
 
                         <div class="conversation-body">
-                            <div class="chat-box incoming">
+                            {% for msg in messages %}
+                            <div class="{%if msg.holder %}chat-box incoming{%else%}chat-box outgoing{%endif%}">
                                 <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
+                                    <h3>{{msg.body}}</h3>
+                                    <small class="text-muted">{{msg.timestamp|time "H:i"}} </small>
                                 </div>
                             </div>
-
-                            <div class="chat-box outgoing">
-                                <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
-                                </div>
-                            </div>
-
-                            <div class="chat-box incoming">
-                                <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
-                                </div>
-                            </div>
-
-                            <div class="chat-box outgoing">
-                                <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
-                                </div>
-                            </div>
-
-                            <div class="chat-box incoming">
-                                <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
-                                </div>
-                            </div>
-
-                            <div class="chat-box outgoing">
-                                <div class="detail">
-                                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus dicta
-                                        repellendus architecto eos eum similique praesentium aliquid necessitatibus
-                                        officia laboriosam iure nemo eligendi voluptatem, voluptatibus veritatis nobis,
-                                        labore exercitationem repellat.</h3>
-                                    <small class="text-muted">8:42 AM</small>
-                                </div>
-                            </div>
+                            {% endfor %}
+                            
 
                         </div>
 
