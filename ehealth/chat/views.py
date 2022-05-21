@@ -27,7 +27,7 @@ def chat(request,pk):
 def send_message(request):
 	sender=request.POST["sender"]
 	to=request.POST["to"]
-	message=request.POST["message"]Q(sender=request.user.person) & 
+	message=request.POST["message"]
 	msg=Message(sender=sender,to=to,msg=body)
 	msg.save()
 
