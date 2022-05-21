@@ -1,6 +1,6 @@
 <div class="all-chats">
                                 {% for chat in chats %}
-                                <a href="{%if holder %} {{chat.to.pk}}  {%else%} {{chat.sender.pk}}  {%endif%}">
+                                <a href="{%if holder %} {% url 'chat:chat' chat.to.pk %}  {%else%} {% url 'chat:chat' chat.sender.pk %}  {%endif%}">
                                 <div class="chat-row" id="contact-{{forloop.counter}}" onclick="show_conv(this.id)">
 
                                     <div class="profile-photo">
