@@ -1,9 +1,9 @@
 {% load static %}
 {% load alias %}
 {% if request.session.role == "patient" %}
-{% alias 1 as patient   %} 
+{% alias 1 as patient   %}
 {% elif request.session.role == "medecin" %}
-{% alias 1 as doctor   %} 
+{% alias 1 as doctor   %}
 {% elif request.session.role == "pharmacist" %}
 {% alias 1 as pharmacist   %}
 
@@ -11,160 +11,165 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- STYLESHEET -->
-    {%if  profile or profile_settings%}
+        <!-- STYLESHEET -->
+        {%if  profile or profile_settings%}
         <link rel="stylesheet" href="{% static 'css/profile/style.css' %}">
-       
-    {%else%}
-     <link rel="stylesheet" href="{% static 'css/dashboard/style.css' %}">
-    {%endif%}
- <!-- MATRIAL ICONS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <title>Document</title>
-</head>
 
-<body>
-    
-    <div class="container">
-        {% include "ehealth/aside.html"%}
-    	  <main class="{% if book %}book-appointment{%endif%}">
-    	  	<h1>{{title}}</h1>
-    	
-    	{% block content %}
-        	
-        {% endblock %}
-        {% if doctor or pharmacist %}
-        <div id="popup" class="popup-holder pharmacy hide ">
+        {%else%}
+        <link rel="stylesheet" href="{% static 'css/dashboard/style.css' %}">
+        {%endif%}
+        <!-- MATRIAL ICONS -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        <title>Document</title>
+    </head>
+
+    <body>
+
+        <div class="container">
+            {% include "ehealth/aside.html"%}
+            <main class="{% if book %}book-appointment{%endif%}">
+                <h1>{{title}}</h1>
+
+                {% block content %}
+
+                {% endblock %}
+                {% if doctor or pharmacist %}
+                <div id="popup" class="popup-holder pharmacy hide ">
 
                     <div class="card profile">
-                     <div class="close">
-                       <span class="material-icons-round">
-                            cancel
-                        </span>
-                     </div>
-                    <div class="left">
-                        <div class="big-profile-photo">
-                            <img id="visite-img" src="http://3.18.29.109/media/profile_pics/269837925_4389726447803609_487430985084605668_n.jpg" alt="">
+                        <div class="close">
+                            <span class="material-icons-round">
+                                cancel
+                            </span>
                         </div>
-                        <div>
-                        
-                            <h2 id="visite-name">Essordo Abdellah</h2>
-                            <h3 id="visite-email" class="text-muted">abdoessordo01@gmail.com</h3>
-                       
-                         </div>
-                         <div class="buttons">
-                            <h3><a id="visite-visite"href="">Add treatments</a>
-                            </h3><h3><a id="visite-profile" href="">View Profile</a></h3>
+                        <div class="left">
+                            <div class="big-profile-photo">
+                                <img id="visite-img"
+                                    src="http://3.18.29.109/media/profile_pics/269837925_4389726447803609_487430985084605668_n.jpg"
+                                    alt="">
+                            </div>
+                            <div>
+
+                                <h2 id="visite-name">Essordo Abdellah</h2>
+                                <h3 id="visite-email" class="text-muted">abdoessordo01@gmail.com</h3>
+
+                            </div>
+                            <div class="buttons">
+                                <h3><a id="visite-visite" href="">Add treatments</a>
+                                </h3>
+                                <h3><a id="visite-profile" href="">View Profile</a></h3>
+                            </div>
+
                         </div>
-                       
-                    </div>
 
                         <div class="middle">
-                            
-                           
+
+
 
                         </div>
 
-                    <div class="bottom">
-                        
-                        <div class="row">
-                            <div class="info-elem">
-                                <h3 class="text-muted">Gender</h3>
-                                <h3 id="visite-sexe" class="user-info">M</h3>
+                        <div class="bottom">
+
+                            <div class="row">
+                                <div class="info-elem">
+                                    <h3 class="text-muted">Gender</h3>
+                                    <h3 id="visite-sexe" class="user-info">M</h3>
+                                </div>
+                                <div class="info-elem">
+                                    <h3 class="text-muted">Birthday</h3>
+                                    <h3 id="visite-nais" class="user-info"></h3>
+                                </div>
+                                <div class="info-elem">
+                                    <h3 class="text-muted">Phone Number</h3>
+                                    <h3 id="visite-phone" class="user-info">0672407504</h3>
+                                </div>
                             </div>
-                            <div class="info-elem">
-                                <h3 class="text-muted">Birthday</h3>
-                                <h3 id="visite-nais" class="user-info"></h3>
+                            <div class="row">
+                                <div class="info-elem">
+                                    <h3 class="text-muted">CIN</h3>
+                                    <h3 id="visite-username" class="user-info">K570940</h3>
+                                </div>
+                                <div class="info-elem">
+                                    <h3 class="text-muted">Adress</h3>
+                                    <h3 id="visite-adress" class="user-info">Casablanca</h3>
+                                </div>
+                                <div class="info-elem">
+                                    <h3 class="text-muted">City</h3>
+                                    <h3 id="visite-ville" class="user-info">Casablanca</h3>
+                                </div>
                             </div>
-                            <div class="info-elem">
-                                <h3 class="text-muted">Phone Number</h3>
-                                <h3 id="visite-phone" class="user-info">0672407504</h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="info-elem">
-                                <h3 class="text-muted">CIN</h3>
-                                <h3 id="visite-username" class="user-info">K570940</h3>
-                            </div>
-                            <div class="info-elem">
-                                <h3 class="text-muted">Adress</h3>
-                                <h3 id="visite-adress" class="user-info">Casablanca</h3>
-                            </div>
-                            <div class="info-elem">
-                                <h3 class="text-muted">City</h3>
-                                <h3 id="visite-ville" class="user-info">Casablanca</h3>
-                            </div>
-                        </div>
-                            
+
                         </div>
 
-                    </div>
-            </div>
-
-        {%endif%}
-         </main>
-    	<div class="rigth {% if profile_settings %}settings{%endif%}">
-            <div class="top">
-                <button id="menu-btn">
-                    <span class="material-icons-sharp">menu</span>
-                </button>
-                <div class="theme-toggler" id="theme-toggler">
-                    <span class="material-icons-sharp active">light_mode </span>
-                    <span class="material-icons-sharp">dark_mode</span>
-                </div>
-                <div class="profile">
-                    <div class="info">
-                        <p>Hey, <b>{{user.person.prenom|capfirst}}</b></p>
-                        <small class="role" onclick="dropMenu(this)">
-                            <small class="text-muted">{{ request.session.role|capfirst }}</small>
-                            <span class="material-icons-sharp">expand_more</span>
-                        </small>
-                        <ul class="drop-down-content">
-                            <h3>
-                                <li><a href="{% url 'landing:redirect'  1 %}">Patient</a></li>
-                            </h3>
-                            <h3>
-                                <li><a href="{% url 'landing:redirect'  2 %}">Docteur</a></li>
-                            </h3>
-                            <h3>
-                                <li><a href="{% url 'landing:redirect'  3 %}">Pharmacien</a></li>
-                            </h3>
-                        </ul>
-                    </div>
-                    <div class="profile-photo">
-                        <img src="{{user.person.img.avatar.url}}" alt="">
                     </div>
                 </div>
+
+                {%endif%}
+            </main>
+            <div class="rigth {% if profile_settings %}settings{%endif%}">
+                <div class="top">
+                    <button id="menu-btn">
+                        <span class="material-icons-sharp">menu</span>
+                    </button>
+                    <div class="theme-toggler" id="theme-toggler">
+                        <span class="material-icons-sharp active">light_mode </span>
+                        <span class="material-icons-sharp">dark_mode</span>
+                    </div>
+                    <div class="profile">
+                        <div class="info">
+                            <p>Hey, <b>{{user.person.prenom|capfirst}}</b></p>
+                            <small class="role" onclick="dropMenu(this)">
+                                <small class="text-muted">
+
+                                    {{ request.session.role|capfirst }}</small>
+                                <span class="material-icons-sharp">expand_more</span>
+                            </small>
+                            <ul class="drop-down-content">
+                                <h3>
+                                    <li><a href="{% url 'landing:redirect'  1 %}">Patient</a></li>
+                                </h3>
+                                <h3>
+                                    <li><a href="{% url 'landing:redirect'  2 %}">Docteur</a></li>
+                                </h3>
+                                <h3>
+                                    <li><a href="{% url 'landing:redirect'  3 %}">Pharmacien</a></li>
+                                </h3>
+                            </ul>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="{{user.person.img.avatar.url}}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                {% block content2 %}
+                {%endblock%}
+
             </div>
+            {% if doctor %}
+            {{user.person.doctor.pk|json_script:"doc_id" }}
+            {% elif pharmacie %}
+            {{user.person.pharmacie.pk|json_script:"phar_id" }}
+            {%endif%}
 
-        {% block content2 %}
-        {%endblock%}
-
-    </div>
-    {% if doctor %}
-        {{user.person.doctor.pk|json_script:"doc_id" }}
-    {% elif pharmacie %}
-        {{user.person.pharmacie.pk|json_script:"phar_id" }}
-    {%endif%}
-
-    {% if doctor  or pharmacist %}
-        <script src="{% static 'script/websockets/script.js' %}" crossorigin="anonymous"></script>
-    {%endif%}
-    <script src="{% static 'script/dashboard/script.js' %}"></script>
-    {% if add_trai %}
-    <script src="{% static 'script/ordonnance/main.js' %}"></script>
-    {%elif  profile or profile_settings%}
-     <script src="{% static 'script/profile_settings/script.js' %}"></script>
-     {%elif  book%}
-     <script src="{% static 'script/calendar/calendar.js' %}"></script>
-    {%endif%}
-</body>
+            {% if doctor  or pharmacist %}
+            <script src="{% static 'script/websockets/script.js' %}" crossorigin="anonymous"></script>
+            {%endif%}
+            <script src="{% static 'script/dashboard/script.js' %}"></script>
+            {% if add_trai %}
+            <script src="{% static 'script/ordonnance/main.js' %}"></script>
+            {%elif  profile or profile_settings%}
+            <script src="{% static 'script/profile_settings/script.js' %}"></script>
+            {%elif  book%}
+            <script src="{% static 'script/calendar/calendar.js' %}"></script>
+            {%endif%}
+    </body>
 
 </html>

@@ -1,0 +1,100 @@
+{% extends 'ehealth/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Appointments</h1>
+
+<div class="bottom consultations">
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for visite in  visites %}
+                <tr>
+                    <td>
+                        <a href="{% url 'patient:profile' visite.patient_id.pk %}">{{visite.patient_id.person_id.nom}}
+                            {{visite.patient_id.person_id.prenom}}</a></td>
+                    <td>
+
+                        {{ visite.date }} </td>
+                        <td>
+
+                        {{ visite.heure }}</td>
+
+                    {%if visite.status == "1" %}
+                    <td class="success">
+                        <span class="material-icons-sharp"> done</span>
+                    </td>
+                    {%elif visite.status == "2" %}
+                    <td class="warning">
+                        <span class="material-icons-sharp"> watch_later</span>
+                    </td>
+                    {%elif visite.status == "3" %}
+                    <td class="danger">
+                        <span class="material-icons-sharp">highlight_off</span>
+                    </td>
+                    {%endif%}
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td>No records</td>
+                    </tr>
+
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+        <div class="pagination">
+            <span class="step-links">
+                <!-- hadi prev -->
+                <a href="?page=9" class="arrows">
+                    <span class="material-icons-sharp">
+                        arrow_back
+                    </span>
+                    Prev
+                </a>
+
+                <div class="all-pages">
+
+                    <!-- hadi first -->
+                    <a href="?page=1" class="page-num">1</a>
+
+                    <a class="page-num more">...</a>
+
+                    <!-- hadi prev -->
+                    <a href="?page=9" class="page-num">9</a>
+
+                    <!-- hadi current -->
+                    <a href="?page=10" class="page-num current">10</a>
+
+                    <!-- hadi next -->
+                    <a href="?page=11" class="page-num">11</a>
+
+                    <a class="page-num more">...</a>
+
+                    <!-- hadi last -->
+                    <a href="?page=19" class="page-num">19</a>
+                </div>
+
+                <!-- hadi next -->
+                <a href="?page=11" class="arrows">
+                    Next
+                    <span class="material-icons-sharp">
+                        arrow_forward
+                    </span>
+                </a>
+
+            </span>
+        </div>
+    </div>
+
+    {% endblock content %}

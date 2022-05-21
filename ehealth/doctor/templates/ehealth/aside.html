@@ -16,24 +16,25 @@
             <span class="material-icons-sharp">dashboard</span>
             <h3>Dashboard</h3>
         </a>
-        <a href="{% if doctor %}{% url 'doctor:patients' %}{% elif patient %} {% url 'patient:doctors' %} {% elif pharmacist %} #{% endif %}"
-            class="{% if get_patient %}active {% endif %}">
+        <a href="{% if doctor %}{% url 'doctor:patients' %}{% elif patient %} {% url 'patient:doctors' %} {% elif pharmacist %} {% url 'pharmacist:clients' %} {% endif %}"
+            class="{% if get_patient or clients %}active {% endif %}">
             <span class="material-icons-sharp"> people_alt</span>
-            <h3>{% if doctor %} Patients{% elif patient %} Doctors{% elif pharmacist %} My Clients{% endif %}</h3>
+            <h3>{% if doctor %} Patients{% elif patient %} Doctors{% elif pharmacist %} Clients{% endif %}</h3>
         </a>
-        <a href="{% if doctor %}{% url 'doctor:visites' %}{% elif patient %} {% url 'patient:visites' %} {% elif pharmacist %} #{% endif %}"
-            class="{% if visite_seek or other_visite_seek %}active {% endif %}">
-            <span class="material-icons-sharp">medication</span>
-            <h3>{% if doctor %} Consultations{% elif patient %} Consultations {% elif pharmacist %} All
-                Orders{% endif %}</h3>
+        <a href="{% if doctor %}{% url 'doctor:visites' %} {% elif patient %} {% url 'patient:visites' %} {% elif pharmacist %} {% url 'pharmacist:sales' %}{% endif %}"
+            class="{% if visite_seek or other_visite_seek or sales%}active {% endif %}">
+            <span class="material-icons-sharp">{% if pharmacist %}attach_money {% else %}medication {% endif %}</span>
+            <h3>{% if doctor %} Consultations{% elif patient %} Consultations {% elif pharmacist %} All Sales{% endif %}</h3>
         </a>
-        <a href="{% if doctor %}#{% elif patient %} {% url 'patient:prescriptions' %} {% elif pharmacist %} #{% endif %}"
-            class="{% if prescriptions %}active {% endif %}">
-            <span class="material-icons-sharp">{% if doctor %}event{% elif patient %}receipt_long{%endif%}</span>
-            <h3>{% if doctor %} Appointements{% elif patient %} Prescriptions {% elif pharmacist %} All
-                Orders{% endif %}</h3>
+        {% if patient or doctor %}
 
+        <a href="{% if doctor %}{% url 'doctor:appointments' %}{% elif patient %} {% url 'patient:prescriptions' %} {% endif %}"
+            class="{% if prescriptions or appointments %}active{% endif %}">
+            <span class="material-icons-sharp">{% if doctor %}event{% elif patient %}receipt_long{%endif%}</span>
+            <h3>{% if doctor %} Appointements{% elif patient %} Prescriptions {% endif %}</h3>
         </a>
+        {% endif %}
+
         {% if patient %}
         <a href="{% url 'patient:mutuelle' %}" class="{% if all_mutuelles %} active {%endif%}">
             <span class="material-icons-sharp">health_and_safety</span>
@@ -44,7 +45,7 @@
             <h3> Appointement</h3>
         </a>
         {% endif %}
-        <a href="">
+        <a href="{% url 'chat:chat' %}" >
             <span class="material-icons-sharp">mail_outline</span>
             <h3>Messages</h3>
             <span class="message-count">26</span>
@@ -53,7 +54,7 @@
             <span class="material-icons-sharp">report_gmailerrorred</span>
             <h3>Reclamation</h3>
         </a>
-        <a href="{% if doctor %}{% url 'doctor:register' %}{% elif patient %} {% url 'patient:register' %} {% elif pharmacist %} #{% endif %}"
+        <a href="{% if doctor %}{% url 'doctor:register' %}{% elif patient %} {% url 'patient:register' %} {% elif pharmacist %} {% url 'pharmacist:register' %} {% endif %}"
             class="{% if profile_settings %} active {%endif%}">
             <span class="material-icons-sharp">manage_accounts</span>
             <h3>Settings</h3>

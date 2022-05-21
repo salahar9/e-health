@@ -215,3 +215,11 @@ def accept_app(request,app):
 @login_required
 def reclamations(request):
 	return render(request, 'reclamation/reclamation.html', {"reclamations": True})
+
+
+@login_required
+@check_activated
+@check_doctor
+def appointments(request):
+	appointements_list = Appointement.objects.filter(medcin_id=request.user.person.doctor)
+	return render(request, 'doctor/appointments.html', {'appointments': True, "visites": appointements_list})
