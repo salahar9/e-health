@@ -8,7 +8,7 @@ const chatSocket = new WebSocket(
         );
 fetch_messages = (i) => {
 
-    fetch("/chat/fetch/"+i){}
+    fetch("/chat/fetch/"+i)
     .then(response => response.json())
     .then(data => console.log(data))
 
