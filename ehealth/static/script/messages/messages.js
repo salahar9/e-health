@@ -1,4 +1,5 @@
 id=document.getElementById('id').textContent
+
 const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
