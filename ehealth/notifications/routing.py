@@ -4,5 +4,5 @@ from . import consumers
 
 websocket_urlpatterns = [
     path(r'notif/<int:pk>/', consumers.VisiteConsumer.as_asgi()),
-    path(r'notif/pharma/<int:pk>/', consumers.VisitePharmaConsumer.as_asgi()),
+    path(r'notif/pharma/<str:pk>/', consumers.VisitePharmaConsumer.as_asgi()),
 ]
