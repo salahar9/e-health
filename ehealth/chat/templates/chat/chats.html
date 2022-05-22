@@ -104,7 +104,7 @@
                     
 
                         </div>
-                  
+{{ other.pk|json_script:"id" }}                
 <script type="text/javascript" src="{% static 'script/messages/messages.js' %}"></script>
-{{other.pk|json_script:"id" }}
+
 {%endblock%}

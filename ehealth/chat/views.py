@@ -52,5 +52,6 @@ def fetch(request,pk):
 		)).order_by("timestamp")[:15]
 	messages = list(messages.values())
 	return JsonResponse(messages,safe=False)
+	
 
 
