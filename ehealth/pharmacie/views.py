@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from doctor.models import Visite
 from ordonnance.models import Ordonnance
+from patient.models import Patient
 from pharmacie.models import Pharmacie,Visite
 import datetime
 from django.views.decorators.http import require_POST
