@@ -11,8 +11,8 @@ class Pharmacie(models.Model):
 	activated=models.BooleanField(default=False)
 class Visite(models.Model):
 	date_created=models.DateTimeField(auto_now_add=True)
-	patient_id=models.ForeignKey(Patient,on_delete=models.CASCADE,related_name="visites")
-	pharma_id=models.ForeignKey(Pharmacie,on_delete=models.CASCADE,related_name="visites")
+	patient_id=models.ForeignKey(Patient,on_delete=models.CASCADE,related_name="pharma_visites")
+	pharma_id=models.ForeignKey(Pharmacie,on_delete=models.CASCADE,related_name="pharma_visites")
 	class Meta:
 		ordering=["-date_created"]
 	def get_absolute_url(self):
