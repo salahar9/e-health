@@ -12,7 +12,7 @@ if (phar_id != null){
     id=JSON.parse(phar_id.textContent)
     url = 'ws://'
             + window.location.host
-            + '/pharmavisite/'
+            + '/notif/pharma/'
             + id+"/"
 }
 close=document.querySelector('.card .close')
