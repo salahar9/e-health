@@ -2,10 +2,18 @@
 id  = (document.getElementById('doc_id'));
 if (id != null){
     id=JSON.parse(id.textContent)
+    url = 'ws://'
+            + window.location.host
+            + '/notif/'
+            + id+"/"
 }
 phar_id  = (document.getElementById('phar_id'));
 if (phar_id != null){
     id=JSON.parse(phar_id.textContent)
+    url = 'ws://'
+            + window.location.host
+            + '/notif/pharma/'
+            + id+"/"
 }
 close=document.querySelector('.card .close')
 if (close !=null){
@@ -17,10 +25,7 @@ if (close !=null){
 }
 
 const chatSocket = new WebSocket(
-            'ws://'
-            + window.location.host
-            + '/notif/'
-            + id+"/"
+            url
             
         );
 chatSocket.onmessage = function(e) {
