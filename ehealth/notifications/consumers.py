@@ -42,7 +42,8 @@ class VisiteConsumer(WebsocketConsumer):
   
 class VisitePharmaConsumer(WebsocketConsumer):
     def connect(self):
-        #async_to_sync(self.channel_layer.group_add)( self.scope["user"].person.pharmacie.INP, self.channel_name)
+        logging.warning("heeeeeeeeere")
+        async_to_sync(self.channel_layer.group_add)( self.scope["user"].person.pharmacie.INP, self.channel_name)
         self.accept()
 
     def disconnect(self,y):
