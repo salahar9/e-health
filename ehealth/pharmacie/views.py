@@ -14,6 +14,7 @@ from django.views.decorators.http import require_POST
 
 import logging
 # Create your views here.
+PAGINATION_COUNT=10
 
 @require_POST
 @csrf_exempt
@@ -79,4 +80,8 @@ def sales(request):
 	return render(request, 'pharmacist/sales.html', {'pharmacist': True, 'sales': True, "ordonnances": ordonnances})
 
 def clients(request):
-	return render(request, 'pharmacist/clients.html', {'pharmacist': True, 'clients': True})
+	ordonnances=Ordonnance.objects.filter(id_pharmacie=request.user.person.pharmacie.pk).select_related("id_medicament")
+	paginator=Paginator(ordonnances, PAGINATION_COUNT)
+	page_number = request.GET.get('page')
+	page_obj = paginator.get_page(page_number)
+	return render(request, 'pharmacist/clients.html', {'pharmacist': True, 'clients': True,"ordonnances":page_obj})
