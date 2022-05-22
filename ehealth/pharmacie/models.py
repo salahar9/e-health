@@ -3,6 +3,8 @@ from django.conf import settings
 from landing.models import Person
 from patient.models import Patient
 from django.dispatch import receiver
+from django.db.models.signals import post_save
+from channels.layers import get_channel_layer
 
 class Pharmacie(models.Model):
 	person_id=models.OneToOneField(Person,on_delete=models.CASCADE)
