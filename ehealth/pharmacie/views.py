@@ -81,7 +81,7 @@ def sales(request):
 	return render(request, 'pharmacist/sales.html', {'pharmacist': True, 'sales': True, "ordonnances": ordonnances})
 
 def clients(request):
-	ordonnances=Ordonnance.objects.filter(id_pharmacie=request.user.person.pharmacie.pk).select_related("id_medicament")
+	ordonnances=Ordonnance.objects.filter(id_pharmacie=request.user.person.pharmacie.pk).select_related("id_visite__patient_id")
 	paginator=Paginator(ordonnances, PAGINATION_COUNT)
 	page_number = request.GET.get('page')
 	page_obj = paginator.get_page(page_number)
