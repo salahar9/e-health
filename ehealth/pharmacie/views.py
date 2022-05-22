@@ -9,6 +9,8 @@ from django.contrib import messages
 from django.db.models.aggregates import Count,Sum
 from django.contrib.auth.decorators import login_required
 from .decorators import check_pharmacist
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
 import logging
 # Create your views here.
