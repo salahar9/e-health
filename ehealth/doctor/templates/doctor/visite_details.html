@@ -166,35 +166,7 @@
     </a>
     {%endif%}
 </div>
-<div class="card">
-    <table id="table-drug">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Quantity/day</th>
-                <th>Usage Description</th>
-            </tr>
-        </thead>
 
-        <tbody>
-            {%for ord in meds %}
-            <tr>
-                <td>{{ord.id_medicament.nom}}</td>
-                <td>{{ord.quantite}}</td>
-                <td>{{ord.description_de_traitement}}</td>
-            </tr>
-            
-            {%endfor%}
-            {%empty%}
-            <tr>
-                <td>No records</td>
-            </tr>
-
-
-
-        </tbody>
-    </table>
-</div>
 <div class="popup-holder hide">
     <div class="card">
         <div class="close-btn">
@@ -221,7 +193,7 @@
     </div>
 </div>
 {%endif%}
-</div>
+
 
 <div class="bottom">
     <div class="table-title">
@@ -270,5 +242,34 @@
     </div>
     
    
+</div>
+<div class="card">
+    <table id="table-drug">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity/day</th>
+                <th>Usage Description</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {%for ord in meds %}
+            <tr>
+                <td>{{ord.id_medicament.nom}}</td>
+                <td>{{ord.quantite}}</td>
+                <td>{{ord.description_de_traitement}}</td>
+            </tr>
+            
+            
+            {%empty%}
+            <tr>
+                <td>No records</td>
+            </tr>
+            {%endfor%}
+            
+
+        </tbody>
+    </table>
 </div>
 {%endblock%}
