@@ -18,14 +18,14 @@ import logging
 # Create your views here.
 PAGINATION_COUNT=10
 
-@require_POST
+
 @csrf_exempt
 def create_visite(request):
 	"""
 	date_created=models.DateField(auto_now_add=True)
 	patient_id=models.OneToOneField(Doctor,on_delete=models.CASCADE)
 	medcin_id=models.OneToOneField(Patient,on_delete=models.CASCADE)"""
-	params=request.POST
+	params=request.GET
 	patient=params["patient"]
 	pharma=params["pharma"]
 	patient=Patient.objects.get(pk=patient)
