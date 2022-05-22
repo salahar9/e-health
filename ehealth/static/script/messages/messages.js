@@ -1,3 +1,30 @@
+id=document.getElementById('id')
+const chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/notif/chat/'
+            + id+"/"
+            
+        );
+fetch_messages = (i) => {
+
+    fetch("/chat/fetch/"+i){}
+    .then(response => response.json())
+    .then(data => console.log(data))
+
+}
+chatSocket.onmessage = () => {
+
+    fetch_messages(id)
+
+}
+send = ()=>{
+    input=document.getElementById("input-bar")
+    data=input.value
+    chatSocket.send("message")
+
+}
+
 back_to_recent = (id) => {
     id = id.split("-")[1]
     document.getElementById(`conv-${id}`).classList.add('hide')

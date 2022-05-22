@@ -15,6 +15,7 @@ if (close !=null){
         }
         )
 }
+
 const chatSocket = new WebSocket(
             'ws://'
             + window.location.host

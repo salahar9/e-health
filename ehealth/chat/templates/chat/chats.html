@@ -79,7 +79,7 @@
 
                             <div class="message-input">
                                 <form action="">
-                                    <input type="text" placeholder="Type a message">
+                                    <input id="input-bar" type="text" placeholder="Type a message">
                                 </form>
                             </div>
 
@@ -90,7 +90,7 @@
                                     </span>
                                 </div>
 
-                                <div class="send-message">
+                                <div click="send" class="send-message">
                                     <span class="material-icons-sharp">
                                         send
                                     </span>
@@ -106,4 +106,5 @@
                         </div>
                   
 <script type="text/javascript" src="{% static 'script/messages/messages.js' %}"></script>
+{{other.pk|json_script:"id" }}
 {%endblock%}

@@ -42,4 +42,15 @@ def send_message(request):
 	message=request.POST["message"]
 	msg=Message(sender=sender,to=to,msg=body)
 	msg.save()
+def fetch(request,pk):
+	other=Person.objects.get(pk=pk)
+	messages=Message.objects.filter(Q(sender=request.user.person) & Q(to=other)  | Q(sender=other) & Q(to=request.user.person)).annotate(unread=Count("seen",filter=Q(seen=False)),
+		holder=Case(
+			When(sender_id=request.user.person,then=1),
+
+			When(to_id=request.user.person,then=0)
+		)).order_by("timestamp")[:15]
+	messages = list(messages.values())
+	return JsonResponse(messages,safe=False)
+
 
