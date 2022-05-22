@@ -17,98 +17,29 @@
             </thead>
 
             <tbody>
-                    {% for client in page_obj %}
-                <tr>
-                    <td>
-                        <a class="patient-name" href="
-                                 {% client %}
+                {% for client in page_obj %}
+                    <tr>
+                        <td>
+                            <a class="patient-name" href="
+                                     {% url 'patient:profile' client.id_visite.patient_id.person_id %}
+                    
+                                    ">
+
+
+                                {{ client.id_visite.patient_id.nom }} {{ client.id_visite.patient_id.prenom }}
+                            </a>
+                        </td>
+                        <td>  {{ client.id_visite.patient_id.person_id.phone }}</td>
+                        <td>
+                            {{ client.date_purchase|date:"D d M Y" }} </td>
+                        <td>
+                             {{ client.date_purchase|time:"H:i" }} </td>
+
+
+                    </tr>
+                {%endfor%}
+
                 
-                                ">
-
-
-                            {{ client.id_visite.patient_id.nom }} {{ client.id_visite.patient_id.prenom }}
-                        </a>
-                    </td>
-                    <td>  {{ client.id_visite.patient_id.person_id.phone }}</td>
-                    <td>
-                        {{ client.date_purchase|date:"D d M Y" }} </td>
-                    <td>
-                         {{ client.date_purchase|time:"H:i" }} </td>
-
-
-                </tr>
-
-                <tr>
-                    <td>
-                        <a class="patient-name" href="
-                                 /patient/profile/3
-                                
-
-
-                                ">
-
-
-                            Essordo
-
-                            Abdellah
-                        </a>
-                    </td>
-                    <td> 0672407504</td>
-                    <td>
-                        Thu 19 May 2022 </td>
-                    <td>
-                        23:20 </td>
-
-
-                </tr>
-
-                <tr>
-                    <td>
-                        <a class="patient-name" href="
-                                 /patient/profile/5
-                                
-
-
-                                ">
-
-
-                            Laghmich
-
-                            Saloua
-                        </a>
-                    </td>
-                    <td> 0665809653</td>
-                    <td>
-                        Fri 20 May 2022 </td>
-                    <td>
-                        00:58 </td>
-
-
-                </tr>
-
-                <tr>
-                    <td>
-                        <a class="patient-name" href="
-                                 /patient/profile/9
-                                
-
-
-                                ">
-
-
-                            LHOUMAM ELIDRISSI
-
-                            Halima
-                        </a>
-                    </td>
-                    <td> 0767866103</td>
-                    <td>
-                        Thu 19 May 2022 </td>
-                    <td>
-                        23:30 </td>
-
-
-                </tr>
 
             </tbody>
         </table>
