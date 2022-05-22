@@ -63,36 +63,33 @@
 
     </div>
     <!--------------- END OF CARD 1 ------------>
-    {%if show_notes %}
+    {% if show_notes %}
     <div class="">
         <div class="div">
             <div class="section-4">
                 <h2>Doctor's Notes</h2>
 
                 {% for note in notes %}
-                <div class="item">
-                    {% if  forloop.counter  == 1 %}
-                    <div class="primary">
-                        <span class="material-icons-sharp">looks_one</span>
+                    <div class="item">
+                        {% if  forloop.counter  == 1 %}
+                            <div class="primary">
+                                <span class="material-icons-sharp">looks_one</span>
+                            </div>
+                        {% elif  forloop.counter  == 2 %}
+                            <div class="success">
+                                <span class="material-icons-sharp">looks_two</span>
+                            </div>
+                        {%else%}
+                            <div class="danger">
+                                <span class="material-icons-sharp">looks_{{forloop.counter}}</span>
+                            </div>
+                        {%endif%}
+                        <div class="description">
+                            <p><b> {{note.note}}</b></p>
+                        </div>
                     </div>
-                    {% elif  forloop.counter  == 2 %}
-                    <div class="success">
-                        <span class="material-icons-sharp">looks_two</span>
-                    </div>
-                    {%else%}
-                    <div class="danger">
-                        <span class="material-icons-sharp">looks_{{forloop.counter}}</span>
-                    </div>
-                    {%endif%}
-                    <div class="description">
-                        <p><b> {{note.note}}</b></p>
-                    </div>
-                </div>
-
-
-
                 {%endfor%}
-                {% if doctor %}
+            {% if doctor %}
                 <div class="item add-new" id="add-note">
                     <div>
                         <span class="material-icons-sharp primary">add</span>
@@ -101,8 +98,9 @@
                         Create New
                     </h3>
                 </div>
-                {%endif%}
+            {%endif%}
             </div>
+       
 
        
         <div class="popup-holder hide">
@@ -134,22 +132,8 @@
 
 
 
-    <tbody>
-        {% for trait in traitements %}
-        <tr>
-            <td>{{trait.nom_traitement}}</td>
-            <td>{{trait.description_de_traitement}}</td>
-            <td>{{trait.price}}</td>
-        </tr>
-        {%empty%}
-        <tr>
-            <td>no records</td>
-        </tr>
-        {% endfor %}
+   
 
-    </tbody>
-    </table>
-</div>
 
 
     {% if modifiable %}
@@ -166,31 +150,7 @@
     {%endif%}
 </div>
 
-<div class="popup-holder hide">
-    <div class="card">
-        <div class="close-btn">
-            <span class="material-icons-sharp">
-                close
-            </span>
-        </div>
-        <h2>New Note</h2>
-        <form action="{% url 'doctor:add_note' visite.pk %}" method="POST">
-            {%csrf_token%}
-            <div class="form-row">
-                <input type="text" name="note" placeholder="Enter a note">
-            </div>
 
-            <button type="submit" class="item add-new">
-                <div>
-                    <span class="material-icons-sharp primary">add</span>
-                </div>
-                <h3>
-                    Create New
-                </h3>
-            </button>
-        </form>
-    </div>
-</div>
 {%endif%}
 
 
