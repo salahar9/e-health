@@ -155,7 +155,7 @@
             </div>
             {% if doctor %}
             {{user.person.doctor.pk|json_script:"doc_id" }}
-            {% elif pharmacie %}
+            {% elif pharmacist %}
             {{user.person.pharmacie.pk|json_script:"phar_id" }}
             {%endif%}
 
