@@ -3,7 +3,7 @@ id  = (document.getElementById('doc_id'));
 if (id != null){
     id=JSON.parse(id.textContent)
 }
-phar_id  = JSON.parse(document.getElementById('phar_id'));
+phar_id  = (document.getElementById('phar_id'));
 if (phar_id != null){
     id=JSON.parse(phar_id.textContent)
 }
