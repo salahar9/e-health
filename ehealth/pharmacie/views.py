@@ -44,13 +44,14 @@ def dashboard(request):
 	ordonnances_stats=Ordonnance.objects.filter(
 		le_type="Medicaments",id_pharmacie=request.user.person.pharmacie.pk,date_purchase__gte=filt
 		).aggregate(
-		count=Count("id_visite__patient_id",distinct=True),prix=Sum("price",distinct=True)
+		count=Count("id_visite__patient_id",distinct=True),prix=Sum("price",distinct=True),
+		count_drugs=Count("id",filter=Q("le_type"="Medicaments"))
 		)
 	
 	#logging.warning(ordonnances[0].prix)
 	
 	
-	return render(request,"pharmacist/dashboard.html",{"dashboard":True,"title":"Dashboard","pat_num":ordonnances_stats["count"],"income":ordonnances_stats["prix"],"ordonnances":ordonnances})
+	return render(request,"pharmacist/dashboard.html",{"dashboard":True,"title":"Dashboard","pat_num":ordonnances_stats["count"],"income":ordonnances_stats["prix"],"ordonnances":ordonnances,"count_drugs":ordonnances_stats["count_drugs"]})
 
 @login_required
 @check_pharmacist
