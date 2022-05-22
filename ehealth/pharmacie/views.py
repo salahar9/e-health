@@ -45,7 +45,7 @@ def dashboard(request):
 		le_type="Medicaments",id_pharmacie=request.user.person.pharmacie.pk,date_purchase__gte=filt
 		).aggregate(
 		count=Count("id_visite__patient_id",distinct=True),prix=Sum("price",distinct=True),
-		count_drugs=Count("id",filter=Q("le_type"="Medicaments"))
+		count_drugs=Count("id",filter=Q(le_type="Medicaments"))
 		)
 	
 	#logging.warning(ordonnances[0].prix)
