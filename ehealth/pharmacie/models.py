@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 from landing.models import Person
-from pharmacie.models import 
 from patient.models import Patient
 class Pharmacie(models.Model):
 	person_id=models.OneToOneField(Person,on_delete=models.CASCADE)
