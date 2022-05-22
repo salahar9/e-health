@@ -1,4 +1,4 @@
-from django.urls import path,url
+from django.urls import path
 
 from . import consumers
 
