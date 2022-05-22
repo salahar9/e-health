@@ -157,12 +157,12 @@ from django.contrib.auth import logout
 def logout_view(request):
     logout(request)
     return redirect('landing:index')
-@require_POST
+
 @csrf_exempt
 def login_json(request):
 	data={}
-	username=request.POST["username"]
-	password=request.POST["password"]
+	username=request.GET["username"]
+	password=request.GET["password"]
 	try:
 		user=User.objects.get(username=username)
 		if check_password(password,user.password):
