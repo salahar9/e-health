@@ -89,16 +89,16 @@
                         </div>
                     </div>
                 {%endfor%}
-            {% if doctor %}
-                <div class="item add-new" id="add-note">
-                    <div>
-                        <span class="material-icons-sharp primary">add</span>
+                {% if doctor %}
+                    <div class="item add-new" id="add-note">
+                        <div>
+                            <span class="material-icons-sharp primary">add</span>
+                        </div>
+                        <h3>
+                            Create New
+                        </h3>
                     </div>
-                    <h3>
-                        Create New
-                    </h3>
-                </div>
-            {%endif%}
+                {%endif%}
             </div>
        
 
@@ -136,18 +136,6 @@
 
 
 
-    {% if modifiable %}
-    <a href="{% url 'ordonnance:add_medicaments' visite.pk %}" class="submit-btn-holder details">
-        <div class="visite submit-btn">
-            <div class="item add-new">
-                <div>
-                    <span class="material-icons-sharp primary">add</span>
-                </div>
-                <h3>Add</h3>
-            </div>
-        </div>
-    </a>
-    {%endif%}
 </div>
 
 
@@ -231,6 +219,19 @@
 
         </tbody>
     </table>
+    
+    {% if modifiable %}
+    <a href="{% url 'ordonnance:add_medicaments' visite.pk %}" class="submit-btn-holder details">
+        <div class="visite submit-btn">
+            <div class="item add-new">
+                <div>
+                    <span class="material-icons-sharp primary">add</span>
+                </div>
+                <h3>Add</h3>
+            </div>
+        </div>
+    </a>
+    {%endif%}
 </div>
 </div>
 
