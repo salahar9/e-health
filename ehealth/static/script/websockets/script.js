@@ -5,7 +5,7 @@ if (id != null){
 }
 phar_id  = JSON.parse(document.getElementById('phar_id'));
 if (phar_id != null){
-    phar_id=JSON.parse(phar_id.textContent)
+    id=JSON.parse(phar_id.textContent)
 }
 close=document.querySelector('.card .close')
 if (close !=null){

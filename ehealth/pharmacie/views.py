@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from doctor.models import Visite
 from ordonnance.models import Ordonnance
-from pharmacie.models import Pharmacie
+from pharmacie.models import Pharmacie,Visite
 import datetime
 from django.views.decorators.http import require_POST
 from  django.http import HttpResponse, JsonResponse
@@ -12,6 +12,23 @@ from .decorators import check_pharmacist
 
 import logging
 # Create your views here.
+
+@require_POST
+@csrf_exempt
+def create_visite(request):
+	"""
+	date_created=models.DateField(auto_now_add=True)
+	patient_id=models.OneToOneField(Doctor,on_delete=models.CASCADE)
+	medcin_id=models.OneToOneField(Patient,on_delete=models.CASCADE)"""
+	params=request.POST
+	patient=params["patient"]
+	pharma=params["pharma"]
+	patient=Patient.objects.get(pk=patient)
+	pharma=Pharmacie.objects.get(pk=pharma)
+	obj=Visite(patient_id=patient,pharma_id=pharma)
+	obj.save()
+	data={"Done":"Visite created"}
+	return  JsonResponse(data)
 @login_required
 @check_pharmacist
 def dashboard(request):
