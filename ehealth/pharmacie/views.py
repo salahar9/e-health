@@ -109,5 +109,6 @@ def mutuelle(request):
 		ordo.id_visite.mutuelle=True
 		ordo.id_pharmacie=Pharmacie.objects.get(pk=request.user.person.pharmacie.INP)
 		ordo.date_purchase=datetime.now()
-	Ordonnance.objects.bulk_update(ordos,["id_visite__mutuelle","id_pharmacie","date_purchase"])
+		ordo.save()
+	#Ordonnance.objects.bulk_update(ordos,["id_visite__mutuelle","id_pharmacie","date_purchase"])
 	return JsonResponse({"data":"done"})
