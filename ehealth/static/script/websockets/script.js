@@ -5,7 +5,7 @@ if (id != null){
     url = 'ws://'
             + window.location.host
             + '/notif/'
-            + id+"/"
+            + id
 }
 phar_id  = (document.getElementById('phar_id'));
 if (phar_id != null){
