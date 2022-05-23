@@ -26,6 +26,7 @@ send = ()=>{
     input=document.getElementById("input-bar")
     data=input.value
     chatSocket.send("message")
+    console.log("done")
 
 }
 
