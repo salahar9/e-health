@@ -99,4 +99,4 @@ def get_all(request,pk):
 			if len(ordo)>0:
 				for i in ordo:
 						ords.append(i)
-	return render(request, "pharmacie/visites.html", {"data":ords,"allowed":allowed,'other_visite_seek':True,"title":f"{pat.person_id.nom} {pat.person_id.prenom} Consultations"})
+	return render(request, "pharmacist/visites.html", {"data":ords,"allowed":allowed,'other_visite_seek':True,"title":f"{pat.person_id.nom} {pat.person_id.prenom} Consultations"})
