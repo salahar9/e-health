@@ -44,7 +44,7 @@ def send_message(request):
 	message=body["message"]
 	sender=Person.objects.get(pk=sender)
 	to=Person.objects.get(pk=to)
-	msg=Message(sender=sender,to=to,body=body)
+	msg=Message(sender=sender,to=to,body=message)
 	msg.save()
 def fetch(request,pk):
 	other=Person.objects.get(pk=pk)
