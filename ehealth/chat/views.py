@@ -41,7 +41,7 @@ def send_message(request):
 	body=json.loads(request.body)
 	sender=body["sender"]
 	to=body["to"]
-	message=rbody["message"]
+	message=body["message"]
 	msg=Message(sender=sender,to=to,msg=body)
 	msg.save()
 def fetch(request,pk):
