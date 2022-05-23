@@ -21,14 +21,11 @@
                 {% for client in data %}
                     <tr>
                         <td>
-                            <a class="patient-name" href="
-                                     {% url 'doctor:book' client.medcin_id.pk %}
-                    
-                                    ">
+                            
 
 
                                 {{ client.medcin_id.person_id.nom }} {{ client.medcin_id.person_id.prenom }}
-                            </a>
+                            
                         </td>
                         <td>  {{ client.medcin_id.person_id.phone }}</td>
                         <td>
