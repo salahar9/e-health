@@ -97,7 +97,7 @@ def get_all(request,pk):
 	
 	return render(request, "pharmacist/visites.html", {"data":visites,"allowed":allowed,'clients': True,"title":f"{pat.person_id.nom} {pat.person_id.prenom} Consultations"})
 def visite_ordo(request,pk):
-	ordo=Ordonnance.objects.filter(id_visite=pk,le_type="Medicaments")
+	ordo=Ordonnance.objects.get(id_visite=pk,le_type="Medicaments")
 	
 	
-	return render(request, "pharmacist/ordonnances.html", {"data":ordo,'clients': True,"title":f"{ordo.visite_id.patient_id.person_id.nom} {ordo.visite_id.patient_id.person_id.prenom} Consultations"})
+	return render(request, "pharmacist/ordonnances.html", {"data":ordo,'clients': True,"title":f"{ordo.id_visite.patient_id.person_id.nom} {ordo.id_visite.patient_id.person_id.prenom} Consultations"})
