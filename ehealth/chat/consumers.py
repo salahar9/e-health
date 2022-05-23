@@ -7,7 +7,7 @@ logger=logging.getLogger(__name__)
 class ChatConsumer(AsyncWebsocketConsumer):
     def connect(self):
         
-
+        logger.warning("HEEEEEERE")
         async_to_sync(self.channel_layer.group_add)( 
             self.scope["user"].person.pk,
             self.channel_name
