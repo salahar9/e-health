@@ -29,7 +29,7 @@
                                     <th>Prix</th>
                                     <th>Created on</th>
                                     <th>Created at</th>
-                                    <th>Details</th>
+                                   
                                 </tr>
                             </thead>
 
@@ -45,11 +45,7 @@
                                     <td>{{ordo.date_created|time:'H:i'}}</td>
                                    
                                    
-                                    <td class="primary">
-                                        <a class="see-detils-btn" href="">
-                                            <span class="material-icons-sharp"> open_in_new</span>
-                                        </a>
-                                    </td>
+                                    
                                 </tr>
                                 {% empty %}
                                     <tr visite_id="1">
@@ -63,7 +59,7 @@
                     <form id="create_insurance" action="{% url 'pharmacist:mut' %}">
                         <input type="text" id="selected_visites" name="selected_visites" hidden required>
                         <button id="login-btn" type="submit">
-                            <h2>Create</h2>
+                            <h2>Sell</h2>
                         </button>
                     </form>
                 </div>
