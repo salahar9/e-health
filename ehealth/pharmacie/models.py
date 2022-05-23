@@ -20,10 +20,10 @@ class Visite(models.Model):
 	pharma_id=models.ForeignKey(Pharmacie,on_delete=models.CASCADE,related_name="pharma_visites")
 	class Meta:
 		ordering=["-date_created"]
-	def get_absolute_url(self):
-		from django.urls import reverse
-		return reverse('doctor:get_visite_details', kwargs={'visite' : self.pk})
-@receiver(post_save, sender=Visite)
+# 	def get_absolute_url(self):
+# 		from django.urls import reverse
+# 		return reverse('phar:get_visite_details', kwargs={'visite' : self.pk})
+# @receiver(post_save, sender=Visite)
 def up(sender, instance,**kwargs):
         channel_layer=get_channel_layer()
         group=instance.pharma_id.INP
@@ -31,7 +31,7 @@ def up(sender, instance,**kwargs):
             'type': 'send.visite',
 
             "visite":{			
-            			"visite":instance.get_absolute_url(),
+            			#"visite":instance.get_absolute_url(),
                         "name":instance.patient_id.person_id.nom+" "+instance.patient_id.person_id.prenom,
                         "img":instance.patient_id.person_id.img.url,
                         "email":instance.patient_id.person_id.user.email,
