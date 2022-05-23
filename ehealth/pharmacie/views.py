@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from doctor.models import Visite as doc_visite
 from ordonnance.models import Ordonnance
 from patient.models import Patient
@@ -122,4 +122,4 @@ def mutuelle(request):
 
 	#Ordonnance.objects.bulk_update(ordos,["id_visite__mutuelle","id_pharmacie","date_purchase"])
 		
-	return JsonResponse({"data":"done"})
+	return redirect("pharmacist:dashboard")
