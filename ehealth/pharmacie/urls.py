@@ -10,5 +10,5 @@ urlpatterns=[
 	 path("clients/", views.clients, name="clients"),
 	 path("create_visite/", views.create_visite, name="create_visite"),
 	 path("get_all/<int:pk>",views.get_all,name="get_all"),
-	 path("ordo/<int:pk>",views.get_all,name="ordo"),
+	 path("ordo/<int:pk>",views.visite_ordo,name="ordo"),
 ]
