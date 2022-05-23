@@ -6,6 +6,8 @@ from django.db.models import Q
 from django.db.models.aggregates import Count
 from django.db.models import Case,When,Value
 from landing.models import Person
+
+from  django.http import HttpResponse, JsonResponse
 import json
 import datetime
 def chats(request):
