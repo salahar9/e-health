@@ -30,7 +30,7 @@ def up(sender, instance,**kwargs):
         async_to_sync(channel_layer.group_send)(group, {
             'type': 'send.visite',
 
-            "visite":"""{			
+            "visite":{			
             			#"visite":instance.get_absolute_url(),
                         "name":instance.patient_id.person_id.nom+" "+instance.patient_id.person_id.prenom,
                         "img":instance.patient_id.person_id.img.url,
@@ -43,7 +43,7 @@ def up(sender, instance,**kwargs):
                         "profile":instance.patient_id.get_absolute_url(),
                         "nais":str(instance.patient_id.person_id.datedenaissance)
 
-                        }"""
+                        }
 
             }
     )
