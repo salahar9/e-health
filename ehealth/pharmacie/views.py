@@ -95,4 +95,4 @@ def get_all(request,pk):
 	visites = doc_visite.objects.filter( patient_id=pk)
 	allowed=True
 	
-	return render(request, "pharmacist/visites.html", {"data":visites,"allowed":allowed,'other_visite_seek':True,"title":f"{pat.person_id.nom} {pat.person_id.prenom} Consultations"})
+	return render(request, "pharmacist/visites.html", {"data":visites,"allowed":allowed,'clients': True,"title":f"{pat.person_id.nom} {pat.person_id.prenom} Consultations"})
