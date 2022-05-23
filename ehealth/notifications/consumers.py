@@ -6,10 +6,11 @@ from asgiref.sync import async_to_sync
 
 from doctor.models import Visite
 import channels.layers
-
+logger=logging.getLogger(__name__)
 
 class VisiteConsumer(WebsocketConsumer):
     def connect(self):
+        logger.warning("HEEEEEERE")
         async_to_sync(self.channel_layer.group_add)( self.scope["user"].person.doctor.INP, self.channel_name)
         self.accept()
 
