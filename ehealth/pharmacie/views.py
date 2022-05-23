@@ -10,7 +10,7 @@ from django.db.models.aggregates import Count,Sum
 from django.contrib.auth.decorators import login_required
 from .decorators import check_pharmacist
 
-import logging
+
 # Create your views here.
 @login_required
 @check_pharmacist
