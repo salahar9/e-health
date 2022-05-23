@@ -29,7 +29,7 @@ class Message(models.Model):
         async_to_sync(channel_layer.group_send)(self.sender.pk, notification_sender)
         async_to_sync(channel_layer.group_send)(self.to.pk, notification_to)
     def save(self, *args, **kwargs):
-        logging.getLogger(__name__).error(self.body)
+       
         self.body = self.body.strip() 
         super(Message, self).save(*args, **kwargs)
         self.notify_ws_clients()

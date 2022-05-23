@@ -35,7 +35,7 @@ send = ()=>{
         body: JSON.stringify({
                 sender: pid,
                 to: id,
-                message:input
+                message:data
         })})
     .then(response => console.log(response))
     
