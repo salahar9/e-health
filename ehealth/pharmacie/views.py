@@ -14,7 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.core.paginator import Paginator
 from django.db.models import Q    
-from datetime import datetime
+from datetime 
 import logging
 from mutuelle.models import AllMutuelle
 # Create your views here.
@@ -109,7 +109,7 @@ def mutuelle(request):
 	for ordo in ordos:
 		ordo.id_visite.mutuelle=True
 		ordo.id_pharmacie=Pharmacie.objects.get(pk=request.user.person.pharmacie.INP)
-		ordo.date_purchase=datetime.now()
+		ordo.date_purchase=datetime.datetime.now()
 		ordo.save()
 		try:
 			mut=AllMutuelle(id_visite=ordo__id_visite,total=0,mutuelle_status="P")
