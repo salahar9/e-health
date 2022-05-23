@@ -25,7 +25,7 @@ fetch_messages = (i) => {
                 element=document.createElement("div",{class:"chat-box ingoing"})
    
             }
-            element.innerHTML=' <div class="detail"><h3>'+data[i].body}}+'</h3><small class="text-muted">'+data[i].timestamp+' </small></div>'
+            element.innerHTML=' <div class="detail"><h3>'+data[i].body+'</h3><small class="text-muted">'+data[i].timestamp+' </small></div>'
             container.appendChild(element)
         }
 
