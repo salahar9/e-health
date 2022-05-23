@@ -64,6 +64,7 @@ class VisitePharmaConsumer(WebsocketConsumer):
         logger.warning(visite)
         #text_data_json = json.loads(visite)
         #message = visite['infos']
+        message=visite
         self.send(text_data=json.dumps(
             {
 
