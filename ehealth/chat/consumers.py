@@ -1,7 +1,8 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 from asgiref.sync import async_to_sync
-
+import logger
+logger=logging.getLogger(__name__)
 
 class ChatConsumer(AsyncWebsocketConsumer):
     def connect(self):

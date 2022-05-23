@@ -8,6 +8,7 @@ const chatSocket = new WebSocket(
             
         );
 
+
 fetch_messages = (i) => {
 
     fetch("/chat/fetch/"+i)
