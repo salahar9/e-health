@@ -37,12 +37,13 @@ class ChatConsumer(WebsocketConsumer):
     def receive_msg(self,message):
         text_data_json = json.loads(message)
         message = text_data_json['message']
-        
+
         # Send message to room group
-        self.channel_layer.group_send(
-             self.scope["user"].person.pk,
+        self.send(text_data=json.dumps(
             {
-                'type': 'recieve_group_message',
-                'message': message
+
+            'message': message,
+           
+            
             }
         )

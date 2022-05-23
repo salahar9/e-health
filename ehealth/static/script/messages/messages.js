@@ -39,7 +39,7 @@ send = ()=>{
         })})
     .then(response => console.log(response))
     
-    chatSocket.send("message")
+    //chatSocket.send("message")
 
 }
 
