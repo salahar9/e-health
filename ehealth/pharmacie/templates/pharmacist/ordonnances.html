@@ -34,7 +34,7 @@
                             </thead>
 
                             <tbody>
-                                {% for ordo in ordos %}
+                                {% for ordo in data %}
                                 <tr visite_id="{{ordo.pk}}">
                                     <td>
                                         <span class="material-icons-sharp checkbox">check_box_outline_blank</span>
@@ -53,7 +53,7 @@
                                 </tr>
                                 {% empty %}
                                     <tr visite_id="1">
-                                       Nothing
+                                     <td>  Nothing</td>
                                      </tr>
                                 {%endfor%}
                               
