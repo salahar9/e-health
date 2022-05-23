@@ -1,10 +1,10 @@
-from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.generic.websocket import WebsocketConsumer
 import json
 from asgiref.sync import async_to_sync
 import logging
 logger=logging.getLogger(__name__)
 
-class ChatConsumer(AsyncWebsocketConsumer):
+class ChatConsumer(WebsocketConsumer):
     def connect(self):
         
         logger.warning("HEEEEEERE")
