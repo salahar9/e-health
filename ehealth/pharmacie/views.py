@@ -112,10 +112,10 @@ def mutuelle(request):
 		ordo.date_purchase=datetime.datetime.now()
 		ordo.save()
 		try:
-			mut=AllMutuelle(id_visite=ordo__id_visite,total=0,mutuelle_status="P")
+			mut=AllMutuelle(id_visite=ordo.visite_id,total=0,mutuelle_status="P")
 			mut.save()
 		except:
-			AllMutuelle.objects.get(id_visite=ordo.id_visite)
+			AllMutuelle.objects.get(id_visite=ordo.visite_id)
 		mut.tot+=ordo.price
 		mut.save()
 
