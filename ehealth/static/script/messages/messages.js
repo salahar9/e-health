@@ -32,7 +32,7 @@ fetch_messages = (i) => {
         }
 
 
-
+console.log(data)
         }
     )
 

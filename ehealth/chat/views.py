@@ -57,7 +57,8 @@ def fetch(request,pk):
 
 			When(to_id=request.user.person,then=0)
 		)).order_by("timestamp")
-	messages = list(messages.values())
+	messagesstats=Message.objects.filter(Q(sender=request.user.person) & Q(to=other)  | Q(sender=other) & Q(to=request.user.person)).aggregate(unread=Count("seen",filter=Q(seen=False))).order_by("timestamp")
+	messages = list(messages.values())+list(messagesstats.values())
 	return JsonResponse(messages,safe=False)
 	
 
