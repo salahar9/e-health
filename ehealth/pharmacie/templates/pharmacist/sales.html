@@ -12,6 +12,7 @@
                     <th>Quantity</th>
                     <th>Date</th>
                     <th>Time</th>
+                    <th>Price</th>
 
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
                     <td>{{ord.quantite}}</td>
                     <td>{{ord.date_purchase|date:"D d M Y" }}</td>
                     <td>{{ord.date_purchase|time:"H:i"}}</td>
+                    <td>{{ord.id_medicament.prix_br}}</td>
 
                 </tr>
 
