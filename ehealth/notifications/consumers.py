@@ -26,8 +26,10 @@ class VisiteConsumer(WebsocketConsumer):
             'message': self.scope['user'].person.nom
         }))
     def send_visite(self,visite):
-        text_data_json = json.loads(visite)
-        message = text_data_json['infos']
+       
+        #text_data_json = json.loads(visite)
+        #message = visite['visite']
+        message=visite
         self.send(text_data=json.dumps(
             {
 
