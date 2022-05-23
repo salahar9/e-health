@@ -81,7 +81,7 @@
             </tbody>
         </table>
     </div>
-    <a class="show-all-btn" href="{url 'pharmacist:sales'}">Show All</a>
+    <a class="show-all-btn" href="{% url 'pharmacist:sales' %}">Show All</a>
 </div>
 
 {%endblock%}
@@ -107,6 +107,6 @@
         {% endfor %}
     </div>
 </div>
-<a href="{url 'pharmacist:clients'}" class="show-all-btn">Show All</a>
+<a href="{% url 'pharmacist:clients' %}" class="show-all-btn">Show All</a>
 <!--------------- END OF SECTION-1 ------------>
 {%endblock%}
