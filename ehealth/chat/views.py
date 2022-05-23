@@ -42,6 +42,8 @@ def send_message(request):
 	sender=body["sender"]
 	to=body["to"]
 	message=body["message"]
+	sender=Person.objects.get(pk=sender)
+	to=Person.objects.get(pk=to)
 	msg=Message(sender=sender,to=to,msg=body)
 	msg.save()
 def fetch(request,pk):
