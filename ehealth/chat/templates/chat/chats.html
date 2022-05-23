@@ -104,6 +104,8 @@
                     
 
                         </div>
+{{user.person.pk|json_script:"person_id" }}
+
 {{ other.pk|json_script:"id" }}                
 <script type="text/javascript" src="{% static 'script/messages/messages.js' %}"></script>
 
