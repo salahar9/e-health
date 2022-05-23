@@ -157,28 +157,30 @@ from django.contrib.auth import logout
 def logout_view(request):
     logout(request)
     return redirect('landing:index')
-@require_POST
+
 @csrf_exempt
 def login_json(request):
 	data={}
-	username=request.POST["username"]
-	password=request.POST["password"]
+	username=request.GET["username"]
+	password=request.GET["password"]
 	try:
 		user=User.objects.get(username=username)
 		if check_password(password,user.password):
 			try:
 					user.person.doctor.INP is not None
 					data["INP"]=user.person.doctor.INP
-					data["doctor"]=True
+					#data["doctor"]=True
+					data["role"]="doctor"
 					
 			except  Exception as e :
 					try:
 						user.person.pharmacie.INP is not None
 						data["INP"]=user.person.pharmacie.INP
-						data["pharmacie"]=True
+						#data["pharmacie"]=True
+						data["role"]="pharmacie"
 					except Exception as e:
-						#data["error"]="user exists but doesn't have a role"
-						data["error"]=str(e)
+						data["error"]="user exists but doesn't have a role"
+						#data["error"]=str(e)
 		else:
 			data={"error":"Not found"}	
 	except User.DoesNotExist:

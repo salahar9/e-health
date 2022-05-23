@@ -3,6 +3,7 @@ from pharmacie.models import Pharmacie
 import logging
 from doctor.models import Visite
 from med.models import Meds
+from mutuelle.models import AllMutuelle
 # Create your models here.
 
 class Ordonnance(models.Model):
@@ -26,7 +27,15 @@ class Ordonnance(models.Model):
 		if self.le_type=="Medicaments":
 			logging.warning(f"{self.quantite},{self.id_medicament.prix_br}")
 			self.price=float(self.quantite)*self.id_medicament.prix_br
-
+		elif self.le_type=="Traitement" and self.id_visite.patient_id.a_mutuelle:
+			
+			try:
+				mut=AllMutuelle(visite_id=self.id_visite,total=0,mutuelle_status="P")
+				mut.save()
+			except:
+				mut=AllMutuelle.objects.get(visite_id=self.id_visite)
+		mut.total+=self.price
+		mut.save()
 
 		super(Ordonnance, self).save(*args, **kwargs)
 

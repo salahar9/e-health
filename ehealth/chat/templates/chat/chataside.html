@@ -1,0 +1,26 @@
+<div class="all-chats">
+                                {% for chat in chats %}
+                                <a href="{%if holder %} {% url 'chat:chat' chat.to.pk %}  {%else%} {% url 'chat:chat' chat.sender.pk %}  {%endif%}">
+                                <div class="chat-row" id="contact-{{forloop.counter}}" >
+
+                                    <div class="profile-photo">
+                                        <img src="{%if holder %} {{chat.to.img.avatar.url}}  {%else%} {{chat.sender.img.avatar.url}}  {%endif%}" alt="">
+                                    </div>
+
+                                    <div class="chat-details">
+                                        <h3>{%if holder %} {{chat.to.nom}} {{chat.to.prenom}} {%else%} {{chat.sender.nom}} {{chat.sender.prenom}} {%endif%}</h3>
+                                        <h4 class="text-muted">{{ chat.body }}</h4>
+                                    </div>
+
+                                    <div class="chat-time">
+                                        <h4 class="text-muted">{{chat.timestamp}} </h4>
+                                        <div class="messages-count">
+                                            <h3>{{chat.unread}}</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </a>
+                                {%endfor%}
+                               
+                                </div>

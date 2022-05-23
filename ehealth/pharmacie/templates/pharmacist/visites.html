@@ -2,39 +2,44 @@
 {%load static%}
 {% block content%}
 <div class="bottom consultations">
-    <h2>All Patients </h2>
+ 
     <div class="card">
         <table>
 
             <thead>
                 <tr>
-                    <th> Patient Name</th>
+                    <th> Doctor Name</th>
                     <th>Phone Number</th>
                     <th>Date</th>
                     <th>Time</th>
+                    <th>Details</th>
 
                 </tr>
             </thead>
 
             <tbody>
-                {% for client in ordonnances %}
+                {% for client in data %}
                     <tr>
                         <td>
-                            <a class="patient-name" href="
-                                     {% url 'patient:profile' client.id_visite.patient_id.person_id.pk %}
-                    
-                                    ">
+                            
 
 
-                                {{ client.id_visite.patient_id.person_id.nom }} {{ client.id_visite.patient_id.person_id.prenom }}
-                            </a>
+                                {{ client.medcin_id.person_id.nom }} {{ client.medcin_id.person_id.nom }}
+                            
                         </td>
-                        <td>  {{ client.id_visite.patient_id.person_id.phone }}</td>
+                        <td>  {{ client.medcin_id.person_id.phone }}</td>
                         <td>
-                            {{ client.date_purchase|date:"D d M Y" }} </td>
+                            {{ client.date_created|date:"D d M Y" }} </td>
                         <td>
-                             {{ client.date_purchase|time:"H:i" }} </td>
+                             {{ client.date_created|time:"H:i" }} </td>
+                         <td>
+                             {{ client.date_created|time:"H:i" }} </td>
 
+                         <td class="primary">
+                                        <a class="see-detils-btn" href="{% url 'pharmacist:ordo' client.pk %} ">
+                                            <span class="material-icons-sharp"> open_in_new</span>
+                                        </a>
+                                    </td>
 
                     </tr>
                 {%empty%}

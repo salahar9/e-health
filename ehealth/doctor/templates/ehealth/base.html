@@ -28,6 +28,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <title>Document</title>
+
     </head>
 
     <body>
@@ -62,7 +63,7 @@
 
                             </div>
                             <div class="buttons">
-                                <h3><a id="visite-visite" href="">Add treatments</a>
+                                <h3><a id="visite-visite" href="">{% if pharmacist %} See treatments {%else%} Add treatments{%endif%}</a>
                                 </h3>
                                 <h3><a id="visite-profile" href="">View Profile</a></h3>
                             </div>
@@ -155,12 +156,13 @@
             </div>
             {% if doctor %}
             {{user.person.doctor.pk|json_script:"doc_id" }}
-            {% elif pharmacie %}
+            {% elif pharmacist %}
             {{user.person.pharmacie.pk|json_script:"phar_id" }}
             {%endif%}
-
             {% if doctor  or pharmacist %}
+            {% if not chat %}
             <script src="{% static 'script/websockets/script.js' %}" crossorigin="anonymous"></script>
+            {%endif%}
             {%endif%}
             <script src="{% static 'script/dashboard/script.js' %}"></script>
             {% if add_trai %}

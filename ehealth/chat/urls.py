@@ -2,8 +2,11 @@ from django.urls import include, path
 from . import views
 app_name='chat'
 urlpatterns=[
+	path("",views.chats,name="chats"),
 
-	path("chat/",views.chat,name="chat"),
+	path("<int:pk>/",views.chat,name="chat"),
+	path("fetch/<int:pk>",views.fetch,name="fetch"),
+	path("sendmsg/",views.send_message,name="sendmessage"),
 	
 
 ]
