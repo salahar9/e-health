@@ -100,4 +100,4 @@ def visite_ordo(request,pk):
 	ordo=Ordonnance.objects.filter(id_visite=pk,le_type="Medicaments")
 	
 	
-	return render(request, "pharmacist/ordonnances.html", {"data":ordo,"allowed":allowed,'clients': True,"title":f"{pat.person_id.nom} {pat.person_id.prenom} Consultations"})
+	return render(request, "pharmacist/ordonnances.html", {"data":ordo,'clients': True,"title":f"{pat.person_id.nom} {pat.person_id.prenom} Consultations"})
