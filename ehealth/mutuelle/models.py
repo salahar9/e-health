@@ -15,7 +15,7 @@ class AllMutuelle(models.Model):
 
 
     visite_id = models.ForeignKey(
-        Visite, on_delete=models.CASCADE, null=False,unique=True)
+        Visite, on_delete=models.CASCADE, null=False)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     mutuelle_status = models.CharField(
         max_length=1, choices=MUTUELLE_STATUS_CHOICES, default=MUTUELLE_STATUS_PENDING)
