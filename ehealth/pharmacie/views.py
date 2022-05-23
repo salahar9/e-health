@@ -16,6 +16,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q    
 from datetime import datetime
 import logging
+from mutuelle.models import AllMutuelle
 # Create your views here.
 PAGINATION_COUNT=10
 
@@ -110,5 +111,15 @@ def mutuelle(request):
 		ordo.id_pharmacie=Pharmacie.objects.get(pk=request.user.person.pharmacie.INP)
 		ordo.date_purchase=datetime.now()
 		ordo.save()
+		try:
+			mut=AllMutuelle(id_visite=ordo__id_visite,total=0,mutuelle_status="P")
+			mut.save()
+		except:
+			AllMutuelle.objects.get(id_visite=ordo__id_visite)
+		mut.tot+=ordo.price
+		mut.save()
+
+
 	#Ordonnance.objects.bulk_update(ordos,["id_visite__mutuelle","id_pharmacie","date_purchase"])
+		mut.tot+=ordo.price
 	return JsonResponse({"data":"done"})
