@@ -90,6 +90,7 @@ def clients(request):
 	page_obj = paginator.get_page(page_number)
 	return render(request, 'pharmacist/clients.html', {'pharmacist': True, 'clients': True,"ordonnances":page_obj})
 def get_all(request,pk):
+	pat=Patient.objects.get(pk=pk)
 	ords=[]
 	visites = doc_visite.objects.filter( patient_id=pk)
 		allowed=True
