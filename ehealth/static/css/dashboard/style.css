@@ -449,6 +449,8 @@ main form#create_insurance button h2,
     height: 100vh;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%),
         url(http://3.18.29.109/static/images/landing/Background.png);
+    background-repeat: no-reapeat;
+    background-size: cover;
 }
 
 
