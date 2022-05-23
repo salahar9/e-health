@@ -18,7 +18,7 @@ class Message(models.Model):
         """
 
         notification_sender = {
-            'type': 'chat.receive.msg',
+            'type': 'receive.msg',
             'message': f"{self.to}"
         }
         notification_to = {
