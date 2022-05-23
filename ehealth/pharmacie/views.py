@@ -92,7 +92,7 @@ def clients(request):
 def get_all(request,pk):
 	pat=Patient.objects.get(pk=pk)
 	ords=[]
-	visites = doc_visite.objects.filter( patient_id=pk,mutuelle=False)
+	visites = doc_visite.objects.filter( patient_id=pk,mutuelle=False).annotate(count=Count("ordonnance")).filter(count__gt=0)
 	allowed=True
 	
 	return render(request, "pharmacist/visites.html", {"data":visites,"allowed":allowed,'clients': True,"title":f"{pat.person_id.nom} {pat.person_id.prenom} Consultations"})
