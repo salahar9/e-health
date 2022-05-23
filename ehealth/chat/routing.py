@@ -1,9 +1,10 @@
 
 from chat import consumers
-from django.urls import path
+from django.urls import path,re_path
 
 websocket_urlpatterns = [
 
-	path(r'notif/chat/<int:pk>/', consumers.ChatConsumer.as_asgi()),
+re_path(r'notif/chat/(?P<room_name>\w+)/$', consumers.ChatConsumer.as_asgi()),
+
 
 ]

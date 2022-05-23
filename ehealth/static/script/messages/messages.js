@@ -7,6 +7,7 @@ const chatSocket = new WebSocket(
             + id+"/"
             
         );
+
 fetch_messages = (i) => {
 
     fetch("/chat/fetch/"+i)
@@ -14,6 +15,7 @@ fetch_messages = (i) => {
     .then(data => console.log(data))
 
 }
+
 chatSocket.onmessage = () => {
 
     fetch_messages(id)
