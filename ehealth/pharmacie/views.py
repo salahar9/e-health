@@ -111,14 +111,15 @@ def mutuelle(request):
 		ordo.id_pharmacie=Pharmacie.objects.get(pk=request.user.person.pharmacie.INP)
 		ordo.date_purchase=datetime.datetime.now()
 		ordo.save()
-		mut=[]
+
 		try:
-			mut=AllMutuelle(visite_id=ordo.id_visite,total=0,mutuelle_status="P")
+			mut=AllMutuelle(visite_id=ordo.id_visite,total=ordo.price,mutuelle_status="P")
+
 			mut.save()
 		except:
 			mut=AllMutuelle.objects.get(visite_id=ordo.id_visite)
-		mut.total += ordo.price
-		mut.save()
+			mut.total += ordo.price
+			mut.save()
 
 
 	#Ordonnance.objects.bulk_update(ordos,["id_visite__mutuelle","id_pharmacie","date_purchase"])
