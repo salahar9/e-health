@@ -111,6 +111,7 @@ def mutuelle(request):
 		ordo.id_pharmacie=Pharmacie.objects.get(pk=request.user.person.pharmacie.INP)
 		ordo.date_purchase=datetime.datetime.now()
 		ordo.save()
+		mut=None
 		try:
 			mut=AllMutuelle(visite_id=ordo.id_visite,total=0,mutuelle_status="P")
 			mut.save()
