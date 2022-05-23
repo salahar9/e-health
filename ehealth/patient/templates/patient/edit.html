@@ -130,7 +130,7 @@
                         <span class="slider round"></span>
                     </label>
                 </div>
-                <form action="{% url 'patient:register' %}" class="user-settings hide-from" id="form-assur"
+                <form action="{% url 'patient:register' %}" class="user-settings {% if not user.person.patient.a_mutuelle %}hide-from{%endif%}" id="form-assur"
                     method="POST">
                     {% csrf_token %}
                     <div class="form-row">
