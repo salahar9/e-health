@@ -94,9 +94,5 @@ def get_all(request,pk):
 	ords=[]
 	visites = doc_visite.objects.filter( patient_id=pk)
 	allowed=True
-	for v in visites:
-			ordo = Ordonnance.objects.filter( id_visite=v.pk)
-			if len(ordo)>0:
-				for i in ordo:
-						ords.append(i)
-	return render(request, "pharmacist/visites.html", {"data":ords,"allowed":allowed,'other_visite_seek':True,"title":f"{pat.person_id.nom} {pat.person_id.prenom} Consultations"})
+	
+	return render(request, "pharmacist/visites.html", {"data":visites,"allowed":allowed,'other_visite_seek':True,"title":f"{pat.person_id.nom} {pat.person_id.prenom} Consultations"})
