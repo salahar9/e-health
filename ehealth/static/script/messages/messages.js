@@ -1,12 +1,12 @@
 id=document.getElementById('id').textContent
 
-/*const chatSocket = new WebSocket(
+const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
             + '/notif/chat/'
             + id+"/"
             
-        );*/
+        );
 
 fetch_messages = (i) => {
 
