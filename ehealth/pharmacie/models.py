@@ -31,7 +31,7 @@ def up(sender, instance,**kwargs):
             'type': 'send.visite',
 
             "visite":{			
-            			"visite":f"/patient/visites/{instance.pk}",
+            			"visite":f"/patient/visites/{instance.patient_id.pk}",
                         "name":instance.patient_id.person_id.nom+" "+instance.patient_id.person_id.prenom,
                         "img":instance.patient_id.person_id.img.url,
                         "email":instance.patient_id.person_id.user.email,
