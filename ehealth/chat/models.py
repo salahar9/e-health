@@ -26,8 +26,8 @@ class Message(models.Model):
             'message': f"{self.sender}"
         }
         channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(self.sender.pk, json.dumps(notification_sender))
-        async_to_sync(channel_layer.group_send)(self.to.pk, json.dumps(notification_to))
+        async_to_sync(channel_layer.group_send)(self.sender.pk,(notification_sender))
+        async_to_sync(channel_layer.group_send)(self.to.pk, (notification_to))
     def save(self, *args, **kwargs):
        
         self.body = self.body.strip() 
