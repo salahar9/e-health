@@ -18,11 +18,11 @@ class Message(models.Model):
         """
 
         notification_sender = {
-            'type': 'chat.recieve.msg',
+            'type': 'chat.receive.msg',
             'message': f"{self.to}"
         }
         notification_to = {
-            'type': 'recieve.msg',
+            'type': 'receive.msg',
             'message': f"{self.sender}"
         }
         channel_layer = get_channel_layer()
