@@ -15,7 +15,7 @@ fetch_messages = (i) => {
     container.innerHTML=''
     fetch("/chat/fetch/"+i)
     .then(response => response.json())
-    .then(data => (
+    .then(data => {
 
         for(i in data){
             if (i.sender_id==pid){
@@ -30,7 +30,7 @@ fetch_messages = (i) => {
 
 
 
-        )
+        }
     )
 
 }
