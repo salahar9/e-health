@@ -61,7 +61,7 @@ class VisitePharmaConsumer(WebsocketConsumer):
             'message': self.scope['user'].person.nom
         }))
     def send_visite(self,visite):
-        logging.warning(visite)
+        logger.warning(visite)
         text_data_json = json.loads(visite)
         message = text_data_json['infos']
         self.send(text_data=json.dumps(
