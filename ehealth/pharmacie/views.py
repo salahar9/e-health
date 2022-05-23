@@ -42,7 +42,7 @@ def dashboard(request):
 	filt=datetime.date.today()-datetime.timedelta(days=7)
 	ordonnances=Ordonnance.objects.filter(
 		le_type="Medicaments",id_pharmacie=request.user.person.pharmacie.pk,
-		).order_by("-date_purchase").select_related("id_visite__patient_id")
+        ).order_by("-date_purchase").select_related("id_visite__patient_id")[:3]
 
 	ordonnances_stats=Ordonnance.objects.filter(
 		le_type="Medicaments",id_pharmacie=request.user.person.pharmacie.pk,date_purchase__gte=filt
