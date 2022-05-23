@@ -18,13 +18,14 @@ fetch_messages = (i) => {
     .then(data => {
 
         for(i in data){
-            if (i.sender_id==pid){
+            if (data[i].sender_id==pid){
                 element=document.createElement("div",{class:"chat-box outgoing"})
             }
             else{
                 element=document.createElement("div",{class:"chat-box ingoing"})
    
             }
+            element.innerHTML=' <div class="detail"><h3>'+data[i].body}}+'</h3><small class="text-muted">'+data[i].timestamp+' </small></div>'
             container.appendChild(element)
         }
 
