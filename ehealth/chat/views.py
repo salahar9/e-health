@@ -46,6 +46,7 @@ def send_message(request):
 	to=Person.objects.get(pk=to)
 	msg=Message(sender=sender,to=to,body=message)
 	msg.save()
+	return JsonResponse({"data":"done"})
 def fetch(request,pk):
 	other=Person.objects.get(pk=pk)
 	messages=Message.objects.filter(Q(sender=request.user.person) & Q(to=other)  | Q(sender=other) & Q(to=request.user.person)).annotate(unread=Count("seen",filter=Q(seen=False)),
