@@ -11,10 +11,27 @@ const chatSocket = new WebSocket(
 
 
 fetch_messages = (i) => {
-
+    container=document.querySelector(".conversation-body")
+    container.innerHTML=''
     fetch("/chat/fetch/"+i)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => (
+
+        for(i in data){
+            if (i.sender_id==pid){
+                element=document.createElement("div",{class:"chat-box outgoing"})
+            }
+            else{
+                element=document.createElement("div",{class:"chat-box ingoing"})
+   
+            }
+            container.appendChild(element)
+        }
+
+
+
+        )
+    )
 
 }
 

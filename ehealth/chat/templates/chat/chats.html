@@ -64,7 +64,7 @@
 
                         <div class="conversation-body">
                             {% for msg in messages %}
-                            <div class="{%if msg.holder %}chat-box incoming{%else%}chat-box outgoing{%endif%}">
+                            <div class="{%if msg.holder %}chat-box outgoing{%else%}chat-box incoming{%endif%}">
                                 <div class="detail">
                                     <h3>{{msg.body}}</h3>
                                     <small class="text-muted">{{msg.timestamp|time:"H:i"}} </small>
