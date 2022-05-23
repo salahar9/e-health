@@ -115,7 +115,7 @@ def mutuelle(request):
 			mut=AllMutuelle(visite_id=ordo.id_visite,total=0,mutuelle_status="P")
 			mut.save()
 		except:
-			AllMutuelle.objects.get(visite_id=ordo.id_visite)
+			mut=AllMutuelle.objects.get(visite_id=ordo.id_visite)
 		mut.total+=ordo.price
 		mut.save()
 

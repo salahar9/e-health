@@ -33,7 +33,7 @@ class Ordonnance(models.Model):
 				mut=AllMutuelle(visite_id=self.id_visite,total=0,mutuelle_status="P")
 				mut.save()
 			except:
-				AllMutuelle.objects.get(visite_id=self.id_visite)
+				mut=AllMutuelle.objects.get(visite_id=self.id_visite)
 		mut.total+=self.price
 		mut.save()
 
