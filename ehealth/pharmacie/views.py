@@ -93,8 +93,8 @@ def get_all(request,pk):
 	pat=Patient.objects.get(pk=pk)
 	ords=[]
 	visites = doc_visite.objects.filter( patient_id=pk)
-		allowed=True
-		for v in visites:
+	allowed=True
+	for v in visites:
 			ordo = Ordonnance.objects.filter( id_visite=v.pk)
 			if len(ordo)>0:
 				for i in ordo:
