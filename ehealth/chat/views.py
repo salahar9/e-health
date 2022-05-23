@@ -16,7 +16,7 @@ def chats(request):
 		))
 	
 		
-	return render(request,"chat/chats.html",{"chats":chats,})
+	return render(request,"chat/chats.html",{"chat":True,"chats":chats,})
 def chat(request,pk):
 
 	other=Person.objects.get(pk=pk)
@@ -33,7 +33,7 @@ def chat(request,pk):
 			When(to_id=request.user.person,then=0)
 		)).order_by("timestamp")
 		
-	return render(request,"chat/chats.html",{'other':other,"chats":chats,"messages":messages})
+	return render(request,"chat/chats.html",{"chat":True,'other':other,"chats":chats,"messages":messages})
 @require_POST
 @csrf_exempt
 def send_message(request):

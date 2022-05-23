@@ -160,7 +160,9 @@
             {%endif%}
 
             {% if doctor  or pharmacist %}
+            {% if not chat %}
             <script src="{% static 'script/websockets/script.js' %}" crossorigin="anonymous"></script>
+            {%endif%}
             {%endif%}
             <script src="{% static 'script/dashboard/script.js' %}"></script>
             {% if add_trai %}
