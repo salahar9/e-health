@@ -116,10 +116,10 @@ def mutuelle(request):
 			mut.save()
 		except:
 			AllMutuelle.objects.get(visite_id=ordo.id_visite)
-		mut.tot+=ordo.price
+		mut.total+=ordo.price
 		mut.save()
 
 
 	#Ordonnance.objects.bulk_update(ordos,["id_visite__mutuelle","id_pharmacie","date_purchase"])
-		mut.total+=ordo.price
+		
 	return JsonResponse({"data":"done"})
