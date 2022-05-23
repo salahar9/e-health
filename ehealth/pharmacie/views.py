@@ -102,7 +102,7 @@ def visite_ordo(request,pk):
 	
 	return render(request, "pharmacist/ordonnances.html", {"data":ordo,'clients': True,"title":"Ordonnances"})
 def mutuelle(request):
-	params=request.GET.params["selected_visites"]
+	params=request.GET["selected_visites"]
 	params=params.split(",")
 	ordos=Ordonnance.objects.filter(pk__in=params)
 	for ordo in ordos:
