@@ -6,7 +6,7 @@ urlpatterns=[
 
 	path("<int:pk>/",views.chat,name="chat"),
 	path("fetch/<int:pk>",views.fetch,name="fetch"),
-	path("send_message/",views.sendmessage,name="sendmessage"),
+	path("sendmsg/",views.send_message,name="sendmessage"),
 	
 
 ]
