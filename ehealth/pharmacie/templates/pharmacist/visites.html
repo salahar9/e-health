@@ -1,0 +1,190 @@
+{% extends "ehealth/base.html" %}
+{%load static%}
+{% block content%}
+<div class="bottom consultations">
+    <h2>All Patients </h2>
+    <div class="card">
+        <table>
+
+            <thead>
+                <tr>
+                    <th> Doctor Name</th>
+                    <th>Phone Number</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Details</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for client in ords %}
+                    <tr>
+                        <td>
+                            <a class="patient-name" href="
+                                     {% url 'doctor:book' client.medcin_id.pk %}
+                    
+                                    ">
+
+
+                                {{ client.medcin_id.person_id.nom }} {{ client.medcin_id.person_id.prenom }}
+                            </a>
+                        </td>
+                        <td>  {{ client.medcin_id.person_id.phone }}</td>
+                        <td>
+                            {{ client.date_created|date:"D d M Y" }} </td>
+                        <td>
+                             {{ client.date_created|time:"H:i" }} </td>
+
+
+                    </tr>
+                {%empty%}
+                <tr>
+                        <td>
+                            No records
+
+
+                    </tr>
+                {%endfor%}
+
+                
+
+            </tbody>
+        </table>
+        <div class="pagination">
+            <span class="step-links">
+                <!-- hadi prev -->
+                <a href="?page=9" class="arrows">
+                    <span class="material-icons-sharp">
+                        arrow_back
+                    </span>
+                    Prev
+                </a>
+
+                <div class="all-pages">
+
+                    <!-- hadi first -->
+                    <a href="?page=1" class="page-num">1</a>
+
+                    <a class="page-num more">...</a>
+
+                    <!-- hadi prev -->
+                    <a href="?page=9" class="page-num">9</a>
+
+                    <!-- hadi current -->
+                    <a href="?page=10" class="page-num current">10</a>
+
+                    <!-- hadi next -->
+                    <a href="?page=11" class="page-num">11</a>
+
+                    <a class="page-num more">...</a>
+
+                    <!-- hadi last -->
+                    <a href="?page=19" class="page-num">19</a>
+                </div>
+
+                <!-- hadi next -->
+                <a href="?page=11" class="arrows">
+                    Next
+                    <span class="material-icons-sharp">
+                        arrow_forward
+                    </span>
+                </a>
+
+            </span>
+        </div>
+    </div>
+
+    <!-- <div class="pagination">
+        <span class="step-links">
+            
+
+            <span class="current">
+                Page
+
+                1 of
+
+                1.
+                </span>
+
+            
+            </span>
+    </div> -->
+
+
+
+
+
+    <div id="popup" class="popup-holder pharmacy hide ">
+
+        <div class="card profile">
+            <div class="close">
+                <span class="material-icons-round">
+                    cancel
+                </span>
+            </div>
+            <div class="left">
+                <div class="big-profile-photo">
+                    <img id="visite-img"
+                        src="http://3.18.29.109/media/profile_pics/269837925_4389726447803609_487430985084605668_n.jpg"
+                        alt="">
+                </div>
+                <div>
+
+                    <h2 id="visite-name">Essordo Abdellah</h2>
+                    <h3 id="visite-email" class="text-muted">abdoessordo01@gmail.com</h3>
+
+                </div>
+                <div class="buttons">
+                    <h3><a id="visite-visite" href="">Add treatments</a>
+                    </h3>
+                    <h3><a id="visite-profile" href="">View Profile</a></h3>
+                </div>
+
+            </div>
+
+            <div class="middle">
+
+
+
+            </div>
+
+            <div class="bottom">
+
+                <div class="row">
+                    <div class="info-elem">
+                        <h3 class="text-muted">Gender</h3>
+                        <h3 id="visite-sexe" class="user-info">M</h3>
+                    </div>
+                    <div class="info-elem">
+                        <h3 class="text-muted">Birthday</h3>
+                        <h3 id="visite-nais" class="user-info"></h3>
+                    </div>
+                    <div class="info-elem">
+                        <h3 class="text-muted">Phone Number</h3>
+                        <h3 id="visite-phone" class="user-info">0672407504</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="info-elem">
+                        <h3 class="text-muted">CIN</h3>
+                        <h3 id="visite-username" class="user-info">K570940</h3>
+                    </div>
+                    <div class="info-elem">
+                        <h3 class="text-muted">Adress</h3>
+                        <h3 id="visite-adress" class="user-info">Casablanca</h3>
+                    </div>
+                    <div class="info-elem">
+                        <h3 class="text-muted">City</h3>
+                        <h3 id="visite-ville" class="user-info">Casablanca</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
