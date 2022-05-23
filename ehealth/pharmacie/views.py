@@ -107,7 +107,7 @@ def mutuelle(request):
 	ordos=Ordonnance.objects.filter(pk__in=params)
 	for ordo in ordos:
 		ordo.id_visite.mutuelle=True
-		ordo.id_pharmacie=request.user.person.pharmacie.INP
+		ordo.id_pharmacie=Pharmacie.objects.get(request.user.person.pharmacie.INP)
 		ordo.date_purchase=datetime.now()
 	Ordonnance.objects.bulk_update(ordos,["id_visite__mutuelle","id_pharmacie","date_purchase"])
 	return JsonResponse({"data":"done"})
