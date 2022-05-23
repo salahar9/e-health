@@ -27,10 +27,10 @@ application = ProtocolTypeRouter({
             notifications.routing.websocket_urlpatterns,
         )
     ),
-    "websocket": AuthMiddlewareStack(
-        URLRouter(
-            chat.routing.websocket_urlpatterns,
-        )
-    )
+    # "websocket": AuthMiddlewareStack(
+    #     URLRouter(
+    #         chat.routing.websocket_urlpatterns,
+    #     )
+    # )
     # Just HTTP for now. (We can add other protocols later.)
 })
