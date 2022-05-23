@@ -32,7 +32,14 @@
                             {{ client.date_created|date:"D d M Y" }} </td>
                         <td>
                              {{ client.date_created|time:"H:i" }} </td>
+                         <td>
+                             {{ client.date_created|time:"H:i" }} </td>
 
+                         <td class="primary">
+                                        <a class="see-detils-btn" href="{% url 'pharmacist:ordo 'client.pk%} ">
+                                            <span class="material-icons-sharp"> open_in_new</span>
+                                        </a>
+                                    </td>
 
                     </tr>
                 {%empty%}
