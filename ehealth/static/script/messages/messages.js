@@ -30,7 +30,7 @@ fetch_messages = (i) => {
             element.innerHTML=' <div class="detail"><h3>'+data[i].body+'</h3><small class="text-muted">'+data[i].timestamp+' </small></div>'
             container.appendChild(element)
         }
-    document.querySelector("message-count").textContent=data.slice(-1)[0] 
+    document.querySelector("message-count").textContent=data.slice(-1)
 
 console.log(data)
         }
