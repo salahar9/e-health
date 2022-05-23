@@ -14,7 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.core.paginator import Paginator
 from django.db.models import Q    
-
+import datetime
 import logging
 # Create your views here.
 PAGINATION_COUNT=10
@@ -101,3 +101,13 @@ def visite_ordo(request,pk):
 	
 	
 	return render(request, "pharmacist/ordonnances.html", {"data":ordo,'clients': True,"title":"Ordonnances"})
+def mutuelle(request):
+	params=request.GET.params["selected_visites"]
+	params=params.split(",")
+	ordos=Ordonnance.objects.filter(pk__in=params)
+	for ordo in ordos:
+		ordo.id_visite.mutuelle=True
+		ordo.id_pharmacie=request.user.pharmacie.INP
+		ordo.date_purchase=datetime.now()
+	Ordonnance.objects.bulk_update(ordos,["id_visite__mutuelle","id_pharmacie","date_purchase"])
+	return JsonResponse({"data":"done"})
