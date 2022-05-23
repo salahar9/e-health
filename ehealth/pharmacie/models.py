@@ -23,7 +23,7 @@ class Visite(models.Model):
 # 	def get_absolute_url(self):
 # 		from django.urls import reverse
 # 		return reverse('phar:get_visite_details', kwargs={'visite' : self.pk})
-# @receiver(post_save, sender=Visite)
+@receiver(post_save, sender=Visite)
 def up(sender, instance,**kwargs):
         channel_layer=get_channel_layer()
         group=instance.pharma_id.INP
