@@ -121,5 +121,5 @@ def mutuelle(request):
 
 
 	#Ordonnance.objects.bulk_update(ordos,["id_visite__mutuelle","id_pharmacie","date_purchase"])
-		mut.tot+=ordo.price
+		mut.total+=ordo.price
 	return JsonResponse({"data":"done"})
