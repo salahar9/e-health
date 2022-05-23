@@ -30,12 +30,12 @@ class Ordonnance(models.Model):
 		elif self.le_type=="Traitement" and self.id_visite.patient_id.a_mutuelle:
 			
 			try:
-				mut=AllMutuelle(visite_id=self.id_visite,total=0,mutuelle_status="P")
+				mut=AllMutuelle(visite_id=self.id_visite,total=self.price,mutuelle_status="P")
 				mut.save()
 			except:
 				mut=AllMutuelle.objects.get(visite_id=self.id_visite)
-		mut.total+=self.price
-		mut.save()
+				mut.total+=self.price
+				mut.save()
 
 		super(Ordonnance, self).save(*args, **kwargs)
 
