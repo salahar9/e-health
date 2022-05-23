@@ -81,7 +81,7 @@
             </tbody>
         </table>
     </div>
-    <a class="show-all-btn" href="#">Show All</a>
+    <a class="show-all-btn" href="{url 'pharmacist:sales'}">Show All</a>
 </div>
 
 {%endblock%}
@@ -107,34 +107,6 @@
         {% endfor %}
     </div>
 </div>
-<a href="#" class="show-all-btn">Show All</a>
+<a href="{url 'pharmacist:clients'}" class="show-all-btn">Show All</a>
 <!--------------- END OF SECTION-1 ------------>
-
-<div class="section-5">
-    <h2>Recent Sales</h2>
-    {% for ord in ordonnances %}
-    <div class="item">
-        <div class="profile-photo">
-            <img src="{{ord.id_visite.patient_id.person_id.img.url}}" alt="">
-        </div>
-        <div class="description">
-            <p><b><a href="{% url 'patient:profile' ord.id_visite.patient_id.pk %}">{{ord.id_visite.patient_id.person_id.nom}}
-                        {{ord.id_visite.patient_id.person_id.prenom}}</a></b> <br> {{ord.count}} <br>
-                {{ord.date_purchase|date:"D d M Y"}} &#8226 {{ord.date_purchase|time:"H:i"}} <br></p>
-        </div>
-        <div class="primary">
-            <h3>{{ord.prix}}</h3>
-        </div>
-    </div>
-
-
-
-    {% empty %}
-    <div class="row">
-        No records
-    </div>
-    {% endfor %}
-</div>
-<a href="#" class="show-all-btn">Show All</a>
-
 {%endblock%}
