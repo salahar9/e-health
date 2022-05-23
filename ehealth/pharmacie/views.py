@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from doctor.models import Visite
+from doctor.models import Visite as doc_visite
 from ordonnance.models import Ordonnance
 from patient.models import Patient
 from pharmacie.models import Pharmacie,Visite
@@ -89,3 +89,13 @@ def clients(request):
 	page_number = request.GET.get('page')
 	page_obj = paginator.get_page(page_number)
 	return render(request, 'pharmacist/clients.html', {'pharmacist': True, 'clients': True,"ordonnances":page_obj})
+def get_all(request,pk):
+	ords=[]
+	visites = doc_visite.objects.filter( patient_id=pk)
+		allowed=True
+		for v in visites:
+			ordo = Ordonnance.objects.filter( id_visite=v.pk)
+			if len(ordo)>0:
+				for i in ordo:
+						ords.append(i)
+	return render(request, "doctor/visites.html", {"data":ords,"allowed":allowed,'other_visite_seek':True,"title":f"{pat.person_id.nom} {pat.person_id.prenom} Consultations"})

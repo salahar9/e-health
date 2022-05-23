@@ -155,11 +155,7 @@ def profile(request,pk):
 def get_other_presc(request,pk):
 	ords=[]
 	pat=Patient.objects.get(pk=pk)
-	try:
-		request.user.person.pharmacie.INP
-		allow=True
-	except:
-		allow=False 
+	
 	if pat.permission_privacy or request.user.person.pk==pat.person_id.pk or allow :
 		visites = Visite.objects.filter( patient_id=pk)
 		allowed=True
