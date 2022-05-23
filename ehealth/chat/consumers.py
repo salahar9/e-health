@@ -35,7 +35,7 @@ class ChatConsumer(WebsocketConsumer):
         )
 
     def receive_msg(self,message):
-     
+        logger.error(message)
         self.send(text_data=json.dumps(
             {
 
