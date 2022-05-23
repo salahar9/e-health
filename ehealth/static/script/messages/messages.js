@@ -17,7 +17,7 @@ fetch_messages = (i) => {
     .then(response => response.json())
     .then(data => {
 
-        for(i in data){
+        for(i in data[0,-1]){
             if (data[i].sender_id==pid){
                 element=document.createElement("div")
                 element.className="chat-box outgoing"
