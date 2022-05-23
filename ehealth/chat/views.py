@@ -6,6 +6,7 @@ from django.db.models import Q
 from django.db.models.aggregates import Count
 from django.db.models import Case,When,Value
 from landing.models import Person
+import json
 import datetime
 def chats(request):
 	chats=Message.objects.filter(Q(sender=request.user.person) | Q(to=request.user.person)).annotate(unread=Count("seen",filter=Q(seen=False)),
@@ -37,9 +38,10 @@ def chat(request,pk):
 @require_POST
 @csrf_exempt
 def send_message(request):
-	sender=request.POST["sender"]
-	to=request.POST["to"]
-	message=request.POST["message"]
+	body=json.loads(request.body)
+	sender=body["sender"]
+	to=body["to"]
+	message=rbody["message"]
 	msg=Message(sender=sender,to=to,msg=body)
 	msg.save()
 def fetch(request,pk):
