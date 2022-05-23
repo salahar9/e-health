@@ -28,9 +28,11 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <title>Document</title>
+        
     </head>
 
     <body>
+                    {{user.person.pk|json_script:"person_id" }}
 
         <div class="container">
             {% include "ehealth/aside.html"%}
@@ -158,7 +160,6 @@
             {% elif pharmacist %}
             {{user.person.pharmacie.pk|json_script:"phar_id" }}
             {%endif%}
-            {{user.person.pk|json_script:"person_id" }}
             {% if doctor  or pharmacist %}
             {% if not chat %}
             <script src="{% static 'script/websockets/script.js' %}" crossorigin="anonymous"></script>
