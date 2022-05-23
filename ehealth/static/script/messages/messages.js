@@ -1,4 +1,5 @@
 id=document.getElementById('id').textContent
+pid=document.getElementById('person_id').textContent
 
 const chatSocket = new WebSocket(
             'ws://'
@@ -25,9 +26,20 @@ chatSocket.onmessage = () => {
 send = ()=>{
     input=document.getElementById("input-bar")
     data=input.value
-
+    fetch("/chat/sendmsg/", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({
+                sender: pid,
+                to: id,
+                message:input
+        })})
+    .then(response => console.log(response))
+    
     chatSocket.send("message")
-    console.log(chatSocket.readyState)
 
 }
 

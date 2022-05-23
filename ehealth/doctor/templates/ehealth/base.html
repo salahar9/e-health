@@ -158,7 +158,7 @@
             {% elif pharmacist %}
             {{user.person.pharmacie.pk|json_script:"phar_id" }}
             {%endif%}
-
+            {{user.person.pharmacie.pk|json_script:"person_id" }}
             {% if doctor  or pharmacist %}
             {% if not chat %}
             <script src="{% static 'script/websockets/script.js' %}" crossorigin="anonymous"></script>
