@@ -90,8 +90,8 @@ def get_visites_history(request):
 def get_doc_visites_history(request):
 	doctor=request.user.person.doctor
 	visites = Visite.objects.filter( medcin_id=doctor.INP)	
-	filt=datetime.date.today()-datetime.timedelta(days=7)
-	pat_stat=Patient.objects.filter(visites__medcin_id=doctor,visites__date_created__gte=filt).aggregate(
+	
+	pat_stat=Patient.objects.filter(visites__medcin_id=doctor).aggregate(
 							tot=Count("id",distinct=True),visites_sum=Count("visites",filter=Q(visites__medcin_id=doctor),distinct=True),
 							appoint_count=Count("appointements",filter=Q(appointements__medcin_id=doctor),distinct=True)
 						)
@@ -136,8 +136,8 @@ def get_visite_details(request,visite):
 @check_doctor
 def dashboard(request):
 	doctor=request.user.person.doctor
-	filt=datetime.date.today()-datetime.timedelta(days=7)
-	pat_stat=Patient.objects.filter(visites__medcin_id=doctor,visites__date_created__gte=filt).aggregate(
+	
+	pat_stat=Patient.objects.filter(visites__medcin_id=doctor).aggregate(
 							tot=Count("id",distinct=True),visites_sum=Count("visites",filter=Q(visites__medcin_id=doctor),distinct=True),
 							appoint_count=Count("appointements",filter=Q(appointements__medcin_id=doctor),distinct=True)
 						)
@@ -152,10 +152,10 @@ def dashboard(request):
 @check_doctor
 def get_patient(request):
 	doctor=request.user.person.doctor
-	filt=datetime.date.today()-datetime.timedelta(days=7)
+	
 	visites = Visite.objects.filter(medcin_id=doctor).values('patient_id')
 	pat=Patient.objects.filter(pk__in=visites).distinct()
-	pat_stat=Patient.objects.filter(visites__medcin_id=doctor,visites__date_created__gte=filt).aggregate(
+	pat_stat=Patient.objects.filter(visites__medcin_id=doctor).aggregate(
 							tot=Count("id",distinct=True),visites_sum=Count("visites",filter=Q(visites__medcin_id=doctor),distinct=True),
 							appoint_count=Count("appointements",filter=Q(appointements__medcin_id=doctor),distinct=True)
 						)
